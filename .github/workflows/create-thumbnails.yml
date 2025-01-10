@@ -1,0 +1,38 @@
+name: Create and Commit File
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  create-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Create or modify a file
+      - name: Create a new file
+        run: echo "Hello, world! This file was created by a GitHub Action." > newfile.txt
+
+      # Step 3: Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Step 4: Commit the changes
+      - name: Commit changes
+        run: |
+          git add newfile.txt
+          git commit -m "Add newfile.txt from GitHub Action"
+
+      # Step 5: Push changes
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: git push
