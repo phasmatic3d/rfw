@@ -19,20 +19,13 @@ export default async function Home() {
     }
   });
 
-  const base64Image = image.toString('base64');
+  //const base64Image = image.toString('base64');
 
   // Combine the MIME type with the Base64 string to create the Data URL
-  const dataUrl = `data:jpeg;base64,${base64Image}`;
+  //const dataUrl = `data:jpeg;base64,${base64Image}`;
 
   return (
     <div>
-      <Image
-          src={dataUrl}
-          alt="Next.js logo"
-          width={512}
-          height={512}
-          priority
-        />
       Hello World
     </div>
   )
