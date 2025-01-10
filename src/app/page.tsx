@@ -2,8 +2,9 @@ import Image from "next/image";
 import styles from "./page.module.css";
 //import Fuse from 'fuse.js'
 //import { Image as ImageLib } from "image-js";
+import sharp from "sharp";
 
-const sharp = require('sharp');
+//const sharp = require('sharp');
 
 export default async function Home() {
   const image = await sharp('./public/original.jpeg')
