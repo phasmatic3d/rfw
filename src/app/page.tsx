@@ -10,7 +10,14 @@ export default async function Home() {
   const image = await sharp('./public/original.jpeg')
   .resize(4)
   .jpeg({ mozjpeg: true })
-  .toBuffer()
+  //.toBuffer()
+  .toFile('./public/thumbnails/image.jpeg', (err, info) => {
+    if (err) {
+      console.log('Error processing image:', err);
+    } else {
+      console.log('Image successfully saved:', info);
+    }
+  });
 
   const base64Image = image.toString('base64');
 

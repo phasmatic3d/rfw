@@ -27,6 +27,11 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
+      # Step 3a: Status Git
+      - name: Status Git
+        run: |
+          git status
 
       # Step 4: Commit the changes
       - name: Commit changes
