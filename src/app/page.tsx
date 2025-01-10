@@ -1,7 +1,24 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Fuse from 'fuse.js'
+import { Image as ImageLib } from "image-js";
 
-export default function Home() {
+export default async function Home() {
+  const image = await ImageLib.load('./public/original.jpeg');
+  let grey = image.resize({ width: 256 });
+
+  return (
+    <div>
+      <Image
+          src={grey.toDataURL()}
+          alt="Next.js logo"
+          width={512}
+          height={512}
+          priority
+        />
+      Hello World
+    </div>
+  )
   return (
     <div className={styles.page}>
       <main className={styles.main}>
