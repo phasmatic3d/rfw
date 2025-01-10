@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'public/images/*.jpeg'  # Specify the folder and file type to watch
+
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
