@@ -1,16 +1,25 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Fuse from 'fuse.js'
-import { Image as ImageLib } from "image-js";
+//import Fuse from 'fuse.js'
+//import { Image as ImageLib } from "image-js";
+
+const sharp = require('sharp');
 
 export default async function Home() {
-  const image = await ImageLib.load('./public/original.jpeg');
-  let grey = image.resize({ width: 256 });
+  const image = await sharp('./public/original.jpeg')
+  .resize(4)
+  .jpeg({ mozjpeg: true })
+  .toBuffer()
+
+  const base64Image = image.toString('base64');
+
+  // Combine the MIME type with the Base64 string to create the Data URL
+  const dataUrl = `data:jpeg;base64,${base64Image}`;
 
   return (
     <div>
       <Image
-          src={grey.toDataURL()}
+          src={dataUrl}
           alt="Next.js logo"
           width={512}
           height={512}
