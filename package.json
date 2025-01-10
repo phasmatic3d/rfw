@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "thumbnail": "node src/scripts/thumbnail.js"
   },
   "dependencies": {
     "fuse.js": "^7.0.0",
