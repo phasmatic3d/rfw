@@ -20,20 +20,22 @@ type LandingPageProps = {
 }
 
 const tags = [
-  "metallic",
-  "anisotropic",
-  "normals",
-  "transparent",
-  "roughness",
-  "KTX",
-  "Draco",
-  "Animation",
-  "Morphing",
-  "Textured",
-  "Quantization"  
+  { name: "metallic", selected: false},
+  { name: "anisotropic", selected: false},
+  { name: "normals", selected: false},
+  { name: "transparent", selected: false},
+  { name: "roughness", selected: false},
+  { name: "KTX", selected: false},
+  { name: "Draco", selected: false},
+  { name: "Animation", selected: false},
+  { name: "Morphing", selected: false},
+  { name: "Textured", selected: false},
+  { name: "Quantization", selected: false},
 ]
 
 export default function LandingPage({models}: LandingPageProps) {
+
+  const [selectedTags, setSelectedTags] = React.useState(tags);
 
   const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = React.useState("");
@@ -56,11 +58,36 @@ export default function LandingPage({models}: LandingPageProps) {
     }
   }, []);
 
+  const handleChipDelete = (tag) => {
+    console.log("Delete", tag);
+    setSelectedTags(prevItems => {
+      const item = prevItems.find(e => e.name == tag.name);
+      if(item)
+      {
+        item.selected = false;
+      }
+      console.log([...prevItems])
+      return [...prevItems]
+    })
+  }
+  const handleChipSelection = (tag) => {
+    console.log("Add", tag);
+    setSelectedTags(prevItems => {
+      const item = prevItems.find(e => e.name == tag.name);
+      if(item)
+      {
+        item.selected = true;
+      }
+      console.log([...prevItems])
+      return [...prevItems]
+    })
+  }
+
   return (
     <>
         <Box display='flex' justifyContent='space-between'>
           <Box overflow="auto" display="flex" sx={{overflowX: "auto", mr: 4, flexDirection:'row'}} ref={scrollWrapperRef}>
-            {tags.map(t => {return (<Chip key={t} label={t} color="primary" clickable sx={{m:0.5}}/>)})}
+            {selectedTags.map(t => {return (<Chip key={t.name} label={t.name} color="primary" clickable sx={{m:0.5}} onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
           </Box>
           <Box>
             <Search searchValueChange={handleSearchValueChange}/>
