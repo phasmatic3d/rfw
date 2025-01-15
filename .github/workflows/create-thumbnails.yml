@@ -37,7 +37,7 @@ jobs:
       - name: Commit changes
         run: |
           git add newfile.txt
-          git commit -m "Add newfile.txt from GitHub Action"
+          git commit -m "Add newfile2.txt from GitHub Action"
 
       # Step 5: Push changes
       - name: Push changes
