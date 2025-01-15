@@ -15,8 +15,12 @@ function ModelCard({name}: ModelCardProps) {
     );
 }
 
+type ModelType = {
+  name: string
+}
+
 type LandingPageProps = {
-  models: Array<any>
+  models: Array<ModelType>
 }
 
 const tags = [
@@ -58,7 +62,7 @@ export default function LandingPage({models}: LandingPageProps) {
     }
   }, []);
 
-  const handleChipDelete = (tag) => {
+  const handleChipDelete = (tag: {name: string, selected: boolean}) => {
     console.log("Delete", tag);
     setSelectedTags(prevItems => {
       const item = prevItems.find(e => e.name == tag.name);
@@ -70,7 +74,7 @@ export default function LandingPage({models}: LandingPageProps) {
       return [...prevItems]
     })
   }
-  const handleChipSelection = (tag) => {
+  const handleChipSelection = (tag: {name: string, selected: boolean}) => {
     console.log("Add", tag);
     setSelectedTags(prevItems => {
       const item = prevItems.find(e => e.name == tag.name);
