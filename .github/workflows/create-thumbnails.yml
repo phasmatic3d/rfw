@@ -20,7 +20,7 @@ jobs:
 
       # Step 2: Create or modify a file
       - name: Create a new file
-        run: echo "Hello, world! This file was created by a GitHub Action." > newfile.txt
+        run: echo "Hello, world! This file was created by a GitHub Action." > newfile2.txt
 
       # Step 3: Configure Git
       - name: Configure Git
