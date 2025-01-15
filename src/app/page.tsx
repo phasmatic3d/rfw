@@ -21,13 +21,16 @@ const models = [
   {name: "test15"},
 ]
 
+import ModelList from "../../public/models/model-index.Khronos.json"
 
 export default function Home() {
-
+  //const response = fetch("./public/models/model-index.Khronos.json");
+  //const models = (await response).json();
+  console.log(ModelList);
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <LandingPage models={models}/>                        
+        <LandingPage models={ModelList}/>                        
       </main>
     </div>
   );

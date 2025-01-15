@@ -2,32 +2,8 @@
 import React from 'react'
 import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/material";
 import Search from "@/components/Search2";
+import ModelCard from "@/components/ModelCard";
 import tagsFile from "@/data/tags.json"
-
-type ModelCardProps = {
-    name: string
-}
-
-function ModelCard({name}: ModelCardProps) {
-    return (
-        <Box style={{width: '300px', height: '300px', borderRadius: '16px', background:'#AAAAAA', margin: '10px'}}>
-            <Grid container justifyContent="center">
-              <img
-                style={{textAlign: "center", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
-                width={"100%"}
-                height={"256px"}
-                srcSet={`./thumbnails/original.thumb.webp`}
-                src={`./thumbnails/original.thumb.webp`}
-                alt={name}
-                loading="lazy"
-              />
-            </Grid>
-            <Grid container justifyContent="center">
-              <Typography>{name}</Typography>
-            </Grid>
-        </Box>
-    );
-}
 
 type ModelType = {
   name: string
