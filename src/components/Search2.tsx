@@ -39,6 +39,7 @@ export default function SearchComponent({searchValueChange} : {searchValueChange
             <TextField
             size="small"
             variant="outlined"
+            placeholder="Search..."
             value={value}
             onChange={handleChange}
             slotProps={{

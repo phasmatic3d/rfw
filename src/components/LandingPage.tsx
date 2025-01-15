@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { Box, Chip, Typography, Grid2 as Grid } from "@mui/material";
+import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/material";
 import Search from "@/components/Search2";
 
 type ModelCardProps = {
@@ -53,9 +53,11 @@ const tags = [
 export default function LandingPage({models}: LandingPageProps) {
 
   const [selectedTags, setSelectedTags] = React.useState(tags);
-
   const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = React.useState("");
+
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+
 
   const handleSearchValueChange = (e:string) => {
     setSearchValue(e);
@@ -100,12 +102,36 @@ export default function LandingPage({models}: LandingPageProps) {
     })
   }
 
+
+  const boxChip = (
+    <Box ref={scrollWrapperRef}
+            sx={{
+              flex: 1,
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              flexWrap: isMobile ? "wrap" : "nowrap",
+              gap: 1,
+              p: 1,
+              overflowX: "auto",
+              overflowY: "hidden",
+              justifyContent: "flex-start",
+              maxHeight: "96px",
+              "&::-webkit-scrollbar": { height: 8, width: 8 },
+              "&::-webkit-scrollbar-thumb": {
+                backgroundColor: "#aaa",
+                borderRadius: 4,
+              },
+              alignItems: "flex-start", // Align chips to the top for better appearance
+            }}
+          >
+            {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{/*ml:i%2==1?2:0*/}} label={t.name} color="primary" clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+          </Box>
+  )
+
   return (
     <>
-        <Box display='flex' justifyContent='space-between'>
-          <Box overflow="auto" display="flex" sx={{overflowX: "auto", mr: 4, flexDirection:'row'}} ref={scrollWrapperRef}>
-            {selectedTags.map(t => {return (<Chip key={t.name} label={t.name} color="primary" clickable sx={{m:0.5}} onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
-          </Box>
+        <Box display='flex' gap={1} justifyContent='space-between' flexDirection={isMobile? "column": "row"} width='100%'>
+          {boxChip}
           <Box>
             <Search searchValueChange={handleSearchValueChange}/>
           </Box>
@@ -122,9 +148,9 @@ export default function LandingPage({models}: LandingPageProps) {
         </Typography>
 
         {/* Components */}
-        <Box display='flex' flexWrap='wrap'>
-          {models.filter((e,i) => searchValue.length < i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
-        </Box>                        
+        <Grid container spacing={2} sx={{ justifyContent: "space-evenly"}}>
+          {models.filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
+        </Grid>                        
     </>
   );
 }
