@@ -82,7 +82,7 @@ jobs:
       - name: Commit changes
         run: |
           git add public/thumbnails
-          git commit -m "Add thumbnails from GitHub Action"
+          git commit -m "Add thumbnails from GitHub Action" || echo "Nothing to commit"
       - name: Push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
