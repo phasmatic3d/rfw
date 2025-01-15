@@ -10,7 +10,20 @@ type ModelCardProps = {
 function ModelCard({name}: ModelCardProps) {
     return (
         <Box style={{width: '300px', height: '300px', background:'#AAAAAA', margin: '10px'}}>
-            <Typography>{name}</Typography>
+            <Grid container justifyContent="center">
+              <img
+                style={{textAlign: "center"}}
+                width={"100%"}
+                height={"256px"}ß
+                srcSet={`./thumbnails/original.thumb.webp`}
+                src={`./thumbnails/original.thumb.webp`}
+                alt={name}
+                loading="lazy"
+              />
+            </Grid>
+            <Grid container justifyContent="center">
+              <Typography>{name}</Typography>
+            </Grid>
         </Box>
     );
 }
