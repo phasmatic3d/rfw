@@ -2,6 +2,7 @@
 import React from 'react'
 import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/material";
 import Search from "@/components/Search2";
+import tagsFile from "@/data/tags.json"
 
 type ModelCardProps = {
     name: string
@@ -36,7 +37,9 @@ type LandingPageProps = {
   models: Array<ModelType>
 }
 
-const tags = [
+const tags = tagsFile.tags.map(t => {return {name: t, selected: false}});
+
+/*const tags = [
   { name: "metallic", selected: false},
   { name: "anisotropic", selected: false},
   { name: "normals", selected: false},
@@ -48,7 +51,7 @@ const tags = [
   { name: "Morphing", selected: false},
   { name: "Textured", selected: false},
   { name: "Quantization", selected: false},
-]
+]*/
 
 export default function LandingPage({models}: LandingPageProps) {
 
