@@ -10,18 +10,18 @@
     "thumbnail": "node src/scripts/create_thumbnails.mjs"
   },
   "dependencies": {
-    "fuse.js": "^7.0.0",
-    "image-js": "^0.36.0",
-    "sharp": "^0.33.5",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
     "@mui/material-nextjs": "^6.3.1",
+    "fuse.js": "^7.0.0",
+    "image-js": "^0.36.0",
     "next": "15.1.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
