@@ -14,7 +14,7 @@ function ModelCard({name}: ModelCardProps) {
               <img
                 style={{textAlign: "center"}}
                 width={"100%"}
-                height={"256px"}ß
+                height={"256px"}
                 srcSet={`./thumbnails/original.thumb.webp`}
                 src={`./thumbnails/original.thumb.webp`}
                 alt={name}
