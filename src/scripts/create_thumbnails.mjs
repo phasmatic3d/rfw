@@ -25,11 +25,9 @@ fs.rmSync(thumbnail_directory, { recursive: true, force: true });
 const tasks = [];
 await (async () => {
   for await (const f of getFiles(image_directory)) {
-    const src_directory = path.dirname(f);
     const src_relative_file = path.relative(image_directory, f);
     const tgt_f = thumbnail_directory + '/' + src_relative_file;
     const tgt_directory = path.dirname(tgt_f);
-    const relative_directory = path.relative(thumbnail_directory, src_relative_file);
     const filename = path.basename(src_relative_file, path.extname(src_relative_file));
     const ext = path.extname(f);
     tasks.push({
@@ -68,4 +66,4 @@ async function runTasks() {
   return results;
 }
 
-const results = await runTasks().catch((err) => console.error(err));
+await runTasks().catch((err) => console.error(err));

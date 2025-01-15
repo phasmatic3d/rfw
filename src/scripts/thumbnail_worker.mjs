@@ -1,6 +1,5 @@
 import { parentPort, workerData } from 'worker_threads';
 import fs from 'fs';
-import path from 'path';
 import sharp from 'sharp';
 
 // Simulate a time-consuming task
@@ -16,7 +15,7 @@ try {
 await sharp(workerData.src)
   .resize(64)
   .webp({quality: 75})
-  .toFile(workerData.tgt, (err, info) => {
+  .toFile(workerData.tgt, (err) => {
     if (err) {
       console.log('Error processing image:', workerData.tgt);
     } else {
