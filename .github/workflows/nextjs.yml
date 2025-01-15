@@ -74,7 +74,11 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Thumbnail extraction
-        run: npm run thumbnail && ls && git status 
+        run: npm run thumbnail && git status 
+      - name: Commit changes
+        run: |
+          git add . --all
+          git commit -m "Add thumbnails from GitHub Action"
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
