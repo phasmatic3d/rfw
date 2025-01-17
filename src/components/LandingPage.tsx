@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/material";
-import Search from "@/components/Search2";
+import Search from "@/components/Search";
 import ModelCard from "@/components/ModelCard";
 import tagsFile from "@/data/tags.json"
 
@@ -95,6 +95,7 @@ export default function LandingPage({models}: LandingPageProps) {
               overflowY: "hidden",
               justifyContent: "flex-start",
               maxHeight: "96px",
+              maxWidth: isMobile? undefined : 'min(calc(90vw - 300px), 1000px)',
               "&::-webkit-scrollbar": { height: 8, width: 8 },
               "&::-webkit-scrollbar-thumb": {
                 backgroundColor: "#aaa",
@@ -109,9 +110,9 @@ export default function LandingPage({models}: LandingPageProps) {
 
   return (
     <>
-        <Box display='flex' gap={1} justifyContent='space-between' flexDirection={isMobile? "column": "row"} width='100%'>
+        <Box display='flex' gap={1} justifyContent='space-between' flexDirection={isMobile? "column-reverse": "row"} width='100%' alignItems={isMobile? "center":undefined}>
           {boxChip}
-          <Box>
+          <Box sx={{ml:4}}>
             <Search searchValueChange={handleSearchValueChange}/>
           </Box>
         </Box>
