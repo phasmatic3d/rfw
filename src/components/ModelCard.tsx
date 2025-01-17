@@ -9,7 +9,7 @@ export type ModelCardProps = {
 
 export default function ModelCard({name}: ModelCardProps) {
     return (
-        <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', background:'#AAAAAA', margin: '10px'}}>
+        <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', background:'#FEF7FF', margin: '10px'}}>
             <Grid container justifyContent="center">
               <img
                 style={{textAlign: "center", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
