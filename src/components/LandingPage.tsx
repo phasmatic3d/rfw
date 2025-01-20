@@ -15,19 +15,6 @@ type LandingPageProps = {
 
 const tags = tagsFile.tags.map(t => {return {name: t, selected: false}});
 
-/*const tags = [
-  { name: "metallic", selected: false},
-  { name: "anisotropic", selected: false},
-  { name: "normals", selected: false},
-  { name: "transparent", selected: false},
-  { name: "roughness", selected: false},
-  { name: "KTX", selected: false},
-  { name: "Draco", selected: false},
-  { name: "Animation", selected: false},
-  { name: "Morphing", selected: false},
-  { name: "Textured", selected: false},
-  { name: "Quantization", selected: false},
-]*/
 
 export default function LandingPage({models}: LandingPageProps) {
 
@@ -81,11 +68,9 @@ export default function LandingPage({models}: LandingPageProps) {
     })
   }
 
-
   const boxChip = (
     <Box ref={scrollWrapperRef}
             sx={{
-              flex: 1,
               display: "flex",
               flexDirection: isMobile ? "column" : "row",
               flexWrap: isMobile ? "wrap" : "nowrap",
@@ -94,8 +79,9 @@ export default function LandingPage({models}: LandingPageProps) {
               overflowX: "auto",
               overflowY: "hidden",
               justifyContent: "flex-start",
+              width: '100%',
               maxHeight: "96px",
-              maxWidth: isMobile? undefined : 'min(calc(90vw - 300px), 1000px)',
+              maxWidth: isMobile? undefined: 'calc(100vw - 160px)',
               "&::-webkit-scrollbar": { height: 8, width: 8 },
               "&::-webkit-scrollbar-thumb": {
                 backgroundColor: "#aaa",
@@ -110,14 +96,14 @@ export default function LandingPage({models}: LandingPageProps) {
 
   return (
     <>
-        <Box display='flex' gap={1} justifyContent='space-between' flexDirection={isMobile? "column-reverse": "row"} width='100%' alignItems={isMobile? "center":undefined}>
-          {boxChip}
-          <Box sx={{ml:4}}>
+        <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
+          <Box>
             <Search searchValueChange={handleSearchValueChange}/>
           </Box>
+          {boxChip}
         </Box>
 
-        <Typography color='primary'>
+        <Typography color='primary' sx={{textAlign:'justify'}}>
             The purpose of glTF is to standardize Physically-Based Rendering (PBR) materials such that you 
             can be confident your model will appear as intended in any lighting environment in any renderer. 
             This is a very ambitious goal, as real-time rendering at this level of quality is still very much 
