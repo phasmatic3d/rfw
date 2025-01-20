@@ -12,7 +12,7 @@ export default function ModelCard({name}: ModelCardProps) {
     return (
         <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', background:'#FEF7FF', margin: '10px'}}>
             <Grid container justifyContent="center">
-            <Link href="/model/luda">
+            <Link href="/model/helmet1">
               <Image
                 style={{textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
                 height={256}
