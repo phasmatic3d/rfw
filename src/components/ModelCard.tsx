@@ -17,7 +17,6 @@ export default function ModelCard({name}: ModelCardProps) {
                 style={{textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
                 height={256}
                 width={256}
-                srcSet={`/thumbnails/original.thumb.webp`}
                 src={`/thumbnails/original.thumb.webp`}
                 alt={name}
                 loading="lazy"

@@ -6,7 +6,7 @@ import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import Header from '../components/Header'
 import theme from '../theme'
 import "./globals.css";
-import { Typography } from "@mui/material";
+import { Typography, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 
 const geistSans = Geist({
@@ -46,8 +46,10 @@ export default function RootLayout({
             <CssBaseline />
             <InitColorSchemeScript attribute="class" />
             <Header/>
+            <Grid style={{ height: "64px" }}></Grid>
             {children}
-            <footer style={{background:"#0D1720"}}>
+            <Grid style={{ height: "64px" }}></Grid>
+            <footer style={{position: "fixed", bottom: 0, left: 0, right: 0, background:"#0D1720"}}>
               <Typography variant="h6" style={{color: 'white', textAlign:'center'}}>KHRONOS FOOTER</Typography>
             </footer>
           </ThemeProvider>

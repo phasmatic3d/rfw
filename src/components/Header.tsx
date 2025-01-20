@@ -27,8 +27,8 @@ export default function Header() {
     }
     
     return (
-    <AppBar position="static">
-        <Toolbar style={{display:'flex', justifyContent: 'space-between', background: '#333333'}}>
+    <AppBar position="fixed">
+        <Toolbar style={{padding: 0, display:'flex', justifyContent: 'space-between', background: '#333333'}}>
             <Box flex={1}/>
             <Box flex={2} display='flex' justifyContent='space-around'>
                 <Typography variant="h5">
