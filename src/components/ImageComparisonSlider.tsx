@@ -7,7 +7,7 @@ export type ImageComparisonSliderProps = {
     imgB: string
 }
 
-const ImageComparison2 = ({imgA, imgB}: ImageComparisonSliderProps) => {
+const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
     const [sliderPosition, setSliderPosition] = React.useState(50); // Initial slider position (50%)
     const containerRef = React.useRef<HTMLDivElement>(null);
   
@@ -64,7 +64,7 @@ const ImageComparison2 = ({imgA, imgB}: ImageComparisonSliderProps) => {
       >
         {/* Background Image */}
         <img
-          src={imgA}
+          src={imgSrc1}
           alt="Background"
           style={{
             width: "100%",
@@ -78,7 +78,7 @@ const ImageComparison2 = ({imgA, imgB}: ImageComparisonSliderProps) => {
   
         {/* Foreground Image */}
         <img
-          src={imgB}
+          src={imgSrc2}
           alt="Foreground"
           style={{
             width: "100%",
