@@ -52,8 +52,9 @@ const ImageComparison2 = ({imgA, imgB}: ImageComparisonSliderProps) => {
         ref={containerRef}
         sx={{
           position: "relative",
-          width: "600px",
-          height: "400px",
+          background: "red",
+          width: "80vw",
+          height: "40vh",
           overflow: "hidden",
           cursor: "pointer",
           userSelect: "none",
@@ -100,7 +101,6 @@ const ImageComparison2 = ({imgA, imgB}: ImageComparisonSliderProps) => {
             width: "3px",
             height: "100%",
             backgroundColor: "white",
-            zIndex: 10,
             pointerEvents: "none", // Avoid slider intercepting mouse events
           }}
         />
