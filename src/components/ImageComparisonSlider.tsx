@@ -3,8 +3,8 @@ import React from 'react'
 import { Box } from "@mui/material";
 
 export type ImageComparisonSliderProps = {
-    imgA: string,
-    imgB: string
+  imgSrc1: string,
+  imgSrc2: string
 }
 
 const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
