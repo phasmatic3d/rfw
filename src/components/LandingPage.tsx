@@ -4,6 +4,7 @@ import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/materi
 import Search from "@/components/Search";
 import ModelCard from "@/components/ModelCard";
 import tagsFile from "@/data/tags.json"
+import styles from "./LandingPage.module.css";
 
 type ModelType = {
   name: string
@@ -68,11 +69,9 @@ export default function LandingPage({models}: LandingPageProps) {
   }
 
   const boxChip = (
-    <Box ref={scrollWrapperRef}
+    <Box ref={scrollWrapperRef} className={styles.chip_container}
             sx={{
               display: "flex",
-              flexDirection: isMobile ? "column" : "row",
-              flexWrap: isMobile ? "wrap" : "nowrap",
               gap: 1,
               p: 1,
               overflowX: "auto",
@@ -80,7 +79,6 @@ export default function LandingPage({models}: LandingPageProps) {
               justifyContent: "flex-start",
               width: '100%',
               maxHeight: "96px",
-              maxWidth: isMobile? undefined: 'calc(100vw - 160px)',
               "&::-webkit-scrollbar": { height: 8, width: 8 },
               "&::-webkit-scrollbar-thumb": {
                 backgroundColor: "#aaa",
