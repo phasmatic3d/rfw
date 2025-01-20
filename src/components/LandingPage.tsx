@@ -13,8 +13,7 @@ type LandingPageProps = {
   models: Array<ModelType>
 }
 
-const tags = tagsFile.tags.map(t => {return {name: t, selected: false}});
-
+const tags = tagsFile.tags.map(t => {return {name: t, selected: false, index: 0}}).sort((a, b) => b.name.length - a.name.length);
 
 export default function LandingPage({models}: LandingPageProps) {
 
