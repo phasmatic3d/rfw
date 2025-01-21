@@ -4,8 +4,9 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import theme from '../theme'
-import { Typography, Grid2 as Grid } from "@mui/material";
+import { Typography, Box, Container, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" prefix="og: https://ogp.me/ns#" suppressHydrationWarning>
       <body className={`${openSans.variable}`}>
@@ -32,14 +34,13 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <InitColorSchemeScript attribute="class" />
-            <Header/>
-            <Grid style={{ height: "64px" }}></Grid>
-            {children}
-            <Grid style={{ height: "64px" }}></Grid>
-            <footer style={{position: "fixed", bottom: 0, left: 0, right: 0, background:"#0D1720"}}>
-              <Typography variant="h6" style={{color: 'white', textAlign:'center'}}>KHRONOS FOOTER</Typography>
-            </footer>
-
+            <Box sx={{ display: 'flex', flexDirection: 'column', position: "absolute", top: 0, right: 0, bottom: 0, left: 0}}>
+              <Header />
+              <Container sx={{flexGrow: 1, overflow: "auto" }}>
+                {children}
+              </Container>
+              <Footer />
+            </Box>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
