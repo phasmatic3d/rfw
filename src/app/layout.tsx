@@ -5,15 +5,14 @@ import { ThemeProvider } from '@mui/material/styles';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import Header from '../components/Header'
 import theme from '../theme'
-import "./globals.css";
 import { Typography, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
+import "./globals.css";
 
 // Khronos uses: OpenSans-Semibold, Helvetica, Arial, sans-serif;
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"]
-
 })
 
 export const metadata: Metadata = {
