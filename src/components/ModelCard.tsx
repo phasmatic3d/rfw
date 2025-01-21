@@ -10,7 +10,7 @@ export type ModelCardProps = {
 }
 
 export default function ModelCard({name}: ModelCardProps) {
-  const tags = ["Draco", "KTX", "Quantization", "Anisotropic"];
+  const tags = ["KHR_materials_ior", "KHR_draco_mesh_compression", "KHR_mesh_quantization", "KHR_materials_anisotropy"];
   const thumbnail = `/images/other/babylon-golden.png`;
 
   const theme = useTheme();
@@ -32,7 +32,7 @@ export default function ModelCard({name}: ModelCardProps) {
           <Box display="flex" flexDirection="column" p={1} >
             <Typography fontSize={18} fontWeight={'bold'}>{name}</Typography>
             <Box sx={{mt:1}}>
-              {tags.map(t=> <Chip key={t} label={t} color="primary" sx={{m:0.5}} />)}
+              {tags.map(t=> <Chip size="small" key={t} label={t} color="primary" sx={{m:0.5}} />)}
             </Box>
           </Box>          
       </Box>
