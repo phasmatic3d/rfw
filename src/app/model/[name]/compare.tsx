@@ -20,7 +20,7 @@ export default async function Page({params}: { params: Promise<{ name: string, d
       <CssBaseline />
       <Grid wrap={"nowrap"} container direction="column" sx={{width: "100%", height: "100%", position: "absolute",  top: 0, right: 0, bottom: 0, left: 0 }} spacing={2}>
         <Grid style={{margin: "auto", flex: 1, backgroundColor: "#add8e6", display: "flex", alignItems: "center", justifyContent: "center"}}>
-          <ImageComparisonSlider imgA={"/thumbnails/original.thumb.webp"} imgB={"/thumbnails/image.jpeg"}/>                        
+          <ImageComparisonSlider imgSrc1={"/thumbnails/original.thumb.webp"} imgSrc2={"/thumbnails/image.jpeg"}/>                        
         </Grid>
       </Grid>
     </>
