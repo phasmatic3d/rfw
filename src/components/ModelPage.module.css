@@ -1,10 +1,35 @@
 .main {
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
 }
 
-@media (max-width: 600px) {
+.description {
+    height: 100%;
+    width: 20%;
+    overflow: "auto";
+}
+
+.selection {
+    height: 100%;
+    width: 80%;
+    overflow: "auto";
+    justify-content: space-evenly;
+}
+
+@media (max-width: 1200px) {
     .main {
         flex-direction: column;
+        height: initial;
+    }
+    .description {
+        overflow: "auto";
+        height: initial;
+        width: 100%;
+    }
+    .selection {
+        height: 100%;
+        width: 100%;
+        overflow: "auto";
+        justify-content: space-evenly;
     }
   }
