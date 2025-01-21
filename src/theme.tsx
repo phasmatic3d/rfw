@@ -27,7 +27,7 @@ const theme = createTheme({
         // success: {...}
         // grey: {50: .., 100...900:, A100, A200, A400, A700},
         // divider: rgba()
-        background: { default: "#333333", paper: "#333333"},
+        background: { default: "#000000", paper: "#333333"},
         action: { /* used for button states, item lists or tables */
           // active
           // hover

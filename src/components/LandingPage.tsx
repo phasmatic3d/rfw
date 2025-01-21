@@ -87,7 +87,7 @@ export default function LandingPage({models}: LandingPageProps) {
               alignItems: "flex-start", // Align chips to the top for better appearance
             }}
           >
-            {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{/*ml:i%2==1?2:0*/}} label={t.name} color={t.selected? "success" : "primary"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+            {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
           </Box>
   )
 
