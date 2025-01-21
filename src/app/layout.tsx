@@ -36,7 +36,7 @@ export default function RootLayout({
             <InitColorSchemeScript attribute="class" />
             <Box sx={{ display: 'flex', flexDirection: 'column', position: "absolute", top: 0, right: 0, bottom: 0, left: 0}}>
               <Header />
-              <Container sx={{flexGrow: 1, overflow: "auto" }}>
+              <Container sx={{flexGrow: 1, overflow: "auto" }} maxWidth={false}>
                 {children}
               </Container>
               <Footer />
