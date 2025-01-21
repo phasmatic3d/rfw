@@ -2,6 +2,7 @@
 import React from 'react';
 import { Typography, Box, Grid2 as Grid } from "@mui/material";
 import ModelCard from "@/components/ModelCard";
+import styles from "./ModelPage.module.css";
 
 const render_views = [
   {name: "test1"},
@@ -32,13 +33,13 @@ export default function ModelPage() {
 
   return (
     <>
-      <Grid container direction="row" sx={{height: '100%'}}>
-        <Grid size={4} sx={{overflow: "auto", height: '100%'}}>
+      <Grid container className={styles.main}>
+        <Grid size={3} sx={{overflow: "auto", height: '100%'}}>
         <Typography variant='h6'>Helmet</Typography>
         <Typography variant='h6'>Description</Typography>
         <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
         </Grid>
-        <Grid container size={8} spacing={2} sx={{overflow: "auto", height: '100%', justifyContent: "space-evenly"}}>
+        <Grid container size={9} spacing={2} sx={{overflow: "auto", height: '100%', justifyContent: "space-evenly"}}>
           {render_views.map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
         </Grid>
       </Grid>
