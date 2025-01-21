@@ -3,7 +3,7 @@ import { Button, Typography, Box, Grid2 as Grid } from "@mui/material";
 import type { Metadata, ResolvingMetadata  } from 'next'
 import ModelPage from "@/components/ModelPage";
 
-/*
+
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
 export async function generateStaticParams() {
@@ -12,11 +12,11 @@ export async function generateStaticParams() {
       name: model.name,
       description: model.description
     }))
-}*/
+}
 
-/*export const metadata: Metadata = {
+export const metadata: Metadata = {
   title: 'My Page Title',
-}*/
+}
 
 type Props = {
   params: Promise<{ name: string, description: string }>
