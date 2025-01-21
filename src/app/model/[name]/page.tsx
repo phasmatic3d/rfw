@@ -1,3 +1,4 @@
+import type { Metadata, ResolvingMetadata  } from 'next'
 import models from "@/data/models.json"
 import ImageComparisonSlider from "@/components/ImageComparisonSlider";
 import { Typography, Box, Grid2 as Grid } from "@mui/material";
@@ -13,7 +14,50 @@ export async function generateStaticParams() {
     }))
 }
 
-export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
+/*export const metadata: Metadata = {
+  title: 'My Page Title',
+}*/
+
+type Props = {
+  params: Promise<{ name: string, description: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+
+export async function generateMetadata( { params, searchParams }: Props, parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const {name, description} = await params;
+ 
+  // fetch data
+  //const product = await fetch(`https://.../${id}`).then((res) => res.json())
+ 
+  // optionally access and extend (rather than replace) parent metadata
+  //const previousImages = (await parent).openGraph?.images || []
+  const previousImages: string[] = [];
+ 
+  return {
+    title: name,
+    openGraph: {
+      images: ['/some-specific-page-image.jpg', ...previousImages],
+    },
+    robots: {
+      index: false,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+        noimageindex: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    }
+  }
+}
+
+export default async function Page({params}: Props) {
   const { name, description } = await params;
   return (
     <>
