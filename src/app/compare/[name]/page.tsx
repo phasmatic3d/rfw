@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Typography, Box, Grid2 as Grid } from "@mui/material";
 import type { Metadata, ResolvingMetadata  } from 'next'
 import ModelPage from "@/components/ModelPage";
+import models from "@/data/models.json"
 
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
