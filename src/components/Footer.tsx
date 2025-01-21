@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box, Grid2 as Grid } from "@mui/material";
+import ModelCard from "@/components/ModelCard";
 
 export default function Footer() {  
     return (
