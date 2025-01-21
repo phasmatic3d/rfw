@@ -1,33 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import Header from '../components/Header'
-import Footer from '../components/Header'
 import theme from '../theme'
 import "./globals.css";
 import { Typography, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 // Khronos uses: OpenSans-Semibold, Helvetica, Arial, sans-serif;
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
+  subsets: ["latin"]
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto',
-});
+})
 
 export const metadata: Metadata = {
   title: "Khronos Render Fidelity",
@@ -41,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" prefix="og: https://ogp.me/ns#" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${openSans.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
