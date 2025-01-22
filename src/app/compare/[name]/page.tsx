@@ -61,5 +61,5 @@ type Props = {
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
   
-  return <ModelPage />
+  return <ModelPage name={name} description={"Description"}/>
 }

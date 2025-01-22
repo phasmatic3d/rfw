@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "thumbnail": "node src/scripts/create_thumbnails.mjs"
+    "thumbnail": "node src/scripts/create_thumbnails.mjs",
+    "metadata": "node src/scripts/extract_model_metadata.mjs"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

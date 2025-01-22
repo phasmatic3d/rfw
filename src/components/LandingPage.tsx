@@ -112,7 +112,8 @@ export default function LandingPage({models}: LandingPageProps) {
 
         {/* Components */}
         <Grid container spacing={2} sx={{ justifyContent: "space-evenly"}}>
-          {models.filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
+        {/*Object.entries(models).filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
+        {Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
         </Grid>                        
     </>
   );

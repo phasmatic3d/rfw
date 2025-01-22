@@ -22,9 +22,14 @@ const render_views = [
   {name: "test15"},
 ]
 
-export default function ModelPage() {  
+type ModelPageProps = {
+  name: string,
+  description: string
+}
+
+export default function ModelPage({name}: ModelPageProps) {  
   // Step 1: Set up state
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(true); 
 
   // Step 2: Toggle function
   const toggleDiv = () => {
@@ -35,7 +40,7 @@ export default function ModelPage() {
     <>
       <Grid container direction="column" className={styles.main}>
         <Grid className={styles.description}>
-          <Typography variant='h6'>Helmet</Typography>
+          <Typography variant='h6'>{name}</Typography>
           <Typography variant='h6'>Description</Typography>
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
         </Grid>

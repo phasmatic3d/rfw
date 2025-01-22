@@ -2,16 +2,14 @@ import React from 'react'
 import { Button, Typography, Box, Grid2 as Grid } from "@mui/material";
 import type { Metadata, ResolvingMetadata  } from 'next'
 import ModelPage from "@/components/ModelPage";
-import models from "@/data/models.json"
-
+import models from "@/data/model-index.Phasmatic.json"
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
 export async function generateStaticParams() {
-    
-    return models.models.map((model) => ({
+    return Object.values(models).map((model) => ({
       name: model.name,
-      description: model.description
+      description: "dfgsfgsdfgsdfg"
     }))
 }
 
@@ -59,6 +57,6 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
-  
-  return <ModelPage />
+
+  return <ModelPage name={name} description={"Description"}/>
 }

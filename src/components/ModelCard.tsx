@@ -18,7 +18,7 @@ export default function ModelCard({name}: ModelCardProps) {
   return (
       <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
           <Grid container justifyContent="center">
-          <Link href="/model/helmet1">
+          <Link href={`model/${name}`}>
             <Image
               style={{textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
               height={256}
