@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { FormControl, InputLabel, Select, MenuItem, Typography, Box, Grid2 as Grid } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Typography, Box, Grid2 as Grid, NativeSelect } from "@mui/material";
 
 
 type Props = {
@@ -12,8 +12,9 @@ type Props = {
 export default function EngineSelection({engineName, engineList, handleChange}: Props) {  
 
     return (
-        <FormControl>
-            <InputLabel id="demo-simple-select-label">Engine</InputLabel>
+        <>
+        <FormControl sx={{ display: {xs:'none', sm: 'block'} }}>
+            <InputLabel id="engine-select-label">Engine</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -26,5 +27,21 @@ export default function EngineSelection({engineName, engineList, handleChange}: 
                 {engineList.map(engine => <MenuItem key={engine} value={engine}>{engine}</MenuItem>)}
             </Select>
         </FormControl>
+        <FormControl sx={{ display: {xs:'block', sm: 'none'} }}>
+            <InputLabel id="engine-select-label">Engine</InputLabel>
+            <NativeSelect
+                id="demo-simple-select"
+                value={engineName}
+                onChange={(event) => {handleChange(event.target.value)}}
+                inputProps={{
+                    name: 'Engine',
+                    id: 'engine-select-label',
+                }}
+            >
+                {engineList.map(engine => <option key={engine} value={engine}>{engine}</option>)}
+            </NativeSelect>
+        </FormControl>
+    </>
+
     );
 }
