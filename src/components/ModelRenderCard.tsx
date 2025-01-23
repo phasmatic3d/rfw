@@ -8,14 +8,21 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 export type ModelCardProps = {
-    name: string
+    name: string,
+    marked: boolean,
+    onSelection: (arg0: string) => void
 }
 
-export default function ModelRenderCard({name}: ModelCardProps) {
+export default function ModelRenderCard({name, marked, onSelection}: ModelCardProps) {
     const [selected, setSelected] = React.useState(false);
   const thumbnail = `/images/other/babylon-golden.png`;
 
   const theme = useTheme();
+
+  const markCard = (clicked: boolean) => {
+    onSelection(name);
+    setSelected(clicked);
+  }
 
   const test22 = false;
 
@@ -25,8 +32,8 @@ export default function ModelRenderCard({name}: ModelCardProps) {
             <Image 
                 style={{
                     textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px',  
-                    borderRadius: selected ? '16px' : '16px 16px 0 0',
-                    transform: selected ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
+                    borderRadius: marked ? '16px' : '16px 16px 0 0',
+                    transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease'
                 }}
                 height={300}
@@ -37,15 +44,15 @@ export default function ModelRenderCard({name}: ModelCardProps) {
                 loading="lazy"
             />
             <Checkbox
-                checked={selected}
-                onChange={() => setSelected(!selected)}
+                checked={marked}
+                onChange={() => markCard(!marked)}
                 icon={<RadioButtonUncheckedIcon />}
                 checkedIcon={<CheckCircleIcon sx={{color:'grey.700'}}/>}
                 sx={{
                     position: 'absolute',
                     top: 8,
                     right: 8,
-                    color: selected ? 'primary.main' : 'grey.500',
+                    color: marked ? 'primary.main' : 'grey.500',
                     '& .MuiSvgIcon-root': {
                         fontSize: 24,
                     },

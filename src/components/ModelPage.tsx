@@ -1,8 +1,9 @@
 "use client"
 import React from 'react';
-import { Typography, Box, Grid2 as Grid } from "@mui/material";
+import { Typography, Button, Box, Grid2 as Grid } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import styles from "./ModelPage.module.css";
+import CompareIcon from '@mui/icons-material/Compare';
 
 const render_views = [
   {name: "three.js"},
@@ -30,14 +31,47 @@ type ModelPageProps = {
 export default function ModelPage({name}: ModelPageProps) {  
   // Step 1: Set up state
   const [isVisible, setIsVisible] = React.useState(true); 
+  const [engineA, setEngineA] = React.useState(""); 
+  const [engineB, setEngineB] = React.useState(""); 
+  const [nextEngine, setNextEngine] = React.useState(0); 
 
   // Step 2: Toggle function
   const toggleDiv = () => {
     setIsVisible(!isVisible);
   };
 
+  const toggleSelection = (engine: string) => {
+    if (engineA === engine) {
+      setEngineA("");
+      setNextEngine(0);
+      return;
+    } else if (engineB === engine) {
+      setEngineB("");
+      setNextEngine(1);
+      return;
+    }
+
+    if (nextEngine === 0 ) {
+      setEngineA(engine);
+      setNextEngine(1);
+    } else  {
+      setEngineB(engine);
+      setNextEngine(0);
+    }
+  };
+
+  const count = Number(engineA === "") + Number(engineB === "");
+
   return (
     <>
+      <Button
+        sx={{position:"fixed", height: "50px", zIndex:1,  right: "4vw", bottom: "10vh"}}
+        component="label"
+        role={undefined}
+        variant="contained"
+        tabIndex={-1}
+        startIcon={<CompareIcon />}
+      > {(count == 0) ? "compare" : `select ${count} image(s) to compare`} </Button>
       <Grid container direction="column" className={styles.main}>
         <Box className={styles.description}>
           <Typography variant='h6'>{name}</Typography>
@@ -45,7 +79,7 @@ export default function ModelPage({name}: ModelPageProps) {
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
         </Box>
         <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name}/>})}
+          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}
         </Grid>
       </Grid>
     </>
