@@ -9,6 +9,7 @@ import CompareIcon from '@mui/icons-material/Compare';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EngineSelection from './EngineSelection';
+import SideBySideComparison from './SideBySideComparison'
 
 const render_views = [
   {name: "three.js"},
@@ -31,6 +32,7 @@ export default function ComparePage({name}: ComparePageProps) {
   const [isMagnified, setMagnified] = React.useState(false);
   const [engine1, setEngine1] = React.useState('three.js');
   const [engine2, setEngine2] = React.useState('filament.js');
+  const [comparisonMode, setComparisonMode] = React.useState('mode2');
 
   return (
     <>
@@ -41,21 +43,22 @@ export default function ComparePage({name}: ComparePageProps) {
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
         </Grid>}
         {/* Main */}
-        <Grid className={styles.tool} container spacing={1}>
+        <Grid className={styles.tool} container spacing={1} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
           <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer" }} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer" }} /> }
-            <CompareIcon />
+            <CompareIcon onClick={() => {setComparisonMode(comparisonMode==='mode1'? 'mode2' : 'mode1')}} sx={{cursor: "pointer" }} />
           </Box>
-          <ImageComparisonSlider imgSrc1={"/images/other/babylon-golden.png"} imgSrc2={"/images/other/model-viewer-golden.png"}/>                     
+          {comparisonMode==='mode1' && <ImageComparisonSlider imgSrc1={"/images/other/babylon-golden.png"} imgSrc2={"/images/other/model-viewer-golden.png"}/>}
+          {comparisonMode==='mode2' && <SideBySideComparison imgSrc1={"/images/other/babylon-golden.png"} imgSrc2={"/images/other/model-viewer-golden.png"}/>}
           <Box display='flex' justifyContent='space-between' width='100%'>
             <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine1(name) }}/></Box>
             <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine2(name) }}/></Box>
           </Box>
         </Grid>
-        {!isMagnified && <Box className={styles.side} display={{xs:'none', sm:'flex'}} flexDirection='column' justifyContent='flex-start' alignItems='center'>
+        {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} container spacing={2}>
           {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name}/>})}
-        </Box>}
+        </Grid>}
       </Grid>
     </>
   )
