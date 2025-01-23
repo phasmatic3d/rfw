@@ -39,12 +39,12 @@ export default function ModelPage({name}: ModelPageProps) {
   return (
     <>
       <Grid container direction="column" className={styles.main}>
-        <Grid className={styles.description}>
+        <Box className={styles.description}>
           <Typography variant='h6'>{name}</Typography>
           <Typography variant='h6'>Description</Typography>
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
-        </Grid>
-        <Grid className={styles.selection} container spacing={2}>
+        </Box>
+        <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
           {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name}/>})}
         </Grid>
       </Grid>

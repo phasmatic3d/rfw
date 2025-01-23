@@ -1,0 +1,43 @@
+.main {
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.description {
+    height: 100%;
+    width: 20%;
+    overflow: "auto";
+}
+
+.tool {
+    height: initial;
+    width: 100%;
+    overflow: "auto";
+    margin:auto;
+}
+
+.side {
+    height: 100%;
+    width: 20%;
+    overflow: "auto";
+    justify-content: space-evenly;
+}
+
+@media (max-width: 1200px) {
+    .main {
+        flex-direction: column;
+        height: initial;
+    }
+    .description {
+        overflow: "auto";
+        height: initial;
+        width: 100%;
+    }
+    .tool {
+        height: 100%;
+        width: 100%;
+        overflow: "auto";
+        justify-content: space-evenly;
+    }
+  }
