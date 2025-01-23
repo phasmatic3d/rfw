@@ -13,7 +13,6 @@
     height: initial;
     width: 60%;
     overflow: "auto";
-    margin:auto;
 }
 
 .side {
@@ -37,6 +36,7 @@
         height: 100%;
         width: 100%;
         overflow: "auto";
+        margin: auto;
         justify-content: space-evenly;
     }
 }
