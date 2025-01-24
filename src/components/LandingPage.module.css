@@ -11,10 +11,18 @@
     align-items: flex-start; /* Align chips to the top for better appearance */
 }
 
+.text {
+    text-align: 'justify'
+}
+
 @media (max-width: 600px) {
     .chip_container {
         flex-direction: column;
         flex-wrap: wrap;
         max-width: initial;
+    }
+    .text {
+        display: none;
+        text-align: 'justify'
     }
   }
