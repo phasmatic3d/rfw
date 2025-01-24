@@ -148,7 +148,7 @@ export default function ComparePage({name}: ComparePageProps) {
 
   return (
     <>
-       <Grid container direction="column" className={styles.main} spacing={1}>
+      <Grid container direction="column" className={styles.main} spacing={1}>
         {!isMagnified && <Grid className={styles.description} sx={{overflow: "auto"}}>
           <Typography variant='h6'>{name}</Typography>
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
@@ -159,7 +159,6 @@ export default function ComparePage({name}: ComparePageProps) {
           <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer" }} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer" }} /> }
-            <CompareIcon onClick={() => {setComparisonMode(comparisonMode===0? 1 : 0)}} sx={{ cursor: "pointer" }} />
             <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}

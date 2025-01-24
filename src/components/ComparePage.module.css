@@ -7,12 +7,16 @@
     height: 100%;
     width: 20%;
     overflow: "auto";
+    padding-top: 10px;
+
 }
 
 .tool {
     height: initial;
     width: 60%;
     overflow: "auto";
+    padding-top: 20px;
+
 }
 
 .side {
