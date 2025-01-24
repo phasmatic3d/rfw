@@ -63,12 +63,12 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       >
         {/* Background Image */}
         <img
-          src={imgSrc1}
+          src={imgSrc2}
           alt="Background"
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
             position: "absolute",
             top: 0,
             left: 0,
@@ -77,12 +77,12 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
   
         {/* Foreground Image */}
         <img
-          src={imgSrc2}
+          src={imgSrc1}
           alt="Foreground"
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
             position: "absolute",
             top: 0,
             left: 0,
