@@ -9,7 +9,12 @@ export type ImageComparisonSliderProps = {
 
 const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
     const [sliderPosition, setSliderPosition] = React.useState(50); // Initial slider position (50%)
-    const containerRef = React.useRef<HTMLDivElement>(null);
+    const containerRef = React.useRef<HTMLImageElement>(null);
+
+    const containerCurrent = containerRef && containerRef.current;
+
+    const elementLeft = (containerCurrent && containerCurrent.offsetLeft);
+    const elementWidth = (containerCurrent && containerCurrent.clientWidth) || 1;
   
     const handleDrag = (clientX : number) => {
       const container = containerRef.current;
@@ -35,7 +40,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       });
     };
     const handleTouchStart = (event: React.TouchEvent) => {
-        event.preventDefault();
+        //event.preventDefault();
         const onTouchMove = (e: TouchEvent) => {
             if (e.touches && e.touches[0]) {
               handleDrag(e.touches[0].clientX);
@@ -49,7 +54,9 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
   
     return (
       <Box
-        ref={containerRef}
+        
+        display='flex'
+        justifyContent='center'
         sx={{
           position: "relative",
           width: "100%",
@@ -63,15 +70,15 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       >
         {/* Background Image */}
         <img
+          ref={containerRef}
           src={imgSrc2}
           alt="Background"
           style={{
-            width: "100%",
             height: "100%",
             objectFit: "contain",
             position: "absolute",
             top: 0,
-            left: 0,
+            //left: 0,
           }}
         />
   
@@ -80,12 +87,11 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           src={imgSrc1}
           alt="Foreground"
           style={{
-            width: "100%",
             height: "100%",
             objectFit: "contain",
             position: "absolute",
             top: 0,
-            left: 0,
+            //left: 0,
             clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`, // Adjust visible area
           }}
         />
@@ -95,7 +101,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           sx={{
             position: "absolute",
             top: 0,
-            left: `${sliderPosition}%`,
+            //left: `${sliderPosition}%`,
+            left: elementLeft? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
             transform: "translateX(-50%)",
             width: "3px",
             height: "100%",
@@ -109,7 +116,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           sx={{
             position: "absolute",
             top: "50%",
-            left: `${sliderPosition}%`,
+            //left: `${sliderPosition}%`,
+            left: elementLeft? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
             transform: "translate(-50%, -50%)",
             width: "20px",
             height: "20px",
