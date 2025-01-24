@@ -100,10 +100,8 @@ export default function LandingPage({models}: LandingPageProps) {
   
   const fuse = new Fuse(Object.values(models), options)
   
-  const result = fuse.search('roughness');
+  const result = fuse.search(searchValue);
   
-  console.log(result);
-
   return (
     <>
         <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
