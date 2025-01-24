@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { useSearchParams } from "next/navigation";
-import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList } from "@mui/material";
+import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList, IconButton } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
 import SideBySideComparison from './ImageComparison/SideBySideComparison'
@@ -75,17 +75,19 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
         aria-label="Button group with a nested menu"
         sx={{width:"24px", height: "24px", minWidth:"24px"}}
       >
-        <Button
+        <IconButton
           aria-controls={open ? 'split-button-menu' : undefined}
           aria-expanded={open ? 'true' : undefined}
           aria-label="select merge strategy"
           aria-haspopup="menu"
           onClick={handleToggle}
+          color="inherit"
+          edge="start"
         >
           {selectedIndex==0 && <CompareIcon />}
           {selectedIndex==1 && <DownhillSkiingIcon />}
           {selectedIndex==2 && <ImageIcon />}
-        </Button>
+        </IconButton>
       </ButtonGroup>
       <Popper
         sx={{ zIndex: 1 }}
