@@ -4,6 +4,7 @@ import { Typography, Button, Box, Grid2 as Grid } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import styles from "./ModelPage.module.css";
 import CompareIcon from '@mui/icons-material/Compare';
+import Link from 'next/link'
 
 const render_views = [
   {name: "three.js"},
@@ -66,10 +67,11 @@ export default function ModelPage({name}: ModelPageProps) {
     <>
       <Button
         sx={{position:"fixed", height: "50px", zIndex:1,  right: "4vw", bottom: "10vh"}}
-        component="label"
+        component={Link}
         role={undefined}
         variant="contained"
         tabIndex={-1}
+        href={`/compare/${name}?engine1=${engineA}&engine2=${engineB}`}
         startIcon={<CompareIcon />}
       > {(count == 0) ? "compare" : `select ${count} image(s) to compare`} </Button>
       <Grid container direction="column" className={styles.main}>

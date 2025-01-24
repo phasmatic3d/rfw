@@ -138,11 +138,15 @@ export default function ComparePage({name}: ComparePageProps) {
 
   const searchParams = useSearchParams();
   
+  React.useEffect(() => {
   // Access specific search parameters
   const param1 = searchParams.get("engine1");
   const param2 = searchParams.get("engine2");
 
-  console.log({param1, param2});
+  if(param1) { setEngine1(param1) }
+  if(param2) { setEngine2(param2) }    
+
+  }, []);
 
   const e1 = render_views.find(e=> e.name === engine1);
   const image1 = (e1 && e1.image) || "";
