@@ -34,7 +34,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
       //const width = img1.width;
       //const height = img1.height;
 
-      const parent = canvas.parentNode as ParentNode;
+      const parent = canvas.parentElement as HTMLElement;
       const { width } = parent.getBoundingClientRect(); 
 
       const imgWidth = img1.width;
