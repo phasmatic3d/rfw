@@ -31,17 +31,31 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
       );
       const [img1, img2] = await Promise.all([loadImage(imgSrc1), loadImage(imgSrc2)]) as HTMLImageElement[];
 
-      const width = img1.width;
-      const height = img1.height;
+      //const width = img1.width;
+      //const height = img1.height;
+
+      const parent = canvas.parentNode as ParentNode;
+      const { width } = parent.getBoundingClientRect(); 
+
+      const imgWidth = img1.width;
+      const imgHeight = img1.height;
+
+      const height = (imgHeight / imgWidth) * width; 
+      
+      console.log({width, height});
+
+      // Set canvas size to match parent size
+      canvas.width = width;
+      canvas.height = height;
 
       // Set canvas size to match the images
-      canvas.width = img1.width;
-      canvas.height = img1.height;
+      //canvas.width = img1.width;
+      //canvas.height = img1.height;
 
       // Draw images onto the canvas
-      context.drawImage(img1, 0, 0);
+      context.drawImage(img1, 0, 0, width, height);
       const img1Data = context.getImageData(0, 0, width, height);
-      context.drawImage(img2, 0, 0);
+      context.drawImage(img2, 0, 0, width, height);
       const img2Data = context.getImageData(0, 0, width, height);
 
       const factor = 10;
@@ -63,6 +77,8 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
   }, [imgSrc1, imgSrc2]);
   
     return (
-      <canvas ref={canvasRef} width='200px' height='200px'/>
+      <Box width='100%' height='100%' position='relative'>
+        <canvas ref={canvasRef} width='200px' height='200px'/>
+      </Box>
     );
 };
