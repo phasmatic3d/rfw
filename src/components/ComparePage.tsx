@@ -140,7 +140,7 @@ export default function ComparePage({name}: ComparePageProps) {
   return (
     <>
        <Grid container direction="column" className={styles.main} spacing={1}>
-        {!isMagnified && <Grid className={styles.description}>
+        {!isMagnified && <Grid className={styles.description} sx={{overflow: "auto"}}>
           <Typography variant='h6'>{name}</Typography>
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
           <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
