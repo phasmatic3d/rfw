@@ -111,7 +111,7 @@ export default function LandingPage({models}: LandingPageProps) {
           {boxChip}
         </Box>
 
-        <Typography sx={{textAlign:'justify'}}>
+        <Typography className={styles.text}>
             The purpose of glTF is to standardize Physically-Based Rendering (PBR) materials such that you 
             can be confident your model will appear as intended in any lighting environment in any renderer. 
             This is a very ambitious goal, as real-time rendering at this level of quality is still very much 
