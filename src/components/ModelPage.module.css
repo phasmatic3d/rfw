@@ -3,6 +3,15 @@
     height: 100%;
 }
 
+.info {
+    margin: "auto 0";
+    cursor: pointer;
+}
+
+.infoBox {
+    display: initial;
+}
+
 .description {
     height: 100%;
     width: 20%;
@@ -16,7 +25,7 @@
     justify-content: space-evenly;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 600px) {
     .main {
         flex-direction: column;
         height: initial;

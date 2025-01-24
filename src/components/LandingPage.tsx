@@ -94,7 +94,7 @@ export default function LandingPage({models}: LandingPageProps) {
 
   const options = {
     includeScore: true,
-    // Search in `author` and in `tags` array
+    // Search in `summary` and in `name`
     keys: ['summary']
   }
   
