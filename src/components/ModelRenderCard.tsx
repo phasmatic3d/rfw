@@ -31,7 +31,7 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
           <Box position="relative">
             <Image 
                 style={{
-                    textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px',  
+                    textAlign: "center", cursor: 'pointer', width:'100%', borderTopLeftRadius: '16px', borderTopRightRadius: '16px',  
                     borderRadius: marked ? '16px' : '16px 16px 0 0',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease'
@@ -47,12 +47,12 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
                 checked={marked}
                 onChange={() => markCard(!marked)}
                 icon={<RadioButtonUncheckedIcon />}
-                checkedIcon={<CheckCircleIcon sx={{color:'grey.700'}}/>}
+                checkedIcon={<CheckCircleIcon sx={{background: "white", borderRadius:'50%'}}/>}
                 sx={{
                     position: 'absolute',
                     top: 8,
                     right: 8,
-                    color: marked ? 'primary.main' : 'grey.500',
+                    color: marked ? 'primary.main' : 'grey.700',
                     '& .MuiSvgIcon-root': {
                         fontSize: 24,
                     },
