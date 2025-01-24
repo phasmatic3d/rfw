@@ -2,6 +2,7 @@
 import React from 'react'
 import { Box, Chip, Typography, Grid2 as Grid, useMediaQuery } from "@mui/material";
 import Search from "@/components/Search";
+import Fuse from 'fuse.js'
 import ModelCard from "@/components/ModelCard";
 import tagsFile from "@/data/tags.json"
 import styles from "./LandingPage.module.css";
@@ -91,6 +92,18 @@ export default function LandingPage({models}: LandingPageProps) {
           </Box>
   )
 
+  const options = {
+    includeScore: true,
+    // Search in `author` and in `tags` array
+    keys: ['summary']
+  }
+  
+  const fuse = new Fuse(Object.values(models), options)
+  
+  const result = fuse.search('roughness');
+  
+  console.log(result);
+
   return (
     <>
         <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
@@ -113,7 +126,8 @@ export default function LandingPage({models}: LandingPageProps) {
         {/* Components */}
         <Grid container spacing={2} sx={{ justifyContent: "space-evenly"}}>
         {/*Object.entries(models).filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
-        {Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
+        {/*Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
+        {result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name}/>})}
         </Grid>                        
     </>
   );
