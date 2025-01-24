@@ -48,7 +48,7 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
                 checked={marked}
                 onChange={() => markCard(!marked)}
                 icon={<RadioButtonUncheckedIcon />}
-                checkedIcon={<CheckCircleIcon sx={{background: "white", borderRadius:'50%'}}/>}
+                checkedIcon={<CheckCircleIcon sx={{background: theme => theme.palette.grey[900], borderRadius:'50%'}}/>}
                 sx={{
                     position: 'absolute',
                     top: 8,

@@ -205,8 +205,8 @@ export default function ComparePage({name}: ComparePageProps) {
           {comparisonMode===1 && <ImageComparisonSlider imgSrc1={image1} imgSrc2={image2}/>}          
           {comparisonMode===2 && <ImageDifferenceView imgSrc1={image1} imgSrc2={image2}/>}          
           <Box display={{xs: 'flex', sm:'none'}} justifyContent='space-between' width='100%'>
-            <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine1(name) }}/></Box>
-            <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine2(name) }}/></Box>
+            <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine1(name)} }}/></Box>
+            <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine2(name)} }}/></Box>
           </Box>
           <Box display={{xs: 'none', sm:'flex'}} justifyContent='space-between' width='100%'>
             <Box flex={1}><Typography>{engine1}</Typography></Box>
