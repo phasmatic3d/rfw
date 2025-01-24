@@ -139,6 +139,7 @@ export default function ComparePage({name}: ComparePageProps) {
   const [isMagnified, setMagnified] = React.useState(false);
   const [engine1, setEngine1] = React.useState('three.js');
   const [engine2, setEngine2] = React.useState('filament.js');
+  const [nextEngine, setNextEngine] = React.useState(0);
   const [comparisonMode, setComparisonMode] = React.useState(0);
 
   //const searchParams = useSearchParams();
@@ -149,14 +150,28 @@ export default function ComparePage({name}: ComparePageProps) {
 
   React.useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
-  // Access specific search parameters
-  const param1 = searchParams.get("engine1");
-  const param2 = searchParams.get("engine2");
+    // Access specific search parameters
+    const param1 = searchParams.get("engine1");
+    const param2 = searchParams.get("engine2");
 
-  if(param1) { setEngine1(param1) }
-  if(param2) { setEngine2(param2) }    
+    if(param1) { setEngine1(param1) }
+    if(param2) { setEngine2(param2) }    
 
   }, []);
+
+  const toggleSelection = (engine: string) => {
+    if (engine1 === engine || engine2 === engine) {
+      return;
+    }
+    
+    if (nextEngine === 0 ) {
+      setEngine1(engine);
+      setNextEngine(1);
+    } else  {
+      setEngine2(engine);
+      setNextEngine(0);
+    }
+  };
 
   const e1 = render_views.find(e=> e.name === engine1);
   const image1 = (e1 && e1.image) || "";
@@ -192,13 +207,17 @@ export default function ComparePage({name}: ComparePageProps) {
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
           {comparisonMode===1 && <ImageComparisonSlider imgSrc1={image1} imgSrc2={image2}/>}          
           {comparisonMode===2 && <ImageDifferenceView imgSrc1={image1} imgSrc2={image2}/>}          
-          <Box display='flex' justifyContent='space-between' width='100%'>
+          <Box display={{xs: 'none', sm:'flex'}}  justifyContent='space-between' width='100%'>
             <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine1(name) }}/></Box>
             <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { setEngine2(name) }}/></Box>
           </Box>
+          <Box display={{xs: 'flex', sm:'none'}} justifyContent='space-between' width='100%'>
+            <Box flex={1}><Typography>{engine1}</Typography></Box>
+            <Box flex={1} display='flex' justifyContent='flex-end'><Typography>{engine2}</Typography></Box>
+          </Box>
         </Grid>
         {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={false} onSelection={() => {}}/>})}
+          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engine1 === e.name || engine2 === e.name)} onSelection={toggleSelection}/>})}
         </Grid>}
       </Grid>
     </>
