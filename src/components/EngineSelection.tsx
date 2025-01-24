@@ -28,7 +28,6 @@ export default function EngineSelection({engineName, engineList, handleChange}: 
             </Select>
         </FormControl>
         <FormControl sx={{ display: {xs:'block', sm: 'none'} }}>
-            <InputLabel id="engine-select-label">Engine</InputLabel>
             <NativeSelect
                 id="demo-simple-select"
                 value={engineName}

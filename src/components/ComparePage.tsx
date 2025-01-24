@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-import { useSearchParams } from "next/navigation";
 import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList, IconButton } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
@@ -141,8 +140,6 @@ export default function ComparePage({name}: ComparePageProps) {
   const [engine2, setEngine2] = React.useState('filament.js');
   const [nextEngine, setNextEngine] = React.useState(0);
   const [comparisonMode, setComparisonMode] = React.useState(0);
-
-  //const searchParams = useSearchParams();
 
   const toggleDiv = () => {
     setIsVisible(!isVisible);
