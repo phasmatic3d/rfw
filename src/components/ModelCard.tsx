@@ -17,24 +17,24 @@ export default function ModelCard({name}: ModelCardProps) {
 
   return (
       <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
-          <Grid container justifyContent="center">
+        <Grid container justifyContent="center">
           <Link href={`model/${name}`}>
             <Image
-              style={{textAlign: "center", cursor: 'pointer', width:"100%", borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
-              height={256}
-              width={256}
+              style={{textAlign: "center", cursor: 'pointer', objectFit: 'cover', borderTopLeftRadius: '16px', borderTopRightRadius: '16px'}}
+              height={300}
+              width={300}
               src={thumbnail}
-              alt={name}
+              alt={name}  
               loading="lazy"
             />
           </Link>
-          </Grid>
-          <Box display="flex" flexDirection="column" p={1} >
-            <Typography fontSize={18} fontWeight={'bold'}>{name}</Typography>
-            <Box sx={{mt:1}}>
-              {tags.map(t=> <Chip size="small" key={t} label={t} color="primary" sx={{m:0.5}} />)}
-            </Box>
-          </Box>          
+        </Grid>
+        <Box display="flex" flexDirection="column" p={1} >
+          <Typography fontSize={18} fontWeight={'bold'}>{name}</Typography>
+          <Box sx={{mt:1}}>
+            {tags.map(t=> <Chip size="small" key={t} label={t} color="primary" sx={{m:0.5}} />)}
+          </Box>
+        </Box>          
       </Box>
   );
 }
