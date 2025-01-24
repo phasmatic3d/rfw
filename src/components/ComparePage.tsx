@@ -136,9 +136,10 @@ export default function ComparePage({name}: ComparePageProps) {
   const [engine2, setEngine2] = React.useState('filament.js');
   const [comparisonMode, setComparisonMode] = React.useState(0);
 
-  const searchParams = useSearchParams();
+  //const searchParams = useSearchParams();
   
   React.useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
   // Access specific search parameters
   const param1 = searchParams.get("engine1");
   const param2 = searchParams.get("engine2");
