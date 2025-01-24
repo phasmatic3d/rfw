@@ -6,6 +6,8 @@ import ModelRenderCard from "@/components/ModelRenderCard"
 import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
 import SideBySideComparison from './ImageComparison/SideBySideComparison'
 import ImageDifferenceView from './ImageComparison/ImageDifferenceView';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import styles from "./ComparePage.module.css";
 import InfoIcon from '@mui/icons-material/Info';
 import CompareIcon from '@mui/icons-material/Compare';
@@ -131,13 +133,20 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
 
 export default function ComparePage({name}: ComparePageProps) {  
   
+  const theme = useTheme();
+  const isXs = useMediaQuery(theme.breakpoints.only('xs'));
+  const [isVisible, setIsVisible] = React.useState(!isXs); 
   const [isMagnified, setMagnified] = React.useState(false);
   const [engine1, setEngine1] = React.useState('three.js');
   const [engine2, setEngine2] = React.useState('filament.js');
   const [comparisonMode, setComparisonMode] = React.useState(0);
 
   //const searchParams = useSearchParams();
-  
+
+  const toggleDiv = () => {
+    setIsVisible(!isVisible);
+  };
+
   React.useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
   // Access specific search parameters
@@ -153,13 +162,25 @@ export default function ComparePage({name}: ComparePageProps) {
   const image1 = (e1 && e1.image) || "";
   const image2 = render_views.find(e=> e.name === engine2)?.image || "";
 
+  const description = <Box>
+    <Typography variant='h6'>Description</Typography>
+    <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
+  </Box>;
+
   return (
     <>
       <Grid container direction="column" className={styles.main} spacing={1}>
         {!isMagnified && <Grid className={styles.description} sx={{overflow: "auto"}}>
-          <Typography variant='h6'>{name}</Typography>
-          <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
-          <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
+          <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
+            <Typography variant='h6'>{name}</Typography>
+            <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
+              <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
+                {isXs && <InfoIcon />}
+              </Box>
+            </Box>
+          </Box>
+          {(!isXs) && description}
+          {(isXs && isVisible) && description}
         </Grid>}
         {/* Main */}
         <Grid className={styles.tool} container spacing={1} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>

@@ -8,7 +8,6 @@
     width: 20%;
     overflow: "auto";
     padding-top: 10px;
-
 }
 
 .tool {
@@ -26,7 +25,7 @@
     justify-content: space-evenly;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 600px) {
     .main {
         flex-direction: column;
         height: initial;
