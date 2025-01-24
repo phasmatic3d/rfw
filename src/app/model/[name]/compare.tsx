@@ -1,5 +1,5 @@
 import models from "@/data/models.json"
-import ImageComparisonSlider from "@/components/ImageComparisonSlider";
+import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
 import { Typography, Box, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 

@@ -3,17 +3,17 @@ import React from 'react';
 import { useSearchParams } from "next/navigation";
 import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
-import ImageComparisonSlider from "@/components/ImageComparisonSlider";
+import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
+import SideBySideComparison from './ImageComparison/SideBySideComparison'
+import ImageDifferenceView from './ImageComparison/ImageDifferenceView';
 import styles from "./ComparePage.module.css";
 import InfoIcon from '@mui/icons-material/Info';
 import CompareIcon from '@mui/icons-material/Compare';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EngineSelection from './EngineSelection';
-import SideBySideComparison from './SideBySideComparison'
 import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
 import ImageIcon from '@mui/icons-material/Image';
-import ImageDifferenceView from './ImageDifferenceView';
 
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
