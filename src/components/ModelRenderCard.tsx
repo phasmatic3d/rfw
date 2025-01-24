@@ -34,7 +34,8 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
                     textAlign: "center", cursor: 'pointer', width:'100%', height: '100%', aspectRatio:'1/1', borderTopLeftRadius: '16px', borderTopRightRadius: '16px',  
                     borderRadius: marked ? '16px' : '16px 16px 0 0',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
-                    transition: 'transform 0.3s ease, border-radius 0.3s ease'
+                    transition: 'transform 0.3s ease, border-radius 0.3s ease',
+                    objectFit: 'cover', 
                 }}
                 height={300}
                 width={300}       
