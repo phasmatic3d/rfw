@@ -159,10 +159,7 @@ export default function ComparePage({name}: ComparePageProps) {
           <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer" }} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer" }} /> }
-<<<<<<< HEAD
-=======
             <CompareIcon onClick={() => {setComparisonMode(comparisonMode===0? 1 : 0)}} sx={{ cursor: "pointer" }} />
->>>>>>> 27f5a84 (Improve comparison layout)
             <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
