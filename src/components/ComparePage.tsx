@@ -161,7 +161,7 @@ export default function ComparePage({name}: ComparePageProps) {
           </Box>
         </Grid>
         {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name}/>})}
+          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={false} onSelection={() => {}}/>})}
         </Grid>}
       </Grid>
     </>
