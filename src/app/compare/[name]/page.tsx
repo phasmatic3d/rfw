@@ -9,17 +9,16 @@ export const dynamicParams = false; // models that are not included in the list,
 export async function generateStaticParams() {
     
     return Object.values(models).map((model) => ({
-      name: model.name,
-      description: model.description
+      name: model.name
     }))
 }
 
 export const metadata: Metadata = {
-  title: 'My Page Title',
+  title: 'Model Comparison',
 }
 
 type Props = {
-  params: Promise<{ name: string, description: string }>
+  params: Promise<{ name: string}>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
@@ -57,8 +56,8 @@ type Props = {
   }
 }*/
 
-export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
-  const { name, description } = await params;
+export default async function Page({params}: { params: Promise<{ name: string }> }) {
+  const { name } = await params;
   
   return <ComparePage name={name} description={"Description"}/>
 }

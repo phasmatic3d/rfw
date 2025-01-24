@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import { useSearchParams } from "next/navigation";
 import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import ImageComparisonSlider from "@/components/ImageComparisonSlider";
@@ -132,6 +133,14 @@ export default function ComparePage({name}: ComparePageProps) {
   const [engine1, setEngine1] = React.useState('three.js');
   const [engine2, setEngine2] = React.useState('filament.js');
   const [comparisonMode, setComparisonMode] = React.useState(0);
+
+  const searchParams = useSearchParams();
+  
+  // Access specific search parameters
+  const param1 = searchParams.get("engine1");
+  const param2 = searchParams.get("engine2");
+
+  console.log({param1, param2});
 
   const e1 = render_views.find(e=> e.name === engine1);
   const image1 = (e1 && e1.image) || "";
