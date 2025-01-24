@@ -52,7 +52,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         ref={containerRef}
         sx={{
           position: "relative",
-          width: "80vw",
+          width: "100%",
           height: "40vh",
           overflow: "hidden",
           cursor: "pointer",
