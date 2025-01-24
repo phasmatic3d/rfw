@@ -100,7 +100,7 @@ export default function LandingPage({models}: LandingPageProps) {
   
   const fuse = new Fuse(Object.values(models), options)
   
-  const result = (searchValue === "") ? Object.values(models) : fuse.search(searchValue);
+  const result = (searchValue === "") ? Object.values(models).map(e => {return {item: e}}) : fuse.search(searchValue);
   
   return (
     <>
@@ -125,8 +125,7 @@ export default function LandingPage({models}: LandingPageProps) {
         <Grid container spacing={2} sx={{ justifyContent: "space-evenly"}}>
         {/*Object.entries(models).filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
         {/*Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
-        {(searchValue === "") ? result.map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})
-         : result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name}/>})}
+        {result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name}/>})}
         </Grid>                        
     </>
   );

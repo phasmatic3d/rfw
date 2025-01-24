@@ -159,8 +159,8 @@ export default function ComparePage({name}: ComparePageProps) {
         {/* Main */}
         <Grid className={styles.tool} container spacing={1} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
           <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
-            {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer" }} /> }
-            {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer" }} /> }
+            {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
+            {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
             <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
