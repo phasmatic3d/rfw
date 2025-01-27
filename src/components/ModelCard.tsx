@@ -16,7 +16,7 @@ export default function ModelCard({name}: ModelCardProps) {
   const theme = useTheme();
 
   return (
-      <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
+      <Box sx={{boxShadow:16, width: '300px', height:'fit-content', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
         <Grid container justifyContent="center">
           <Link href={`model/${name}`}>
             <Image
