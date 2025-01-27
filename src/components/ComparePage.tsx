@@ -15,6 +15,8 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EngineSelection from './EngineSelection';
 import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
 import ImageIcon from '@mui/icons-material/Image';
+import ShareIcon from '@mui/icons-material/Share';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
@@ -175,7 +177,13 @@ export default function ComparePage({name}: ComparePageProps) {
   const image2 = render_views.find(e=> e.name === engine2)?.image || "";
 
   const description = <Box>
-    <Typography variant='h6'>Description</Typography>
+    <Box display='flex' justifyContent='space-between'>
+      <Typography variant='h6'>Description</Typography>
+      <Box>
+        <IconButton><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
+      </Box>
+    </Box>
     <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
   </Box>;
 
