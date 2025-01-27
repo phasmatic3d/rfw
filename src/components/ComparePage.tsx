@@ -184,7 +184,7 @@ export default function ComparePage({name}: ComparePageProps) {
         <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
       </Box>
     </Box>
-    <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
+    <Typography textAlign='justify'>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
   </Box>;
 
   return (
@@ -212,11 +212,11 @@ export default function ComparePage({name}: ComparePageProps) {
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
           {comparisonMode===1 && <ImageComparisonSlider imgSrc1={image1} imgSrc2={image2}/>}          
           {comparisonMode===2 && <ImageDifferenceView imgSrc1={image1} imgSrc2={image2}/>}          
-          <Box display={{xs: 'flex', sm:'none'}} justifyContent='space-between' width='100%'>
+          <Box display={{xs: 'flex', sm:'none'}} justifyContent='space-between' width='100%' pl={1} pr={1}>
             <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine1(name)} }}/></Box>
             <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine2(name)} }}/></Box>
           </Box>
-          <Box display={{xs: 'none', sm:'flex'}} justifyContent='space-between' width='100%'>
+          <Box display={{xs: 'none', sm:'flex'}} justifyContent='space-between' width='100%' pl={1} pr={1}>
             <Box flex={1}><Typography>{engine1}</Typography></Box>
             <Box flex={1} display='flex' justifyContent='flex-end'><Typography>{engine2}</Typography></Box>
           </Box>

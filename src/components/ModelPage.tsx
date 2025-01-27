@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Typography, Button, Box, Grid2 as Grid } from "@mui/material";
+import { Typography, Button, Box, Grid2 as Grid, IconButton } from "@mui/material";
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ModelRenderCard from "@/components/ModelRenderCard"
@@ -8,6 +8,8 @@ import styles from "./ModelPage.module.css";
 import CompareIcon from '@mui/icons-material/Compare';
 import Link from 'next/link'
 import InfoIcon from '@mui/icons-material/Info';
+import ShareIcon from '@mui/icons-material/Share';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 //import README from "@/data/README.md"
 
 const render_views = [
@@ -70,7 +72,13 @@ export default function ModelPage({name}: ModelPageProps) {
   const count = Number(engineA === "") + Number(engineB === "");
   
   const description = <Box>
-    <Typography variant='h6'>Description</Typography>
+    <Box display='flex' justifyContent='space-between'>
+      <Typography variant='h6'>Description</Typography>
+      <Box>
+        <IconButton><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
+      </Box>
+    </Box>
     <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
   </Box>;
 
