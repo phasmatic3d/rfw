@@ -17,8 +17,7 @@ import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
 import ImageIcon from '@mui/icons-material/Image';
 import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
-
-const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+import { basePath } from '@/lib/paths';
 
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},

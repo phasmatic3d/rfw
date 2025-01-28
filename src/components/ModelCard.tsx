@@ -4,8 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { Box, Chip, Typography, Grid2 as Grid } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-
-const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+import { basePath } from '@/lib/paths';
 
 export type ModelCardProps = {
     name: string

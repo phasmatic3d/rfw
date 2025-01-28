@@ -6,8 +6,7 @@ import { Box, Chip, Typography, Grid2 as Grid, Checkbox } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-
-const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+import { basePath } from '@/lib/paths';
 
 export type ModelCardProps = {
     name: string,
