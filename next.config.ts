@@ -4,8 +4,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  basePath: isProd ? "/rfw/" : "", // Replace "project" with your GitHub repository name
-  assetPrefix: isProd ? "/rfw/" : "",
+  basePath: isProd ? "/rfw" : "/rfw", 
+  assetPrefix: isProd ? "/rfw" : "/rfw",
   async rewrites() {
     return [
       {
