@@ -4,8 +4,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  basePath: isProd ? "/rfw" : "/rfw", 
-  assetPrefix: isProd ? "/rfw" : "/rfw",
+  basePath: isProd ? "/rfw/" : "",
+  assetPrefix: isProd ? "/rfw/" : "",
   async rewrites() {
     return [
       {

@@ -5,13 +5,15 @@ import Link from 'next/link';
 import { Box, Chip, Typography, Grid2 as Grid } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+
 export type ModelCardProps = {
     name: string
 }
 
 export default function ModelCard({name}: ModelCardProps) {
   const tags = ["KHR_materials_ior", "KHR_draco_mesh_compression", "KHR_mesh_quantization", "KHR_materials_anisotropy"];
-  const thumbnail = `/images/other/babylon-golden.png`;
+  const thumbnail = `${basePath}/images/other/babylon-golden.png`;
 
   const theme = useTheme();
 
