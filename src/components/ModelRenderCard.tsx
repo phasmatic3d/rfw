@@ -7,6 +7,8 @@ import { useTheme } from '@mui/material/styles';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+
 export type ModelCardProps = {
     name: string,
     marked: boolean,
@@ -15,7 +17,7 @@ export type ModelCardProps = {
 
 export default function ModelRenderCard({name, marked, onSelection}: ModelCardProps) {
     const [selected, setSelected] = React.useState(false);
-  const thumbnail = `/images/other/babylon-golden.png`;
+  const thumbnail = `${basePath}/images/other/babylon-golden.png`;
 
   const theme = useTheme();
 

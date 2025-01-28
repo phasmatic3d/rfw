@@ -18,6 +18,8 @@ import ImageIcon from '@mui/icons-material/Image';
 import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/rfw' : '';
+
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
   {name: "filament.js", image: "/images/dragon/filament-golden.png"},
@@ -173,8 +175,10 @@ export default function ComparePage({name}: ComparePageProps) {
   };
 
   const e1 = render_views.find(e=> e.name === engine1);
-  const image1 = (e1 && e1.image) || "";
-  const image2 = render_views.find(e=> e.name === engine2)?.image || "";
+  let image1 = (e1 && e1.image) || "";
+  image1 = `${basePath}${image1}`;
+  let image2 = render_views.find(e=> e.name === engine2)?.image || "";
+  image2 = `${basePath}${image2}`;
 
   const description = <Box>
     <Box display='flex' justifyContent='space-between'>
