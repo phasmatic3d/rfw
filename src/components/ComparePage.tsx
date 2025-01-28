@@ -13,7 +13,8 @@ import CompareIcon from '@mui/icons-material/Compare';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EngineSelection from './EngineSelection';
-import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import ImageIcon from '@mui/icons-material/Image';
 import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -88,8 +89,8 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
           color="inherit"
           edge="start"
         >
-          {selectedIndex==0 && <CompareIcon />}
-          {selectedIndex==1 && <DownhillSkiingIcon />}
+          {selectedIndex==0 && <ViewStreamIcon style={{transform: 'rotate(90deg)'}}/>}
+          {selectedIndex==1 && <CompareIcon />}
           {selectedIndex==2 && <ImageIcon />}
         </IconButton>
       </ButtonGroup>
@@ -118,8 +119,8 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {index==0 && <CompareIcon />}
-                      {index==1 && <DownhillSkiingIcon />}
+                      {index==0 && <ViewStreamIcon style={{transform: 'rotate(90deg)'}}/>}
+                      {index==1 && <CompareIcon />}
                       {index==2 && <ImageIcon />}
                       {option}
                     </MenuItem>
@@ -192,7 +193,7 @@ export default function ComparePage({name}: ComparePageProps) {
 
   return (
     <>
-      <Grid container direction="column" className={styles.main} spacing={1}>
+      <Grid container direction="column" className={styles.main} spacing={2}>
         {!isMagnified && <Grid className={styles.description} sx={{overflow: "auto"}}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
             <Typography variant='h6'>{name}</Typography>

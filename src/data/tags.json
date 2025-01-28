@@ -1,10 +1,10 @@
 {
     "tags": [
-        "metallic",
-        "anisotropic", 
-        "normals",
-        "transparent", 
-        "roughness",
+        "Metallic",
+        "Anisotropic", 
+        "Normals",
+        "Transparent", 
+        "Transmissive",
         "KTX", 
         "Draco", 
         "Animation", 
