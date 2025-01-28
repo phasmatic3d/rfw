@@ -13,7 +13,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
 
     const containerCurrent = containerRef && containerRef.current;
 
-    const elementLeft = (containerCurrent && containerCurrent.offsetLeft);
+    const elementLeft = (containerCurrent && containerCurrent.offsetLeft) || 0;
     const elementWidth = (containerCurrent && containerCurrent.clientWidth) || 1;
   
     const handleDrag = (clientX : number) => {
