@@ -95,7 +95,7 @@ export default function LandingPage({models}: LandingPageProps) {
   const options = {
     includeScore: true,
     // Search in `summary` and in `name`
-    keys: ['summary']
+    keys: ['summary', 'name']
   }
   
   const fuse = new Fuse(Object.values(models), options)
