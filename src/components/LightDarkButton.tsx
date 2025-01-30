@@ -22,7 +22,6 @@ export default function LightDarkButton({}) {
         <IconButton
             size="large"
             edge="start"
-            color="inherit"
             aria-label="light_dark_menu"
             sx={{ mr: 1 }}
             onClick={ () => { setMode(mode == 'dark'? 'light' : 'dark') }}
