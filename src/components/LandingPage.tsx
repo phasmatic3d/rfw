@@ -6,6 +6,10 @@ import Fuse from 'fuse.js'
 import ModelCard from "@/components/ModelCard";
 import tagsFile from "@/data/tags.json"
 import styles from "./LandingPage.module.css";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 type ModelType = {
   name: string
@@ -22,6 +26,9 @@ export default function LandingPage({models}: LandingPageProps) {
   const [selectedTags, setSelectedTags] = React.useState(tags);
   const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
   const [searchValue, setSearchValue] = React.useState("");
+  const [tagsExpanded, setTagsExpanded] = React.useState(false);
+
+  const tags2 = [tags[0], tags[1], tags[2]];
 
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
@@ -69,6 +76,31 @@ export default function LandingPage({models}: LandingPageProps) {
     })
   }
 
+  const accordionChips = (
+    <Accordion>
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon />}
+      aria-controls="panel1-content"
+      id="panel1-header"
+    >
+      {tags2.map((t,i) => {return (<Chip key={t.name} sx={{fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>
+      {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+  )
+  const otherChips = (
+    <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
+      <Box display={"flex"} alignItems={"center"} sx={{position: "relative"}}>
+        <ExpandMoreIcon onClick={() => setTagsExpanded(!tagsExpanded)} style={{/*position: "absolute", right: 0*/}} />
+      </Box>
+      {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+    </Box>
+  )
   const boxChip = (
     <Box ref={scrollWrapperRef} className={styles.chip_container}
             sx={{
@@ -101,14 +133,17 @@ export default function LandingPage({models}: LandingPageProps) {
   const fuse = new Fuse(Object.values(models), options)
   
   const result = (searchValue === "") ? Object.values(models).map(e => {return {item: e}}) : fuse.search(searchValue);
-  
+  const result2 = result;
+
   return (
     <>
         <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
           <Box>
             <Search searchValueChange={handleSearchValueChange}/>
           </Box>
-          {boxChip}
+          {/*boxChip*/}
+          {/*accordionChips*/}
+          {otherChips}
         </Box>
 
         <Typography className={styles.text}>
@@ -122,10 +157,10 @@ export default function LandingPage({models}: LandingPageProps) {
         </Typography>
 
         {/* Components */}
-        <Grid container spacing={2} sx={{ justifyContent: "space-evenly"}}>
+        <Grid container style={{padding: 0, margin: 0}} spacing={2} sx={{ justifyContent: "space-evenly"}}>
         {/*Object.entries(models).filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
         {/*Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
-        {result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name}/>})}
+        {result2.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name}/>})}
         </Grid>                        
     </>
   );
