@@ -93,7 +93,7 @@ export default function ModelPage({name}: ModelPageProps) {
         href={`/compare/${name}?engine1=${engineA}&engine2=${engineB}`}
         startIcon={<CompareIcon />}
       > {(count == 0) ? "compare" : `select ${count} image(s) to compare`} </Button>
-      <Grid container direction="column" className={styles.main} pt={1}>
+      <Grid container direction="row" className={styles.main} pt={1}>
         <Box sx={{overflow: "auto"}} className={styles.description}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }} pb={1}> 
             <Typography variant='h6'>{name}</Typography>
