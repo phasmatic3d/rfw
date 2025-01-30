@@ -28,23 +28,30 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
   const test22 = false;
 
   return (
-      <Box sx={{boxShadow:16, width: '300px', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
+      <Box sx={{boxShadow:16, width: '100%', maxWidth: "400px", height:'fit-content', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
           <Box position="relative">
-            <Image 
-                style={{
-                    textAlign: "center", cursor: 'pointer', width:'100%', height: '100%', aspectRatio:'1/1', borderTopLeftRadius: '16px', borderTopRightRadius: '16px',  
+            <Box style={{width: "100%"}}>
+                <Image
+                width={300}
+                height={300}
+                style={{ 
+                    aspectRatio: 1 / 1,
+                    width: '100%', 
+                    height: "100%",
+                    maxWidth: "400px", 
+                    textAlign: "center", 
+                    cursor: 'pointer', 
+                    objectFit: 'cover',
                     borderRadius: marked ? '16px' : '16px 16px 0 0',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease',
-                    objectFit: 'cover', 
                 }}
-                height={300}
-                width={300}       
-                quality={100}         
                 src={thumbnail}
-                alt={name}
+                alt={name}  
                 loading="lazy"
-            />
+                />
+            </Box>
+           
             <Checkbox
                 checked={marked}
                 onChange={() => markCard(!marked)}
