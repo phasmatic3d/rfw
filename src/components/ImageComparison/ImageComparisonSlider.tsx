@@ -15,6 +15,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
 
     const elementLeft = (containerCurrent && containerCurrent.offsetLeft) || 0;
     const elementWidth = (containerCurrent && containerCurrent.clientWidth) || 1;
+    const elementTop = (containerCurrent && containerCurrent.offsetTop) || 0;
+    const elementHeight = (containerCurrent && containerCurrent.clientHeight) || 1;
   
     const handleDrag = (clientX : number) => {
       const container = containerRef.current;
@@ -54,13 +56,12 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
   
     return (
       <Box
-        
         display='flex'
         justifyContent='center'
         sx={{
           position: "relative",
           width: "100%",
-          height: "40vh",
+          height: "70vh",
           overflow: "hidden",
           cursor: "pointer",
           userSelect: "none",
@@ -74,7 +75,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           src={imgSrc2}
           alt="Background"
           style={{
-            height: "100%",
+            width: '100%',
             objectFit: "contain",
             position: "absolute",
             top: 0,
@@ -87,7 +88,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           src={imgSrc1}
           alt="Foreground"
           style={{
-            height: "100%",
+            width: '100%',
             objectFit: "contain",
             position: "absolute",
             top: 0,
@@ -115,7 +116,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         <Box
           sx={{
             position: "absolute",
-            top: "50%",
+            //top: "50%",
+            top: containerCurrent? `${elementTop + 0.5 * elementHeight}px` : "50%",
             //left: `${sliderPosition}%`,
             left: containerCurrent? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
             transform: "translate(-50%, -50%)",

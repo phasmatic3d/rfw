@@ -42,11 +42,13 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
 
       const height = (imgHeight / imgWidth) * width; 
       
-      console.log({width, height});
+      console.log({width, height, aspect: imgHeight / imgWidth});
 
       // Set canvas size to match parent size
       canvas.width = width;
       canvas.height = height;
+      canvas.style.width = `${width}`;
+      canvas.style.height = `${height}`;
 
       // Set canvas size to match the images
       //canvas.width = img1.width;
