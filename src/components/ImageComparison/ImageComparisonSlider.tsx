@@ -57,7 +57,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         });
     };
 
-    const handleOnLoad = (event: any) => {
+    const handleOnLoad = () => {
 
       if(imageRef.current == null)
         return;
