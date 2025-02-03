@@ -51,7 +51,7 @@ const theme = createTheme({
   },
   cssVariables: { colorSchemeSelector: 'class'},
   typography: {
-    fontFamily: 'var(--font-open-sans)',
+    fontFamily: 'var(--font-poppins)',
   },
 });
 

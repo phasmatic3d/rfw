@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Open_Sans, Chivo, Poppins } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
@@ -10,10 +10,21 @@ import { Typography, Box, Container, Grid2 as Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import "./globals.css";
 
-// Khronos uses: OpenSans-Semibold, Helvetica, Arial, sans-serif;
+// Khronos currently uses: OpenSans-Semibold, Helvetica, Arial, sans-serif;
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"]
+})
+// Khronos will use Chivo for Title
+const chivo = Chivo({
+  variable: "--font-chivo",
+  subsets: ["latin"]
+})
+// Khronos will use Poppins for text
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: "400"
 })
 
 export const metadata: Metadata = {
@@ -29,7 +40,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" prefix="og: https://ogp.me/ns#" suppressHydrationWarning>
-      <body className={`${openSans.variable}`}>
+      <body className={`${poppins.variable} ${chivo.variable}`}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
