@@ -193,8 +193,8 @@ export default function ComparePage({name}: ComparePageProps) {
 
   return (
     <>
-      <Grid container direction="column" className={styles.main} spacing={2}>
-        {!isMagnified && <Grid className={styles.description} sx={{overflow: "auto"}}>
+      <Grid container direction="row" className={styles.main} sx={{flexWrap: "nowrap"}} spacing={2}>
+        {!isMagnified && <Grid className={styles.description} height={"70vh"} display={{xs:'none', sm:'initial'}} sx={{overflow: "auto"}}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
             <Typography variant='h6'>{name}</Typography>
             <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
@@ -207,7 +207,7 @@ export default function ComparePage({name}: ComparePageProps) {
           {(isXs && isVisible) && description}
         </Grid>}
         {/* Main */}
-        <Grid className={styles.tool} container spacing={1} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
+        <Grid className={styles.tool} container spacing={1}  width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
           <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
@@ -225,7 +225,7 @@ export default function ComparePage({name}: ComparePageProps) {
             <Box flex={1} display='flex' justifyContent='flex-end'><Typography>{engine2}</Typography></Box>
           </Box>
         </Grid>
-        {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} container spacing={2}>
+        {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} height={"70vh"} container spacing={2}>
           {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engine1 === e.name || engine2 === e.name)} onSelection={toggleSelection}/>})}
         </Grid>}
       </Grid>

@@ -34,9 +34,9 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <InitColorSchemeScript attribute="class" />
-            <Box sx={{ display: 'flex', flexDirection: 'column'}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: "100vh"}}>
               <Header />
-              <Container sx={{flexGrow: 1, overflow: "auto" }} maxWidth={false}>
+              <Container sx={{flexGrow: 1, overflow: "auto", flex: 1 }} maxWidth={false}>
                 {children}
               </Container>
               <Footer />
