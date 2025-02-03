@@ -9,9 +9,12 @@ export type ImageComparisonSliderProps = {
 
 const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
     const [sliderPosition, setSliderPosition] = React.useState(50); // Initial slider position (50%)
-    const containerRef = React.useRef<HTMLImageElement>(null);
+    const imageRef = React.useRef<HTMLImageElement>(null);
+    const image2Ref = React.useRef<HTMLImageElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const containerRootRef = React.useRef<HTMLDivElement>(null);
 
-    const containerCurrent = containerRef && containerRef.current;
+    const containerCurrent = imageRef && imageRef.current;
 
     const elementLeft = (containerCurrent && containerCurrent.offsetLeft) || 0;
     const elementWidth = (containerCurrent && containerCurrent.clientWidth) || 1;
@@ -19,7 +22,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
     const elementHeight = (containerCurrent && containerCurrent.clientHeight) || 1;
   
     const handleDrag = (clientX : number) => {
-      const container = containerRef.current;
+      const container = imageRef.current;
       if (!container) return;
   
       // Get the bounds of the container
@@ -42,7 +45,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       });
     };
     const handleTouchStart = (event: React.TouchEvent) => {
-        //event.preventDefault();
+        event.preventDefault();
         const onTouchMove = (e: TouchEvent) => {
             if (e.touches && e.touches[0]) {
               handleDrag(e.touches[0].clientX);
@@ -52,26 +55,106 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         document.addEventListener("touchend", () => {
           document.removeEventListener("touchmove", onTouchMove);
         });
-      };
+    };
+
+    const handleOnLoad = (event: any) => {
+
+      if(imageRef.current == null)
+        return;
+      if(containerRef.current == null)
+        return;
+      if(containerRootRef.current == null)
+        return;
+      if(image2Ref.current == null)
+        return;
+
+      const vhToPixels = (vh: number) => (vh * window.innerHeight) / 100;
+
+      const imageContainer = imageRef.current;
+
+      const resizeObserver = new ResizeObserver(() => {
+        console.log("AAAA");
+
+        if(imageRef.current == null)
+          return;
+        if(image2Ref.current == null)
+          return;
+        if(containerRef.current == null)
+          return;
+        if(containerRootRef.current == null)
+          return;
+    
+        const maxWidth = containerRootRef.current.clientWidth ;  // Set max width
+        const maxHeight = Math.max(containerRootRef.current.clientHeight, vhToPixels(70)); // Set max height
+        console.log("MAX", maxWidth, maxHeight);   
+         
+        // Calculate new dimensions while maintaining aspect ratio
+        let width = imageContainer.naturalWidth;
+        let height = imageContainer.naturalHeight;
+        console.log("IMG", width, height);
+
+        const aspectRatio = width / height;
+        if(width > maxWidth)
+        {
+          width = maxWidth;
+          height = maxWidth / aspectRatio;
+        }
+        if(height > maxHeight)
+        {
+          height = maxHeight;
+          width = maxHeight * aspectRatio;
+        }
+
+        console.log(width, height);
+  
+        containerRef.current.style.width = width+"px";
+        containerRef.current.style.height = height+"px";
+
+        imageRef.current.style.width = width+"px";
+        imageRef.current.style.height = height+"px";
+
+        image2Ref.current.style.width = width+"px";
+        image2Ref.current.style.height = height+"px";
+        
+      });
+      
+      // Observe the canvas
+      //resizeObserver.observe(containerRootRef.current);
+      resizeObserver.observe(document.body);
+    }
   
     return (
-      <Box
+      <Box 
         display='flex'
         justifyContent='center'
+        ref={containerRootRef} 
         sx={{
-          position: "relative",
-          width: "100%",
-          height: "70vh",
+          width: "100%",        
           overflow: "hidden",
           cursor: "pointer",
           userSelect: "none",
+        }}
+      >
+      <Box
+        display='flex'
+        justifyContent='center'
+        ref={containerRef}
+        sx={{
+          position: "relative",
+          width: "100%",        
+          height: "70vh",  
+          overflow: "hidden",
+          cursor: "pointer",
+          userSelect: "none",
+          maxWidth: '70vh',
+          maxHeight: '70vh'
         }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
       >
         {/* Background Image */}
         <img
-          ref={containerRef}
+          ref={imageRef}
           src={imgSrc2}
           alt="Background"
           style={{
@@ -81,10 +164,12 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
             top: 0,
             //left: 0,
           }}
+          onLoad={handleOnLoad}
         />
   
         {/* Foreground Image */}
         <img
+          ref={image2Ref}
           src={imgSrc1}
           alt="Foreground"
           style={{
@@ -102,8 +187,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           sx={{
             position: "absolute",
             top: 0,
-            //left: `${sliderPosition}%`,
-            left: containerCurrent? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
+            left: `${sliderPosition}%`,
+            //left: containerCurrent? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
             transform: "translateX(-50%)",
             width: "3px",
             height: "100%",
@@ -116,10 +201,10 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         <Box
           sx={{
             position: "absolute",
-            //top: "50%",
-            top: containerCurrent? `${elementTop + 0.5 * elementHeight}px` : "50%",
-            //left: `${sliderPosition}%`,
-            left: containerCurrent? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
+            top: "50%",
+            //top: containerCurrent? `${elementTop + 0.5 * elementHeight}px` : "50%",
+            left: `${sliderPosition}%`,
+            //left: containerCurrent? `${elementLeft + sliderPosition/100 * elementWidth}px` : "50%",
             transform: "translate(-50%, -50%)",
             width: "20px",
             height: "20px",
@@ -130,6 +215,7 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
             pointerEvents: "none", // Avoid drag handle intercepting mouse events
           }}
         />
+      </Box>
       </Box>
     );
   };
