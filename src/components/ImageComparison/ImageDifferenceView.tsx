@@ -15,7 +15,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
   React.useEffect(() => {
     if(canvasRef == null || canvasRef.current == null) { return; }
     if(canvasContainerRef == null || canvasContainerRef.current == null) { return; }
-
+    
     const canvas = canvasRef.current;
     const canvasContainer = canvasContainerRef.current;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -24,7 +24,6 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
     const vwToPixels = (vw: number) => (vw * window.innerWidth) / 100;
 
     const processImages = async () => {
-
       // Load the images
       const loadImage = (src: string) =>
         new Promise((resolve) => {
@@ -40,29 +39,31 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
       const height = img1.height;
       const ar = width / height;
       
-      canvas.width = width;
-      canvas.height = height;
-
       const drawCanvas = () => {      
         //context.putImageData(img1Data, 0, 0, 0, 0, canvas.width, canvas.height);
       }
   
       const resizeObserver = new ResizeObserver(() => {
-          canvas.width = canvas.clientWidth; // Update the actual width
-          canvas.height = canvas.clientWidth; // Update the actual height
-      
+        if ( canvas.style.width === `${canvasContainer.clientWidth}px` ) return;
+          canvas.width = canvasContainer.clientWidth; // Update the actual width
+          canvas.height = canvasContainer.clientWidth; // Update the actual height
+          
+          console.log("Style", canvas.style.width, canvas.style.height);
+          console.log("Client", canvas.clientWidth, canvas.clientHeight);
+          //console.log("Canvas", canvas.width, canvas.height);
+
           canvas.style.width = `${canvasContainer.clientWidth}px`;
           canvas.style.height = `${canvasContainer.clientWidth}px`;
-          canvas.style.maxHeight = `${vhToPixels(70)}px`;
-          canvas.style.maxWidth = `${vhToPixels(70)}px`;
-          
+          //canvas.style.maxHeight = `${vhToPixels(70)}px`;
+          //canvas.style.maxWidth = `${vhToPixels(70)}px`;
+
           const maxWidth = canvas.width;  // Set max width
           const maxHeight = canvas.height; // Set max height
   
           // Create a temporary canvas to resize the image
           const tempCanvas = document.createElement("canvas");
           const tempCtx = tempCanvas.getContext("2d", { willReadFrequently: true }) as CanvasRenderingContext2D;
-  
+          
           // Calculate new dimensions while maintaining aspect ratio
           let width = img1.width;
           let height = img1.height;
@@ -95,22 +96,20 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
             diffData.data[i + 2] = Math.min(255, Math.abs(img1Data.data[i + 2] - img2Data.data[i + 2]) * factor); // Blue
             diffData.data[i + 3] = 255; // Alpha
           }
-
-          canvas.width = width;
-          canvas.height = height;
           context.putImageData(diffData, 0, 0);
       });
         
       // Observe the canvas
       resizeObserver.observe(canvasContainer);
+      console.log(resizeObserver)
     }
 
     processImages();
   }, [imgSrc1, imgSrc2]);
   
     return (
-      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto"}}>
-        <canvas ref={canvasRef} width='200px' height='200px'/>
+      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto", width: "100%", height: "70vh"}}>
+        <canvas ref={canvasRef}/>
       </Box>
     );
 };

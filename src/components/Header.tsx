@@ -143,10 +143,28 @@ export default function Header() {
             */}
         </Toolbar>
         <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"red"}}>
-        <Box display='flex' flexDirection='column' alignItems='left' sx={{width: "100%", maxWidth: "1900px", margin: "auto", padding: "10px 0", background:"red"}}>
-          <Typography>
-            The glTF Render Fidelity Test Suite
-          </Typography>
+        <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto", background:"red"}}>
+          <Box justifyContent={"flex-start"}>
+            <Typography >
+                The glTF Render Fidelity Test Suite
+            </Typography>
+          </Box>
+          <Box display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
+              <Image
+                width={50}
+                height={50}
+                        
+                src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
+                alt={"glTF"}  
+                loading="lazy" />
+              <Image
+                width={50}
+                height={50}
+                        
+                src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
+                alt={"3D Commerce"}  
+                loading="lazy" />
+            </Box>
           </Box>
           </Box>
           </AppBar>
