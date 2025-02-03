@@ -44,8 +44,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
         document.removeEventListener("mousemove", onMouseMove);
       });
     };
-    const handleTouchStart = (event: React.TouchEvent) => {
-        event.preventDefault();
+    const handleTouchStart = (event: React.TouchEvent | TouchEvent) => {
+        //event.preventDefault();
         const onTouchMove = (e: TouchEvent) => {
             if (e.touches && e.touches[0]) {
               handleDrag(e.touches[0].clientX);
@@ -147,7 +147,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           cursor: "pointer",
           userSelect: "none",
           maxWidth: '70vh',
-          maxHeight: '70vh'
+          maxHeight: '70vh',
+          touchAction:'none'
         }}
         onMouseDown={handleMouseDown}
         onTouchStart={handleTouchStart}
