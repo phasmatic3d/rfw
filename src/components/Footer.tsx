@@ -20,12 +20,10 @@ export default function Footer() {
       <footer style={{background:bgColor}}>
         <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
         <Box display='flex' flexDirection='column' height={"10px"} minHeight={"10px"} alignItems='left' sx={{width: "100%", margin: "auto", maxWidth: "1900px", background:"#333333"}}>
-        <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              Ludacris
-          </Typography>
+
         </Box>
         </Box>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"red"}}>
+        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
         <Box flex={1} width={"100%"} sx={{maxWidth: "1900px", margin: "auto"}} display='flex' justifyContent='flex-start'>
           <img
               width={"250px"} 
@@ -35,7 +33,7 @@ export default function Footer() {
           />
         </Box>
         </Box>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"red"}}>
+        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
         <Box sx={{width: "100%", maxWidth: "1900px"}} flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-start' margin={"auto"}>
           <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
               About
