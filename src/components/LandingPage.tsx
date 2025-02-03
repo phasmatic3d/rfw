@@ -141,7 +141,7 @@ export default function LandingPage({models}: LandingPageProps) {
   return (
     <>
         <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
-          <Box display={{ xs: 'flex', sm: 'none' }} sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
+          {/*<Box display={{ xs: 'flex', sm: 'none' }} sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
               <Image
                 width={100}
                 height={100}
@@ -156,12 +156,12 @@ export default function LandingPage({models}: LandingPageProps) {
                 src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
                 alt={"glTF"}  
                 loading="lazy" />
-            </Box>
+          </Box>*/}
           <Box display='flex' sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
               <Search searchValueChange={handleSearchValueChange}/>
               <HelpIcon sx={{margin: "5px"}}/>
             <Box flex={1} display={{ xs: 'flex', sm: 'flex' }}  justifyContent='flex-end' flexWrap={"wrap"}>
-              <Box display={{ xs: 'none', sm: 'flex' }}  sx={{width: "100%"}} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
+              {/*<Box display={{ xs: 'none', sm: 'flex' }}  sx={{width: "100%"}} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
               <Image
                 width={100}
                 height={100}
@@ -174,9 +174,9 @@ export default function LandingPage({models}: LandingPageProps) {
                 height={100}
                         
                 src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
-                alt={"glTF"}  
+                alt={"3D Commerce"}  
                 loading="lazy" />
-            </Box>
+            </Box>*/}
             </Box>
             </Box>
           {/*boxChip*/}
