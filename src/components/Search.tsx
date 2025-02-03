@@ -33,7 +33,7 @@ export default function SearchComponent({searchValueChange} : {searchValueChange
     };
 
     return (
-        <FormControl>
+        <FormControl sx={{width: "100%", maxWidth: "800px"}}>
             <TextField
             size="small"
             variant="outlined"

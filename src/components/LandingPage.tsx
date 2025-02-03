@@ -10,6 +10,9 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import HelpIcon from '@mui/icons-material/Help';
+import Image from 'next/image'
+import { basePath } from '@/lib/paths';
 
 type ModelType = {
   name: string
@@ -138,9 +141,44 @@ export default function LandingPage({models}: LandingPageProps) {
   return (
     <>
         <Box display='flex' flexDirection='column' alignItems='center' gap={2} >
-          <Box>
-            <Search searchValueChange={handleSearchValueChange}/>
-          </Box>
+          <Box display={{ xs: 'flex', sm: 'none' }} sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
+              <Image
+                width={100}
+                height={100}
+                        
+                src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
+                alt={"glTF"}  
+                loading="lazy" />
+              <Image
+                width={100}
+                height={100}
+                        
+                src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
+                alt={"glTF"}  
+                loading="lazy" />
+            </Box>
+          <Box display='flex' sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
+              <Search searchValueChange={handleSearchValueChange}/>
+              <HelpIcon sx={{margin: "5px"}}/>
+            <Box flex={1} display={{ xs: 'flex', sm: 'flex' }}  justifyContent='flex-end' flexWrap={"wrap"}>
+              <Box display={{ xs: 'none', sm: 'flex' }}  sx={{width: "100%"}} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
+              <Image
+                width={100}
+                height={100}
+                        
+                src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
+                alt={"glTF"}  
+                loading="lazy" />
+              <Image
+                width={100}
+                height={100}
+                        
+                src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
+                alt={"glTF"}  
+                loading="lazy" />
+            </Box>
+            </Box>
+            </Box>
           {/*boxChip*/}
           {/*accordionChips*/}
           {otherChips}

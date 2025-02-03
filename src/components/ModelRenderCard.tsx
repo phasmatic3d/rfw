@@ -69,7 +69,7 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
             />
           </Box>
           <Box display="flex" flexDirection="column" p={1} justifyContent='center'>
-            <Typography fontSize={18} fontWeight={'bold'} textAlign='center'>{name}</Typography>
+            <Typography fontSize={18} fontWeight={'bold'} textAlign='center' sx={{overflowWrap: "anywhere"}}>{name}</Typography>
           </Box>          
       </Box>
   );
