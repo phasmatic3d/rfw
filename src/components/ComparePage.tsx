@@ -207,8 +207,8 @@ export default function ComparePage({name}: ComparePageProps) {
           {(isXs && isVisible) && description}
         </Grid>}
         {/* Main */}
-        <Grid className={styles.tool} container spacing={1}  width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
-          <Box flex={1} sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
+        <Box className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
+          <Box sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
             <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>
@@ -224,7 +224,7 @@ export default function ComparePage({name}: ComparePageProps) {
             <Box flex={1}><Typography>{engine1}</Typography></Box>
             <Box flex={1} display='flex' justifyContent='flex-end'><Typography>{engine2}</Typography></Box>
           </Box>
-        </Grid>
+        </Box>
         {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} height={"70vh"} container spacing={2}>
           {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engine1 === e.name || engine2 === e.name)} onSelection={toggleSelection}/>})}
         </Grid>}
