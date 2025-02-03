@@ -109,7 +109,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
   }, [imgSrc1, imgSrc2]);
   
     return (
-      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto", width: "100%"}}>
+      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto"}}>
         <canvas ref={canvasRef} width='200px' height='200px'/>
       </Box>
     );
