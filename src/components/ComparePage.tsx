@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList, IconButton } from "@mui/material";
+import { Typography, Box, Grid2 as Grid, ButtonGroup, Button, Popper, Grow, Paper, ClickAwayListener, MenuItem , MenuList, IconButton, Snackbar } from "@mui/material";
 import ModelRenderCard from "@/components/ModelRenderCard"
 import ImageComparisonSlider from "@/components/ImageComparison/ImageComparisonSlider";
 import SideBySideComparison from './ImageComparison/SideBySideComparison'
@@ -44,6 +44,7 @@ export default function ComparePage({name}: ComparePageProps) {
   const [engine2, setEngine2] = React.useState('filament.js');
   const [nextEngine, setNextEngine] = React.useState(0);
   const [comparisonMode, setComparisonMode] = React.useState(0);
+  const [shareSnackbarOpen, setShareSnackbarOpen] = React.useState(false);
 
   const toggleDiv = () => {
     setIsVisible(!isVisible);
@@ -80,11 +81,34 @@ export default function ComparePage({name}: ComparePageProps) {
   let image2 = render_views.find(e=> e.name === engine2)?.image || "";
   image2 = `${basePath}${image2}`;
 
+  const onShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `Khronos Render Fidelity`,
+        url: `https://phasmatic3d.github.io/rfw/`
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      })
+      .catch(console.error);
+    } else {
+      // fallback
+      navigator.clipboard.writeText(`https://phasmatic3d.github.io/rfw/`);
+      setShareSnackbarOpen(true);
+    }
+  }
+
   const description = <Box>
     <Box display='flex' justifyContent='space-between'>
       <Typography variant='h6'>Description</Typography>
       <Box>
-        <IconButton><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <IconButton onClick={onShare}><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <Snackbar
+          open={shareSnackbarOpen}
+          onClose={() => {setShareSnackbarOpen(false)}}
+          message="Model Copied"
+          key={"Share"}
+          autoHideDuration={1200}
+        />
         <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
       </Box>
     </Box>
