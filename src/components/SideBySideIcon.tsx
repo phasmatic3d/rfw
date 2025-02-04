@@ -16,7 +16,7 @@ export default function SideBySideIcon() {
                 stroke="currentColor"
             >
                 <rect x="1" y="6" width="10" height="16" rx="2" ry="2" fill="inherit" stroke="grey.100" strokeWidth="0.5"/>
-                <rect x="13" y="6" width="10" height="16" rx="2" ry="2" fill="transparent" stroke="grey.100" strokeWidth="0.5"/>
+                <rect x="13" y="6" width="10" height="16" rx="2" ry="2" fill="transparent" stroke="grey.100" strokeWidth="1"/>
             </svg>
         </SvgIcon>
     )

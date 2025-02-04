@@ -94,6 +94,7 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
                         {index==0 && <SideBySideIcon/>}
                         {index==1 && <CompareIcon />}
                         {index==2 && <ImageIcon />}
+                        &nbsp;
                         {option}
                         </MenuItem>
                     ))}
