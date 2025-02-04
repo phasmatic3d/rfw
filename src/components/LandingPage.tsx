@@ -14,6 +14,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image'
 import { basePath } from '@/lib/paths';
+import { useTheme } from "@mui/material/styles";
 
 type ModelType = {
   name: string
@@ -34,7 +35,7 @@ export default function LandingPage({models}: LandingPageProps) {
 
   const tags2 = [tags[0], tags[1], tags[2]];
 
-  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const theme = useTheme();
 
 
   const handleSearchValueChange = (e:string) => {
@@ -160,7 +161,7 @@ export default function LandingPage({models}: LandingPageProps) {
           </Box>*/}
           <Box display='flex' sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
               <Search searchValueChange={handleSearchValueChange}/>
-              <Tooltip enterTouchDelay={1} placement="left" title={<h1 style={{ color: "lightblue", fontSize: "16px" }}>Search in the description and the titles of the models. Tags can be used to further segment the search</h1>}>
+              <Tooltip enterTouchDelay={1} placement="right" title={<h1 style={{ color: `${theme.palette.text.primary}`, fontSize: "16px" }}>Search in the description and the titles of the models. Tags can be used to further segment the search</h1>}>
                 <HelpIcon sx={{margin: "5px"}}/>
               </Tooltip>
 
