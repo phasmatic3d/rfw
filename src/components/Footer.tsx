@@ -18,23 +18,19 @@ export default function Footer() {
 
     return (
       <footer style={{background:bgColor}}>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
-        <Box display='flex' flexDirection='column' height={"10px"} minHeight={"10px"} alignItems='left' sx={{width: "100%", margin: "auto", maxWidth: "1900px", background:"#333333"}}>
-
+        <Box display='flex' style={{width: "100%"}}>
+          <Box display='flex' flexDirection='column' height={"10px"} minHeight={"10px"} alignItems='left' sx={{width: "100%", margin: "auto", background:"#333333"}}></Box>
         </Box>
-        </Box>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
-        <Box flex={1} width={"100%"} sx={{maxWidth: "1900px", margin: "auto"}} display='flex' justifyContent='flex-start'>
-          <img
+        <Box display='flex' flexDirection='column' style={{width: "100%", maxWidth: "1900px", margin: 'auto', background:bgColor}}>
+          <Box flex={1} width={"100%"} sx={{maxWidth: "1900px", margin: "auto"}} display='flex' justifyContent='flex-start'>
+            <img
               width={"250px"} 
               src={imageSrc}
               loading="lazy"
               alt={"The Khronos Group: Connecting Software to Silicon"}  
-          />
-        </Box>
-        </Box>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
-          <Box pt={1} sx={{width: "100%", maxWidth: "1900px"}} flex={1} display={{ xs: 'none', sm: 'flex' }} justifyContent='flex-start' margin={"auto"}>
+            />
+          </Box>
+          <Box pt={1} sx={{width: "100%", maxWidth: "1900px", margin: 'auto'}} flex={1} display={{ xs: 'none', sm: 'flex' }} justifyContent='flex-start' margin={"auto"}>
             {false && <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">About</Link>}
             <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Privacy Policy</Link>
             <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Terms of Use</Link>
@@ -42,6 +38,8 @@ export default function Footer() {
             <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Diversity and Inclusion</Link>
             <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Trademarks</Link>
           </Box>
+        </Box>
+        <Box display='flex' style={{width: "100%", maxWidth: "1900px", margin: 'auto', justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
           <Box p={1}>
             <Typography color={fontColor} pb={1}>
               Copyright 2025 - The Khronos Group Inc.  All rights reserved.
