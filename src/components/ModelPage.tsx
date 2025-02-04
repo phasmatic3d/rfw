@@ -20,14 +20,7 @@ const render_views = [
   {name: "three-gpu-pathtracer"},
   {name: "Dassault STELLAR"},
   {name: "Chaos Group V-Ray"},
-  {name: "Blender Cycles"},
-  {name: "test9"},
-  {name: "test10"},
-  {name: "test11"},
-  {name: "test12"},
-  {name: "test13"},
-  {name: "test14"},
-  {name: "test15"},
+  {name: "Blender Cycles"}
 ]
 
 type ModelPageProps = {
