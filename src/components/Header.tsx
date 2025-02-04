@@ -41,7 +41,7 @@ export default function Header() {
     return (
       <AppBar position="static">
         <Toolbar style={{paddingLeft: 2, paddingRight: 2, width: "100%", margin:"auto", display:'flex', justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: `${bgColor}`}}>
-            <Box display='flex' style={{width: "100%", maxWidth: "1900px", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap'}}>
+            <Box display='flex' style={{width: "100%", /*maxWidth: "1900px",*/ margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap'}}>
 
             <Box flex={1} display='flex' justifyContent='flex-start'>
                 <img
@@ -137,7 +137,7 @@ export default function Header() {
             */}
         </Toolbar>
         <Box display='flex' pl={2} pr={2} style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
-            <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto"}}>
+            <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", /*maxWidth: "1900px",*/ margin: "auto"}}>
                 <Box justifyContent={"flex-start"}>
                     <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)', fontSize: '24px'}}>
                         The glTF Render Fidelity Test Suite

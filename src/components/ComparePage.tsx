@@ -18,7 +18,6 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ComparisonButton from '@/components/ComparisonButton';
 import { basePath } from '@/lib/paths';
 
-
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
   {name: "filament.js", image: "/images/dragon/filament-golden.png"},
