@@ -142,10 +142,10 @@ export default function Header() {
             </Box>
             */}
         </Toolbar>
-        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"red"}}>
-        <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto", background:"red"}}>
+        <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
+            <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto"}}>
           <Box justifyContent={"flex-start"}>
-            <Typography sx={{fontFamily: 'var(--font-chivo)'}}>
+                    <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)'}}>
                 The glTF Render Fidelity Test Suite
             </Typography>
           </Box>
