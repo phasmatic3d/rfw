@@ -1,7 +1,8 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link';
+//import Link from 'next/link';
+import Link from '@mui/material/Link';
 import { Box, Chip, Typography, Grid2 as Grid } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import { basePath } from '@/lib/paths';
@@ -17,13 +18,14 @@ export default function ModelCard({name}: ModelCardProps) {
   const theme = useTheme();
 
   return (
-      <Box sx={{boxShadow:16, width: '100%', maxWidth: "400px", height:'fit-content', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
+      <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '30px 5px'}}>
         <Grid container justifyContent="center">
-          <Link style={{width: "100%", maxWidth: "400px"}} href={`model/${name}`}>
+          <Link width={{xs: '100%', sm: '400px' }} height={"250px"} href={`model/${name}`}>
             <Image
               width={300}
               height={300}
-              style={{ aspectRatio: 1, width: '100%', height: "100%", maxWidth: "400px", textAlign: "center", cursor: 'pointer', objectFit: 'cover', borderTopLeftRadius: '16px', borderTopRightRadius: '16px' }}
+              quality={90}
+              style={{ aspectRatio: 1, width: '100%', height: "100%", maxWidth: "100%", textAlign: "center", cursor: 'pointer', objectFit: 'cover', borderRadius: '16px'}}
               src={thumbnail}
               alt={name}  
               loading="lazy"
