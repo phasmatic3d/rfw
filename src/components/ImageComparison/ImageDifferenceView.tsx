@@ -58,7 +58,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
           //canvas.style.maxWidth = `${vhToPixels(70)}px`;
 
           const maxWidth = canvas.width;  // Set max width
-          const maxHeight = canvas.height; // Set max height
+          const maxHeight = vhToPixels(70);//canvas.height; // Set max height
   
           // Create a temporary canvas to resize the image
           const tempCanvas = document.createElement("canvas");
@@ -67,16 +67,22 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
           // Calculate new dimensions while maintaining aspect ratio
           let width = img1.width;
           let height = img1.height;
-          if (width > maxWidth || height > maxHeight) {
-              const aspectRatio = width / height;
-              if (width > height) {
-                  width = maxWidth;
-                  height = maxWidth / aspectRatio;
-              } else {
-                  height = maxHeight;
-                  width = maxHeight * aspectRatio;
-              }
+          const aspectRatio = width / height;
+          if(width > maxWidth)
+          {
+            width = maxWidth;
+            height = maxWidth / aspectRatio;
           }
+          if(height > maxHeight)
+          {
+            height = maxHeight;
+            width = maxHeight * aspectRatio;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          canvas.style.width = `${width}px`;
+          canvas.style.height = `${height}px`;
   
           // Resize the image on the temporary canvas
           tempCanvas.width = width;
@@ -108,7 +114,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
   }, [imgSrc1, imgSrc2]);
   
     return (
-      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto", width: "100%", height: "70vh"}}>
+      <Box ref={canvasContainerRef} width='100%' sx={{textAlign: "center", margin: "auto", width: "100%"}}>
         <canvas ref={canvasRef}/>
       </Box>
     );
