@@ -106,7 +106,7 @@ export default function ModelPage({name}: ModelPageProps) {
           {(!isXs) && description}
           {(isXs && isVisible) && description}
         </Box>
-        <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
+        <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={1}>
           {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}
         </Grid>
       </Grid>

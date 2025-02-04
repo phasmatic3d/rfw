@@ -28,21 +28,21 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
   const test22 = false;
 
   return (
-      <Box sx={{boxShadow:16, width: '100%', maxWidth: "400px", height:'fit-content', borderRadius: '16px', margin: '10px', background: theme.palette.grey[900] }}>
+      <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '30px 5px'}}>
           <Box position="relative">
-            <Box style={{width: "100%"}}>
+            <Box width={{xs: '100%', sm: '400px' }} height={"250px"} style={{width: "100%"}}>
                 <Image
                 width={300}
                 height={300}
+                quality={90}
                 style={{ 
                     aspectRatio: 1 / 1,
                     width: '100%', 
                     height: "100%",
-                    maxWidth: "400px", 
                     textAlign: "center", 
                     cursor: 'pointer', 
                     objectFit: 'cover',
-                    borderRadius: marked ? '16px' : '16px 16px 0 0',
+                    borderRadius: '16px',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease',
                 }}
