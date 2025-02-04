@@ -139,21 +139,21 @@ export default function Header() {
         <Box display='flex' pl={2} pr={2} style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
             <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto"}}>
                 <Box justifyContent={"flex-start"}>
-                    <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)', fontSize: '48px'}}>
+                    <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)', fontSize: '24px'}}>
                         The glTF Render Fidelity Test Suite
                     </Typography>
                 </Box>
                 <Box display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
                     <Image
-                        width={64}
-                        height={64}
+                        width={50}
+                        height={50}
                                 
                         src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
                         alt={"glTF"}  
                         loading="lazy" />
                     <Image
-                        width={64}
-                        height={64}
+                        width={50}
+                        height={50}
                                 
                         src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
                         alt={"3D Commerce"}  
