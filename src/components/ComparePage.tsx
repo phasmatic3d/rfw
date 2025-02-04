@@ -9,17 +9,15 @@ import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import styles from "./ComparePage.module.css";
 import InfoIcon from '@mui/icons-material/Info';
-import CompareIcon from '@mui/icons-material/Compare';
+
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import EngineSelection from './EngineSelection';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import ViewStreamIcon from '@mui/icons-material/ViewStream';
-import ImageIcon from '@mui/icons-material/Image';
 import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import ComparisonButton from '@/components/ComparisonButton';
 import { basePath } from '@/lib/paths';
-import SideBySideIcon from './SideBySideIcon';
+
 
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
@@ -35,104 +33,6 @@ const render_views = [
 type ComparePageProps = {
   name: string,
   description: string
-}
-
-type ComparisonButtonProps = {
-  handleSelection: (selected:number) => void,
-}
-
-const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
-  const options = ['SideBySide', 'Slider', 'Difference'];
-
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    index: number,
-  ) => {
-    setSelectedIndex(index);
-    setOpen(false);
-    handleSelection(index);
-  };
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event: Event) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  return (
-    <React.Fragment>
-      <ButtonGroup
-        color='inherit'
-        variant='text'
-        ref={anchorRef}
-        aria-label="Button group with a nested menu"
-        sx={{width:"24px", height: "24px", minWidth:"24px"}}
-      >
-        <IconButton
-          aria-controls={open ? 'split-button-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-label="select merge strategy"
-          aria-haspopup="menu"
-          onClick={handleToggle}
-          color="inherit"
-          edge="start"
-        >
-          {selectedIndex==0 && <SideBySideIcon />}
-          {selectedIndex==1 && <CompareIcon />}
-          {selectedIndex==2 && <ImageIcon />}
-        </IconButton>
-      </ButtonGroup>
-      <Popper
-        sx={{ zIndex: 1 }}
-        open={open}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === 'bottom' ? 'center top' : 'center bottom',
-            }}
-          >
-            <Paper>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList id="split-button-menu" autoFocusItem>
-                  {options.map((option, index) => (
-                    <MenuItem
-                      key={option}
-                      selected={index === selectedIndex}
-                      onClick={(event) => handleMenuItemClick(event, index)}
-                    >
-                      {index==0 && <SideBySideIcon/>}
-                      {index==1 && <CompareIcon />}
-                      {index==2 && <ImageIcon />}
-                      {option}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
-    </React.Fragment>);
 }
 
 export default function ComparePage({name}: ComparePageProps) {  
@@ -212,7 +112,7 @@ export default function ComparePage({name}: ComparePageProps) {
           <Box sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
-            <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>
+            <ComparisonButton handleSelection={(index:number) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
           {comparisonMode===1 && <ImageComparisonSlider imgSrc1={image1} imgSrc2={image2}/>}          
