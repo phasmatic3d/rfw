@@ -12,7 +12,7 @@
 }
 
 .text {
-    text-align: 'justify'
+    text-align: justify
 }
 
 @media (max-width: 600px) {
@@ -23,6 +23,6 @@
     }
     .text {
         display: none;
-        text-align: 'justify'
+        text-align: justify
     }
   }

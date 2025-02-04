@@ -73,7 +73,6 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       const imageContainer = imageRef.current;
 
       const resizeObserver = new ResizeObserver(() => {
-        console.log("AAAA");
 
         if(imageRef.current == null)
           return;
@@ -86,12 +85,10 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
     
         const maxWidth = containerRootRef.current.clientWidth ;  // Set max width
         const maxHeight = Math.max(containerRootRef.current.clientHeight, vhToPixels(70)); // Set max height
-        console.log("MAX", maxWidth, maxHeight);   
          
         // Calculate new dimensions while maintaining aspect ratio
         let width = imageContainer.naturalWidth;
         let height = imageContainer.naturalHeight;
-        console.log("IMG", width, height);
 
         const aspectRatio = width / height;
         if(width > maxWidth)
@@ -104,8 +101,6 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           height = maxHeight;
           width = maxHeight * aspectRatio;
         }
-
-        console.log(width, height);
   
         containerRef.current.style.width = width+"px";
         containerRef.current.style.height = height+"px";
