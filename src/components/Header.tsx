@@ -53,9 +53,10 @@ export default function Header() {
             </Box>
             <Box flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-end' margin={"auto"}>
                 <LightDarkButton />
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>About</Button>
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>FAQ</Button>
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>Contribute</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="/">Home</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="#">About</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="#">FAQ</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="#">Contribute</Button>
             </Box>
             <Box flex={1} display={{ xs: 'flex', sm: 'none' }} justifyContent='flex-end'>
                 <LightDarkButton />
