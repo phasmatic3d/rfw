@@ -44,43 +44,4 @@ const ImageComparison = ({imgSrc1, imgSrc2}: Props) => {
     );
   };
 
-
-  const ImageComparison2 = ({imgSrc1, imgSrc2}: Props) => {    
-    
-    return (
-      <Box display='flex'
-        flexDirection="row"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
-        height="500px" // Set desired height
-      >
-        
-        {/* Background Image */}
-        <img
-          src={imgSrc1}
-          alt="Background"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-  
-        {/* Foreground Image */}
-        <img
-          src={imgSrc2}
-          alt="Foreground"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-  
-      </Box>
-    );
-  };
-
-
   export default ImageComparison;
