@@ -28,7 +28,7 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
   const test22 = false;
 
   return (
-      <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '30px 5px'}}>
+      <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '20px 5px'}}>
           <Box position="relative">
             <Box width={{xs: '100%', sm: '400px' }} height={"250px"} style={{width: "100%"}}>
                 <Image
