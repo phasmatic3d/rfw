@@ -19,6 +19,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { basePath } from '@/lib/paths';
+import SideBySideIcon from './SideBySideIcon';
 
 const render_views = [
   {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
@@ -89,7 +90,7 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
           color="inherit"
           edge="start"
         >
-          {selectedIndex==0 && <ViewStreamIcon style={{transform: 'rotate(90deg)'}}/>}
+          {selectedIndex==0 && <SideBySideIcon />}
           {selectedIndex==1 && <CompareIcon />}
           {selectedIndex==2 && <ImageIcon />}
         </IconButton>
@@ -119,7 +120,7 @@ const ComparisonButton = ({handleSelection}:ComparisonButtonProps) => {
                       selected={index === selectedIndex}
                       onClick={(event) => handleMenuItemClick(event, index)}
                     >
-                      {index==0 && <ViewStreamIcon style={{transform: 'rotate(90deg)'}}/>}
+                      {index==0 && <SideBySideIcon/>}
                       {index==1 && <CompareIcon />}
                       {index==2 && <ImageIcon />}
                       {option}
