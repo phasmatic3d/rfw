@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Typography, Box, Grid2 as Grid } from "@mui/material";
+import { Typography, Box, Link } from "@mui/material";
 import { basePath } from '@/lib/paths';
 import { useTheme } from "@mui/material/styles";
 
@@ -34,28 +34,23 @@ export default function Footer() {
         </Box>
         </Box>
         <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
-        <Box sx={{width: "100%", maxWidth: "1900px"}} flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-start' margin={"auto"}>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              About
-          </Typography>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              Privacy Policy
-          </Typography>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              Terms of Use
-          </Typography>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              Code of Conduct
-          </Typography>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-              Diversity and Inclusion
-          </Typography>
-          <Typography color={fontColor} fontSize={"12px"} style={{margin:"5px 15px"}}>
-              Trademarks
-          </Typography>
+          <Box pt={1} sx={{width: "100%", maxWidth: "1900px"}} flex={1} display={{ xs: 'none', sm: 'flex' }} justifyContent='flex-start' margin={"auto"}>
+            {false && <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">About</Link>}
+            <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Privacy Policy</Link>
+            <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Terms of Use</Link>
+            <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Code of Conduct</Link>
+            <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Diversity and Inclusion</Link>
+            <Link href="#" color="textPrimary" underline='always' fontSize={"12px"} p={1} target="_blank" rel="noopener">Trademarks</Link>
           </Box>
-        </Box>
-        
+          <Box p={1}>
+            <Typography color={fontColor} pb={1}>
+              Copyright 2025 - The Khronos Group Inc.  All rights reserved.
+            </Typography>
+            <Typography fontSize={"12px"}>
+              Khronos® is a registered trademark, and glTF™ and 3D Commerce™ are trademarks of The Khronos Group Inc.  All other product names, trademarks, and/or company names are used solely for identification and belong to their respective owners.
+            </Typography>
+          </Box>
+        </Box>        
       </footer>
     );
 }
