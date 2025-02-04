@@ -209,7 +209,7 @@ export default function ComparePage({name}: ComparePageProps) {
         </Grid>}
         {/* Main */}
         <Box className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
-          <Box sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
+          <Box sx={{display:'flex', width: "100%", justifyContent: 'space-betwee'}}>
             {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
             {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
             <ComparisonButton handleSelection={(index) => {setComparisonMode(index)}}/>

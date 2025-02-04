@@ -11,6 +11,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import HelpIcon from '@mui/icons-material/Help';
+import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image'
 import { basePath } from '@/lib/paths';
 
@@ -159,7 +160,10 @@ export default function LandingPage({models}: LandingPageProps) {
           </Box>*/}
           <Box display='flex' sx={{width: "100%"}} flexDirection='row' justifyContent={"space-between"} alignItems='center'>
               <Search searchValueChange={handleSearchValueChange}/>
-              <HelpIcon sx={{margin: "5px"}}/>
+              <Tooltip enterTouchDelay={1} placement="left" title={<h1 style={{ color: "lightblue", fontSize: "16px" }}>Search in the description and the titles of the models. Tags can be used to further segment the search</h1>}>
+                <HelpIcon sx={{margin: "5px"}}/>
+              </Tooltip>
+
             <Box flex={1} display={{ xs: 'flex', sm: 'flex' }}  justifyContent='flex-end' flexWrap={"wrap"}>
               {/*<Box display={{ xs: 'none', sm: 'flex' }}  sx={{width: "100%"}} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
               <Image
