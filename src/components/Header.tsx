@@ -53,15 +53,9 @@ export default function Header() {
             </Box>
             <Box flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-end' margin={"auto"}>
                 <LightDarkButton />
-                <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-                    About
-                </Typography>
-                <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-                    FAQ
-                </Typography>
-                <Typography color={fontColor} fontSize={"12px"} style={{margin:"auto 5px"}}>
-                    Contribute
-                </Typography>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>About</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>FAQ</Button>
+                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}}>Contribute</Button>
             </Box>
             <Box flex={1} display={{ xs: 'flex', sm: 'none' }} justifyContent='flex-end'>
                 <LightDarkButton />
@@ -144,29 +138,29 @@ export default function Header() {
         </Toolbar>
         <Box display='flex' style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
             <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", maxWidth: "1900px", margin: "auto"}}>
-          <Box justifyContent={"flex-start"}>
+                <Box justifyContent={"flex-start"}>
                     <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)'}}>
-                The glTF Render Fidelity Test Suite
-            </Typography>
-          </Box>
-          <Box display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
-              <Image
-                width={50}
-                height={50}
-                        
-                src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
-                alt={"glTF"}  
-                loading="lazy" />
-              <Image
-                width={50}
-                height={50}
-                        
-                src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
-                alt={"3D Commerce"}  
-                loading="lazy" />
+                        The glTF Render Fidelity Test Suite
+                    </Typography>
+                </Box>
+                <Box display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
+                    <Image
+                        width={50}
+                        height={50}
+                                
+                        src={`${basePath}/logos/3dcommerce/3DCommerce_Aug20/3DCommerce for web/3DCommerce RGB/3DCommerce_RGB_Aug20.svg`}
+                        alt={"glTF"}  
+                        loading="lazy" />
+                    <Image
+                        width={50}
+                        height={50}
+                                
+                        src={`${basePath}/logos/gltf/glTF_Nov17/glTF for web/glTF RGB/glTF_RGB_June16.svg`}
+                        alt={"3D Commerce"}  
+                        loading="lazy" />
+                </Box>
             </Box>
-          </Box>
-          </Box>
-          </AppBar>
+        </Box>
+    </AppBar>
     )
   }
