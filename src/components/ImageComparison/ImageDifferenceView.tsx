@@ -2,6 +2,16 @@
 import React from 'react'
 import { Box } from "@mui/material";
 
+// Load the images
+const loadImage = (src: string) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.src = src;
+    img.crossOrigin = '';
+    img.onload = () => resolve(img);
+  }
+);
+
 export type ImageComparisonSliderProps = {
   imgSrc1: string,
   imgSrc2: string
@@ -24,15 +34,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
     const vwToPixels = (vw: number) => (vw * window.innerWidth) / 100;
 
     const processImages = async () => {
-      // Load the images
-      const loadImage = (src: string) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.crossOrigin = '';
-          img.onload = () => resolve(img);
-        }
-      );
+      
       const [img1, img2] = await Promise.all([loadImage(imgSrc1), loadImage(imgSrc2)]) as HTMLImageElement[];
 
       const width = img1.width;
