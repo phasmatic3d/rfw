@@ -123,8 +123,8 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
 
   return (
     <>
-      <Grid container direction="row" className={styles.main} sx={{flexWrap: "nowrap"}} spacing={2}>
-        {!isMagnified && <Grid className={styles.description} height={"70vh"} display={{xs:'none', sm:'initial'}} sx={{overflow: "auto"}}>
+      <Grid container direction={{xs:"column-reverse", sm:'row'}} className={styles.main} sx={{flexWrap: "nowrap"}} spacing={2}>
+        {!isMagnified && <Grid className={styles.description} height={"70vh"} sx={{overflow: "auto"}}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
             <Typography variant='h6'>{name}</Typography>
             <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
@@ -138,9 +138,9 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
         </Grid>}
         {/* Main */}
         <Box ref={zoomOffsetRef} className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
-          <Box sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
-            {isMagnified && <CloseFullscreenIcon onClick={() => toggleMagnified(false)} sx={{cursor: "pointer"}} /> }
-            {!isMagnified && <OpenInFullIcon onClick={() => toggleMagnified(true)} sx={{cursor: "pointer"}} /> }
+          <Box sx={{display:'flex', width: "100%", justifyContent: {xs: 'flex-end', sm:'space-between'}}}>
+            {!isXs && isMagnified && <CloseFullscreenIcon onClick={() => toggleMagnified(false)} sx={{cursor: "pointer"}} /> }
+            {!isXs && !isMagnified && <OpenInFullIcon onClick={() => toggleMagnified(true)} sx={{cursor: "pointer"}} /> }
             <ComparisonButton handleSelection={(index:number) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
