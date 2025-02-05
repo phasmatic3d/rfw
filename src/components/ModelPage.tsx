@@ -12,23 +12,19 @@ import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 //import README from "@/data/README.md"
 
-const render_views = [
-  {name: "three.js"},
-  {name: "filament.js"},
-  {name: "babylon.js"},
-  {name: "gltf-sample-viewer"},
-  {name: "three-gpu-pathtracer"},
-  {name: "Dassault STELLAR"},
-  {name: "Chaos Group V-Ray"},
-  {name: "Blender Cycles"}
-]
+type RenderView = {
+  name: string,
+  thumbnail: string,
+  image: string
+}
 
 type ModelPageProps = {
   name: string,
-  description: string
+  description: string,
+  renderViews: RenderView[]
 }
 
-export default function ModelPage({name}: ModelPageProps) {  
+export default function ModelPage({name, renderViews}: ModelPageProps) {  
   // Step 1: Set up state
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -100,7 +96,7 @@ export default function ModelPage({name}: ModelPageProps) {
           {(isXs && isVisible) && description}
         </Box>
         <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={1}>
-          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}
+          {renderViews.map((e,i) => { return <ModelRenderCard key={e.name} thumbnail={e.thumbnail} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}
         </Grid>
       </Grid>
     </>

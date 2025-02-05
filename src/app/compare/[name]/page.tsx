@@ -3,6 +3,7 @@ import { Button, Typography, Box, Grid2 as Grid } from "@mui/material";
 import type { Metadata, ResolvingMetadata  } from 'next'
 import ComparePage from "@/components/ComparePage";
 import models from "@/data/model-index.Phasmatic.json"
+import { basePath } from '@/lib/paths';
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
@@ -58,6 +59,26 @@ type Props = {
 
 export default async function Page({params}: { params: Promise<{ name: string }> }) {
   const { name } = await params;
+
+  const render_views = name === "DragonAttenuation"? [
+    {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/filament-golden.png`},
+    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/babylonr-golden.png`},
+    {name: "gltf-sample-viewer", thumbnail: `/images/dragon/gltf-sample-viewer-golden.png`, image: `/images/dragon/gltf-sample-viewer-golden.png`},
+    {name: "three-gpu-pathtracer", thumbnail: `/images/dragon/three-gpu-pathtracer-golden.png`, image: `/images/dragon/three-gpu-pathtracer-golden.png`},
+    {name: "Dassault STELLAR", thumbnail: `/images/dragon/stellar-golden.png`, image: `/images/dragon/stellar-golden.png`},
+    {name: "Blender Cycles", thumbnail: `/images/dragon/blender-cycles-golden.png`, image: `/images/dragon/blender-cycles-golden.png`}
+  ]:
+  [
+    {name: "three.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "filament.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "babylon.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "gltf-sample-viewer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "three-gpu-pathtracer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Dassault STELLAR", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Chaos Group V-Ray", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Blender Cycles", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`}
+  ];
   
-  return <ComparePage name={name} description={"Description"}/>
+  return <ComparePage name={name} description={"Description"} renderViews={render_views}/>
 }

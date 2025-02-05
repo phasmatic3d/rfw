@@ -8,13 +8,13 @@ import { useTheme } from '@mui/material/styles';
 import { basePath } from '@/lib/paths';
 
 export type ModelCardProps = {
-    name: string
+    name: string,
+    thumbnail: string
 }
 
-export default function ModelCard({name}: ModelCardProps) {
+export default function ModelCard({name, thumbnail}: ModelCardProps) {
   const tags = ["KHR_materials_ior", "KHR_draco_mesh_compression", "KHR_mesh_quantization", "KHR_materials_anisotropy"];
-  const thumbnail = `${basePath}/images/other/babylon-golden.png`;
-
+  
   const theme = useTheme();
 
   return (
@@ -26,7 +26,7 @@ export default function ModelCard({name}: ModelCardProps) {
               height={300}
               quality={90}
               style={{ aspectRatio: 1, width: '100%', height: "100%", maxWidth: "100%", textAlign: "center", cursor: 'pointer', objectFit: 'cover', borderRadius: '16px'}}
-              src={thumbnail}
+              src={`${basePath}${thumbnail}`}
               alt={name}  
               loading="lazy"
             />

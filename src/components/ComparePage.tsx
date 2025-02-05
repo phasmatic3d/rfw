@@ -18,23 +18,19 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import ComparisonButton from '@/components/ComparisonButton';
 import { basePath } from '@/lib/paths';
 
-const render_views = [
-  {name: "three.js", image: "/images/dragon/model-viewer-golden.png"},
-  {name: "filament.js", image: "/images/dragon/filament-golden.png"},
-  {name: "babylon.js", image: "/images/dragon/babylon-golden.png"},
-  {name: "gltf-sample-viewer", image: "/images/dragon/gltf-sample-viewer-golden.png"},
-  {name: "three-gpu-pathtracer", image: "/images/dragon/three-gpu-pathtracer-golden.png"},
-  {name: "Dassault STELLAR", image: "/images/dragon/stellar-golden.png"},
-  {name: "Chaos Group V-Ray", image: "/images/dragon/model-viewer-golden.png"},
-  {name: "Blender Cycles", image: "/images/dragon/blender-cycles-golden.png"},
-]
+type RenderView = {
+  name: string,
+  thumbnail: string,
+  image: string
+}
 
 type ComparePageProps = {
   name: string,
-  description: string
+  description: string,
+  renderViews: Array<RenderView>
 }
 
-export default function ComparePage({name}: ComparePageProps) {  
+export default function ComparePage({name, renderViews}: ComparePageProps) {  
   
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -75,10 +71,10 @@ export default function ComparePage({name}: ComparePageProps) {
     }
   };
 
-  const e1 = render_views.find(e=> e.name === engine1);
+  const e1 = renderViews.find(e=> e.name === engine1);
   let image1 = (e1 && e1.image) || "";
   image1 = `${basePath}${image1}`;
-  let image2 = render_views.find(e=> e.name === engine2)?.image || "";
+  let image2 = renderViews.find(e=> e.name === engine2)?.image || "";
   image2 = `${basePath}${image2}`;
 
   const onShare = () => {
@@ -142,8 +138,8 @@ export default function ComparePage({name}: ComparePageProps) {
           {comparisonMode===1 && <ImageComparisonSlider imgSrc1={image1} imgSrc2={image2}/>}          
           {comparisonMode===2 && <ImageDifferenceView imgSrc1={image1} imgSrc2={image2}/>}          
           <Box display={{xs: 'flex', sm:'none'}} justifyContent='space-between' width='100%' pl={1} pr={1}>
-            <Box flex={1}><EngineSelection engineName={engine1} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine1(name)} }}/></Box>
-            <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={render_views.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine2(name)} }}/></Box>
+            <Box flex={1}><EngineSelection engineName={engine1} engineList={renderViews.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine1(name)} }}/></Box>
+            <Box flex={1} display='flex' justifyContent='flex-end'><EngineSelection engineName={engine2} engineList={renderViews.map(e=> e.name)} handleChange={(name) => { if(name!==engine1 && name!==engine2) {setEngine2(name)} }}/></Box>
           </Box>
           <Box display={{xs: 'none', sm:'flex'}} justifyContent='space-between' width='100%' pl={1} pr={1}>
             <Box flex={1}><Typography>{engine1}</Typography></Box>
@@ -151,7 +147,7 @@ export default function ComparePage({name}: ComparePageProps) {
           </Box>
         </Box>
         {!isMagnified && <Grid className={styles.side} display={{xs:'none', sm:'flex'}} sx={{overflow: "auto"}} height={"70vh"} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} marked={(engine1 === e.name || engine2 === e.name)} onSelection={toggleSelection}/>})}
+          {renderViews.map((e,i) => { return <ModelRenderCard key={e.name} name={e.name} thumbnail={e.thumbnail} marked={(engine1 === e.name || engine2 === e.name)} onSelection={toggleSelection}/>})}
         </Grid>}
       </Grid>
     </>

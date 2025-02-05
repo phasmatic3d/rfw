@@ -11,12 +11,13 @@ import { basePath } from '@/lib/paths';
 export type ModelCardProps = {
     name: string,
     marked: boolean,
+    thumbnail: string,
     onSelection: (arg0: string) => void
 }
 
-export default function ModelRenderCard({name, marked, onSelection}: ModelCardProps) {
+export default function ModelRenderCard({name, thumbnail, marked, onSelection}: ModelCardProps) {
     const [selected, setSelected] = React.useState(false);
-  const thumbnail = `${basePath}/images/other/babylon-golden.png`;
+
 
   const theme = useTheme();
 
@@ -24,8 +25,6 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
     onSelection(name);
     setSelected(clicked);
   }
-
-  const test22 = false;
 
   return (
       <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '20px 5px'}}>
@@ -41,12 +40,12 @@ export default function ModelRenderCard({name, marked, onSelection}: ModelCardPr
                     height: "100%",
                     textAlign: "center", 
                     cursor: 'pointer', 
-                    objectFit: 'cover',
+                    objectFit: 'contain',
                     borderRadius: '16px',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease',
                 }}
-                src={thumbnail}
+                src={`${basePath}${thumbnail}`}
                 alt={name}  
                 loading="lazy"
                 />

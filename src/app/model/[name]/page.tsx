@@ -58,5 +58,27 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
 
-  return <ModelPage name={name} description={"Description"}/>
+  //const model = Object.values(models).find((model) => {model.name === name});
+  
+  const render_views = name === "DragonAttenuation"? [
+    {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "gltf-sample-viewer", thumbnail: `/images/dragon/gltf-sample-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "three-gpu-pathtracer", thumbnail: `/images/dragon/three-gpu-pathtracer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "Dassault STELLAR", thumbnail: `/images/dragon/stellar-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
+    {name: "Blender Cycles", thumbnail: `/images/dragon/blender-cycles-golden.png`, image: `/images/dragon/model-viewer-golden.png`}
+  ]:
+  [
+    {name: "three.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "filament.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "babylon.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "gltf-sample-viewer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "three-gpu-pathtracer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Dassault STELLAR", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Chaos Group V-Ray", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
+    {name: "Blender Cycles", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`}
+  ];
+
+  return <ModelPage name={name} description={"Description"} renderViews={render_views}/>
 }
