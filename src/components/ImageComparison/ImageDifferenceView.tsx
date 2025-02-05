@@ -44,6 +44,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
       }
   
       const resizeObserver = new ResizeObserver(() => {
+        if (canvasContainer.clientWidth == 0 || canvasContainer.clientHeight == 0) return;
         if ( canvas.style.width === `${canvasContainer.clientWidth}px` ) return;
           canvas.width = canvasContainer.clientWidth; // Update the actual width
           canvas.height = canvasContainer.clientWidth; // Update the actual height
