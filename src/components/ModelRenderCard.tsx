@@ -40,7 +40,7 @@ export default function ModelRenderCard({name, thumbnail, marked, onSelection}: 
                     height: "100%",
                     textAlign: "center", 
                     cursor: 'pointer', 
-                    objectFit: 'contain',
+                    objectFit: 'cover',
                     borderRadius: '16px',
                     transform: marked ? 'scale(0.9)' : 'scale(1)', // Shrink image when selected
                     transition: 'transform 0.3s ease, border-radius 0.3s ease',
