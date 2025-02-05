@@ -139,12 +139,15 @@ export default function Header() {
         </Toolbar>
         <Box display='flex' pl={2} pr={2} style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
             <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", /*maxWidth: "1900px",*/ margin: "auto"}}>
+                <Box flex={1}>
+                    
+                </Box>
                 <Box justifyContent={"flex-start"}>
                     <Typography sx={{fontWeight:'bold', fontFamily: 'var(--font-chivo)', fontSize: {xs: '24px', sm: '36px'}}}>
                         glTF Render Fidelity Test Suite
                     </Typography>
                 </Box>
-                <Box display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
+                <Box flex={1} display={{ xs: 'none', sm: 'flex' }} flexDirection='row' justifyContent={"flex-end"} alignItems='center'>
                     <Image
                         width={50}
                         height={50}
