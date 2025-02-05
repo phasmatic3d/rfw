@@ -63,7 +63,7 @@ export default async function Page({params}: { params: Promise<{ name: string }>
   const render_views = name === "DragonAttenuation"? [
     {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
     {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/filament-golden.png`},
-    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/babylonr-golden.png`},
+    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/babylon-golden.png`},
     {name: "gltf-sample-viewer", thumbnail: `/images/dragon/gltf-sample-viewer-golden.png`, image: `/images/dragon/gltf-sample-viewer-golden.png`},
     {name: "three-gpu-pathtracer", thumbnail: `/images/dragon/three-gpu-pathtracer-golden.png`, image: `/images/dragon/three-gpu-pathtracer-golden.png`},
     {name: "Dassault STELLAR", thumbnail: `/images/dragon/stellar-golden.png`, image: `/images/dragon/stellar-golden.png`},
