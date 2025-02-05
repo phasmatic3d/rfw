@@ -12,9 +12,9 @@ import ModelCard from '../ModelCard';
 //import README from "@/data/README.md"
 
 const render_views = [
-  {name: "DragonAttenuation"},
-  {name: "IridescentDishWithOlives"},
-  {name: "ToyCar"}
+  {name: "DragonAttenuation", thumbnail: ""},
+  {name: "IridescentDishWithOlives", thumbnail: ""},
+  {name: "ToyCar", thumbnail: ""}
 ]
 
 type Props = {
@@ -54,7 +54,7 @@ export default function ModelPage({name}: Props) {
           {(isXs && isVisible) && description}
         </Box>
         <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})}
+          {render_views.map((e,i) => { return <ModelCard key={e.name} thumbnail={e.thumbnail} name={e.name}/>})}
         </Grid>
       </Grid>
     </>
