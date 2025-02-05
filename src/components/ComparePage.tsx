@@ -41,10 +41,19 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
   const [nextEngine, setNextEngine] = React.useState(0);
   const [comparisonMode, setComparisonMode] = React.useState(0);
   const [shareSnackbarOpen, setShareSnackbarOpen] = React.useState(false);
+  const zoomOffsetRef = React.useRef<HTMLDivElement>(null);
 
   const toggleDiv = () => {
     setIsVisible(!isVisible);
   };
+
+  const toggleMagnified = (open: boolean) => {
+    
+    const off = zoomOffsetRef && zoomOffsetRef.current;
+    if(off && open)
+      setTimeout(() => {window.scrollTo({top: off.offsetTop, behavior: 'smooth'});}, 20)
+    setMagnified(open);
+  }
 
   React.useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -128,10 +137,10 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
           {(isXs && isVisible) && description}
         </Grid>}
         {/* Main */}
-        <Box className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
+        <Box ref={zoomOffsetRef} className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>
           <Box sx={{display:'flex', width: "100%", justifyContent: 'space-between'}}>
-            {isMagnified && <CloseFullscreenIcon onClick={() => setMagnified(false)} sx={{cursor: "pointer"}} /> }
-            {!isMagnified && <OpenInFullIcon onClick={() => setMagnified(true)} sx={{cursor: "pointer"}} /> }
+            {isMagnified && <CloseFullscreenIcon onClick={() => toggleMagnified(false)} sx={{cursor: "pointer"}} /> }
+            {!isMagnified && <OpenInFullIcon onClick={() => toggleMagnified(true)} sx={{cursor: "pointer"}} /> }
             <ComparisonButton handleSelection={(index:number) => {setComparisonMode(index)}}/>
           </Box>
           {comparisonMode===0 && <SideBySideComparison imgSrc1={image1} imgSrc2={image2}/>}
