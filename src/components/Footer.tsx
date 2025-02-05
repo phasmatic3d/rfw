@@ -5,6 +5,8 @@ import { Typography, Box, Link } from "@mui/material";
 import { basePath } from '@/lib/paths';
 import { useTheme } from "@mui/material/styles";
 
+export const currentYear = new Date().getFullYear()
+
 export default function Footer() {  
     const theme = useTheme();
 
@@ -42,7 +44,7 @@ export default function Footer() {
         <Box display='flex' style={{width: "100%", /*maxWidth: "1900px",*/ margin: 'auto', justifyContent: 'space-between', flexWrap: 'wrap', background:bgColor}}>
           <Box p={1}>
             <Typography color={fontColor} pb={1}>
-              Copyright 2025 - The Khronos Group Inc.  All rights reserved.
+              Copyright {currentYear} - The Khronos Group Inc.  All rights reserved.
             </Typography>
             <Typography fontSize={"12px"}>
               Khronos® is a registered trademark, and glTF™ and 3D Commerce™ are trademarks of The Khronos Group Inc.  All other product names, trademarks, and/or company names are used solely for identification and belong to their respective owners.
