@@ -141,8 +141,8 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
           overflow: "hidden",
           cursor: "pointer",
           userSelect: "none",
-          maxWidth: '70vh',
-          maxHeight: '70vh',
+          //maxWidth: '70vh',
+          //maxHeight: '70vh',
           touchAction:'none'
         }}
         onMouseDown={handleMouseDown}
