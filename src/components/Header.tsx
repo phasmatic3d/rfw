@@ -79,6 +79,7 @@ export default function Header() {
                     color="primary"
                     disableScrollLock 
                 >
+                    <MenuItem onClick={handleBurgerClose} component={Link} href="/">Home</MenuItem>
                     <MenuItem onClick={handleBurgerClose} component={Link} href="/about">About</MenuItem>
                     <MenuItem onClick={handleBurgerClose} component={Link} href="/faq">FAQ</MenuItem>
                     <MenuItem onClick={handleBurgerClose} component={Link} href="/contribute">Contribute</MenuItem>
