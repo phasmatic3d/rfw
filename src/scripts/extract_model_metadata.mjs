@@ -35,6 +35,7 @@ await (async () => {
     const ext = path.extname(f);
     if (ext !== ".json") continue;
     const metadata = JSON.parse(fs.readFileSync(f, 'utf8'));
+
     if (!metadata) {
       continue;
     }
@@ -42,15 +43,22 @@ await (async () => {
       /* Files like model-index.Khronos.json and model-index.json*/
       continue;
     }
+    const model = ModelMap[metadata.name];
 
     const name = metadata.name.replace(/\s+/g, '');
     ModelMap2[name] = {};
     ModelMap2[name].name = name;
-    ModelMap2[name].metadata_name = name;
-    ModelMap2[name].summary = metadata.summary;
+    ModelMap2[name].label = metadata.name;
     ModelMap2[name].description = metadata.summary;
+    ModelMap2[name].tags = metadata.tags;
+
+    ModelMap2[name].variants = model && model.variants;
   }
 })();
+
+console.log('ModelList', ModelList.length);
+console.log('ModelMap', Object.keys(ModelMap).length);
+console.log('ModelMap2', Object.keys(ModelMap2).length);
 
 const jsonData = JSON.stringify(ModelMap2, null, 2); // The `null, 2` makes the output pretty-printed
 fs.writeFileSync('src/data/model-index.Phasmatic.json', jsonData);
