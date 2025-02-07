@@ -31,8 +31,8 @@ export default function ModelRenderCard({name, thumbnail, marked, onSelection}: 
           <Box position="relative">
             <Box width={"100%"} style={{width: "100%"}}>
                 <Image
-                width={512}
-                height={512}
+                width={1512}
+                height={1512}
                 quality={90}
                 style={{ 
                     width: "100%",

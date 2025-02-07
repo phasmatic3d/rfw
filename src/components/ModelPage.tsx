@@ -12,7 +12,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 //import README from "@/data/README.md"
 
-type RenderView = {
+export type RenderView = {
   name: string,
   thumbnail: string,
   image: string

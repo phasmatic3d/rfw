@@ -54,7 +54,7 @@ export default function ModelPage({name}: Props) {
           {(isXs && isVisible) && description}
         </Box>
         <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelCard key={e.name} thumbnail={e.thumbnail} name={e.name}/>})}
+          {render_views.map((e,i) => { return <ModelCard key={e.name} thumbnail={e.thumbnail} name={e.name} title={"FIX ME!!"} tags={['a', 'b']}/>})}
         </Grid>
       </Grid>
     </>

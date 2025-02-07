@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata  } from 'next'
 import ComparePage from "@/components/ComparePage";
 import models from "@/data/model-index.Phasmatic.json"
 import { basePath } from '@/lib/paths';
+import { RenderView } from "@/components/ModelPage";
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
@@ -60,7 +61,7 @@ type Props = {
 export default async function Page({params}: { params: Promise<{ name: string }> }) {
   const { name } = await params;
 
-  const model = (models as any)[name];
+  const model = (models as Record<string, {images: RenderView[]}>)[name];
 
   const render_views = model.images;
   

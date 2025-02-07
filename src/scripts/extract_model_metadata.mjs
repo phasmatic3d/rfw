@@ -85,9 +85,9 @@ await (async () => {
 
     if(model && metadata && images.length > 0)
     {
-      const name = metadata.name.replace(/\s+/g, '');
+      const name = encodeURIComponent(metadata.name.replace(/\s+/g, ''));
       ModelMap2[name] = {};
-      ModelMap2[name].name = name;
+      ModelMap2[name].name = metadata.name.replace(/\s+/g, '');
       ModelMap2[name].label = metadata.name;
       ModelMap2[name].description = metadata.summary;
       ModelMap2[name].tags = metadata.tags;
