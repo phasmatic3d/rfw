@@ -13,8 +13,8 @@ try {
 }
 
 await sharp(workerData.src)
-  .resize(64)
-  .webp({quality: 75})
+  .resize(512)
+  .webp({quality: 90})
   .toFile(workerData.tgt, (err) => {
     if (err) {
       console.log('Error processing image:', workerData.tgt);
