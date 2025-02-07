@@ -8,8 +8,7 @@ export const dynamicParams = false; // models that are not included in the list,
 
 export async function generateStaticParams() {
     return Object.values(models).map((model) => ({
-      name: model.name,
-      description: "dfgsfgsdfgsdfg"
+      name: model.name
     }))
 }
 
@@ -58,9 +57,11 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
 
-  //const model = Object.values(models).find((model) => {model.name === name});
+  const model = (models as any)[name];
+
+  const render_views = model.images;
   
-  const render_views = name === "DragonAttenuation"? [
+  /*const render_views = name === "DragonAttenuation"? [
     {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
     {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
     {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
@@ -78,7 +79,7 @@ export default async function Page({params}: { params: Promise<{ name: string, d
     {name: "Dassault STELLAR", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
     {name: "Chaos Group V-Ray", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
     {name: "Blender Cycles", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`}
-  ];
+  ];*/
 
   return <ModelPage name={name} description={"Description"} renderViews={render_views}/>
 }

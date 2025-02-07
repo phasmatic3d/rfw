@@ -60,25 +60,9 @@ type Props = {
 export default async function Page({params}: { params: Promise<{ name: string }> }) {
   const { name } = await params;
 
-  const render_views = name === "DragonAttenuation"? [
-    {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/filament-golden.png`},
-    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/babylon-golden.png`},
-    {name: "gltf-sample-viewer", thumbnail: `/images/dragon/gltf-sample-viewer-golden.png`, image: `/images/dragon/gltf-sample-viewer-golden.png`},
-    {name: "three-gpu-pathtracer", thumbnail: `/images/dragon/three-gpu-pathtracer-golden.png`, image: `/images/dragon/three-gpu-pathtracer-golden.png`},
-    {name: "Dassault STELLAR", thumbnail: `/images/dragon/stellar-golden.png`, image: `/images/dragon/stellar-golden.png`},
-    {name: "Blender Cycles", thumbnail: `/images/dragon/blender-cycles-golden.png`, image: `/images/dragon/blender-cycles-golden.png`}
-  ]:
-  [
-    {name: "three.js", thumbnail: `/images/abeautifulgame/model-viewer-golden.png`, image: `/images/abeautifulgame/model-viewer-golden.png`},
-    {name: "filament.js", thumbnail: `/images/abeautifulgame/filament-golden.png`, image: `/images/abeautifulgame/filament-golden.png`},
-    {name: "babylon.js", thumbnail: `/images/abeautifulgame/babylon-golden.png`, image: `/images/abeautifulgame/babylon-golden.png`},
-    {name: "gltf-sample-viewer", thumbnail: `/images/abeautifulgame/gltf-sample-viewer-golden.png`, image: `/images/abeautifulgame/gltf-sample-viewer-golden.png`},
-    {name: "three-gpu-pathtracer", thumbnail: `/images/abeautifulgame/three-gpu-pathtracer-golden.png`, image: `/images/abeautifulgame/three-gpu-pathtracer-golden.png`},
-    {name: "Dassault STELLAR", thumbnail: `/images/abeautifulgame/stellar-golden.png`, image: `/images/abeautifulgame/stellar-golden.png`},
-    {name: "Chaos Group V-Ray", thumbnail: `/images/abeautifulgame/babylon-golden.png`, image: `/images/abeautifulgame/babylon-golden.png`},
-    {name: "Blender Cycles", thumbnail: `/images/abeautifulgame/blender-cycles-golden.png`, image: `/images/abeautifulgame/blender-cycles-golden.png`}
-  ];
+  const model = (models as any)[name];
+
+  const render_views = model.images;
   
   return <ComparePage name={name} description={"Description"} renderViews={render_views}/>
 }

@@ -8,12 +8,13 @@ import { useTheme } from '@mui/material/styles';
 import { basePath } from '@/lib/paths';
 
 export type ModelCardProps = {
-    name: string,
-    thumbnail: string
+    name: string, //clickable string
+    title: string,
+    thumbnail: string,
+    tags: Array<string>
 }
 
-export default function ModelCard({name, thumbnail}: ModelCardProps) {
-  const tags = ["KHR_materials_ior", "KHR_draco_mesh_compression", "KHR_mesh_quantization", "KHR_materials_anisotropy"];
+export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps) {
   
   const theme = useTheme();
 
@@ -33,7 +34,7 @@ export default function ModelCard({name, thumbnail}: ModelCardProps) {
           </Link>
         </Grid>
         <Box display="flex" flexDirection="column" p={1} >
-          <Typography fontSize={18} fontWeight={'bold'} sx={{overflowWrap: "anywhere"}}>{name}</Typography>
+          <Typography fontSize={18} fontWeight={'bold'} sx={{overflowWrap: "anywhere"}}>{title}</Typography>
           <Box sx={{mt:1}}>
             {tags.map(t=> <Chip size="small" key={t} label={t} color="primary" sx={{m:0.5}} />)}
           </Box>
