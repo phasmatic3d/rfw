@@ -15,7 +15,7 @@ export type ModelCardProps = {
     onSelection: (arg0: string) => void
 }
 
-export default function ModelRenderCard({name, thumbnail, marked, preserveAspectRatio, onSelection}: ModelCardProps) {
+export default function ModelRenderCard({name, thumbnail, marked, onSelection}: ModelCardProps) {
     const [selected, setSelected] = React.useState(false);
 
 
@@ -31,8 +31,8 @@ export default function ModelRenderCard({name, thumbnail, marked, preserveAspect
           <Box position="relative">
             <Box width={"100%"} style={{width: "100%"}}>
                 <Image
-                width={80}
-                height={80}
+                width={512}
+                height={512}
                 quality={90}
                 style={{ 
                     width: "100%",
