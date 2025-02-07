@@ -74,7 +74,7 @@ export default function ModelPage({name, renderViews}: ModelPageProps) {
   return (
     <>
       <Button
-        sx={{position:"fixed", height: "50px", zIndex:1,  right: "4vw", bottom: "10vh"}}
+        sx={{position:"fixed", height: "50px", zIndex:1,  right: "4vw", bottom: "15vh"}}
         component={Link}
         role={undefined}
         variant="contained"
@@ -95,7 +95,7 @@ export default function ModelPage({name, renderViews}: ModelPageProps) {
           {(!isXs) && description}
           {(isXs && isVisible) && description}
         </Box>
-        <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={1}>
+        <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={0}>
           {renderViews.map((e,i) => { return <ModelRenderCard key={e.name} thumbnail={e.thumbnail} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}
         </Grid>
       </Grid>

@@ -26,7 +26,8 @@ export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps
               width={300}
               height={300}
               quality={90}
-              style={{ aspectRatio: 1, width: '100%', height: "100%", maxWidth: "100%", textAlign: "center", cursor: 'pointer', objectFit: 'cover', borderRadius: '16px'}}
+              /* Added color: '' because of https://github.com/vercel/next.js/issues/45184 */
+              style={{ color: '', aspectRatio: 1, width: '100%', height: "100%", maxWidth: "100%", textAlign: "center", cursor: 'pointer', objectFit: 'contain', borderRadius: '16px'}}
               src={`${basePath}${thumbnail}`}
               alt={name}  
               loading="lazy"
