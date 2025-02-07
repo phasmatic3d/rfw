@@ -73,44 +73,45 @@ const ImageComparison2 = ({imgSrc1, imgSrc2}: ImageComparisonSliderProps) => {
       const imageContainer = imageRef.current;
 
       const resizeObserver = new ResizeObserver(() => {
+        requestAnimationFrame(() => {
 
-        if(imageRef.current == null)
-          return;
-        if(image2Ref.current == null)
-          return;
-        if(containerRef.current == null)
-          return;
-        if(containerRootRef.current == null)
-          return;
+          if(imageRef.current == null)
+            return;
+          if(image2Ref.current == null)
+            return;
+          if(containerRef.current == null)
+            return;
+          if(containerRootRef.current == null)
+            return;
+      
+          const maxWidth = containerRootRef.current.clientWidth ;  // Set max width
+          const maxHeight = Math.max(containerRootRef.current.clientHeight, vhToPixels(70)); // Set max height
+          
+          // Calculate new dimensions while maintaining aspect ratio
+          let width = imageContainer.naturalWidth;
+          let height = imageContainer.naturalHeight;
+
+          const aspectRatio = width / height;
+          if(width > maxWidth)
+          {
+            width = maxWidth;
+            height = maxWidth / aspectRatio;
+          }
+          if(height > maxHeight)
+          {
+            height = maxHeight;
+            width = maxHeight * aspectRatio;
+          }
     
-        const maxWidth = containerRootRef.current.clientWidth ;  // Set max width
-        const maxHeight = Math.max(containerRootRef.current.clientHeight, vhToPixels(70)); // Set max height
-         
-        // Calculate new dimensions while maintaining aspect ratio
-        let width = imageContainer.naturalWidth;
-        let height = imageContainer.naturalHeight;
+          containerRef.current.style.width = width+"px";
+          containerRef.current.style.height = height+"px";
 
-        const aspectRatio = width / height;
-        if(width > maxWidth)
-        {
-          width = maxWidth;
-          height = maxWidth / aspectRatio;
-        }
-        if(height > maxHeight)
-        {
-          height = maxHeight;
-          width = maxHeight * aspectRatio;
-        }
-  
-        containerRef.current.style.width = width+"px";
-        containerRef.current.style.height = height+"px";
+          imageRef.current.style.width = width+"px";
+          imageRef.current.style.height = height+"px";
 
-        imageRef.current.style.width = width+"px";
-        imageRef.current.style.height = height+"px";
-
-        image2Ref.current.style.width = width+"px";
-        image2Ref.current.style.height = height+"px";
-        
+          image2Ref.current.style.width = width+"px";
+          image2Ref.current.style.height = height+"px";
+        });
       });
       
       // Observe the canvas

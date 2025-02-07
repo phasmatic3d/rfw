@@ -46,15 +46,12 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
       }
   
       const resizeObserver = new ResizeObserver(() => {
-        if (canvasContainer.clientWidth == 0 || canvasContainer.clientHeight == 0) return;
+        requestAnimationFrame(() => {
+         if (canvasContainer.clientWidth == 0 || canvasContainer.clientHeight == 0) return;
         //if ( canvas.style.width === `${canvasContainer.clientWidth}px` ) return;
           canvas.width = canvasContainer.clientWidth; // Update the actual width
           canvas.height = canvasContainer.clientWidth; // Update the actual height
           
-          console.log("Style", canvas.style.width, canvas.style.height);
-          console.log("Client", canvas.clientWidth, canvas.clientHeight);
-          //console.log("Canvas", canvas.width, canvas.height);
-
           canvas.style.width = `${canvasContainer.clientWidth}px`;
           canvas.style.height = `${canvasContainer.clientWidth}px`;
           //canvas.style.maxHeight = `${vhToPixels(70)}px`;
@@ -106,11 +103,12 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
             diffData.data[i + 3] = 255; // Alpha
           }
           context.putImageData(diffData, 0, 0);
+        });
       });
         
       // Observe the canvas
-      resizeObserver.observe(canvasContainer);
-      console.log(resizeObserver)
+      //resizeObserver.observe(canvasContainer);
+      resizeObserver.observe(document.body);
 
       return resizeObserver;
     }
