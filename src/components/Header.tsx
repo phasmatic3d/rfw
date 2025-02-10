@@ -41,7 +41,7 @@ export default function Header() {
     return (
       <AppBar position="static">
         <Toolbar style={{paddingLeft: 2, paddingRight: 2, width: "100%", margin:"auto", display:'flex', justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: `${bgColor}`}}>
-            <Box display='flex' style={{width: "100%", /*maxWidth: "1900px",*/ margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap'}}>
+            <Box display='flex' style={{width: "100%", maxWidth: "1900px", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap'}}>
 
             <Box flex={1} display='flex' justifyContent='flex-start'>
                 <img
