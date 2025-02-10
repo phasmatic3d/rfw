@@ -39,10 +39,13 @@ const tags = tagsFile.tags.map(t => {return {name: t, selected: false, index: 0}
 
 export default function LandingPage({models}: LandingPageProps) {
 
-  const [selectedTags, setSelectedTags] = React.useState(tags);
   const scrollWrapperRef = React.useRef<HTMLDivElement>(null);
+  const tagContainerRef = React.useRef<HTMLDivElement>(null);
+  const mainContainerRef = React.useRef<HTMLDivElement>(null);
+  const [selectedTags, setSelectedTags] = React.useState(tags);
   const [searchValue, setSearchValue] = React.useState("");
   const [tagsExpanded, setTagsExpanded] = React.useState(false);
+  const [isOverflown, setOverflown] = React.useState(false);
 
   const tags2 = [tags[0], tags[1], tags[2]];
 
@@ -65,6 +68,26 @@ export default function LandingPage({models}: LandingPageProps) {
     if(scrollWrapperRef && scrollWrapperRef.current) { 
       scrollWrapperRef.current.addEventListener('wheel', handleHorizontalScrolling, {passive: false});
     }
+    if(tagContainerRef && tagContainerRef.current &&
+       mainContainerRef && mainContainerRef.current
+    ) {
+      const mainContainer = mainContainerRef.current;
+      const tagContainer = tagContainerRef.current;
+      const prepareTags = async () => {
+        const resizeObserver = new ResizeObserver(() => {
+          setOverflown(tagContainer.clientWidth === mainContainer.clientWidth);
+        });
+
+        resizeObserver.observe(mainContainer);
+
+        return resizeObserver;
+      }
+
+      const resizeObserverPromise = prepareTags();
+
+      return () => {resizeObserverPromise.then(res => {res.disconnect()})}
+    }
+
   }, []);
 
   const handleChipDelete = (tag: {name: string, selected: boolean}) => {
@@ -110,16 +133,18 @@ export default function LandingPage({models}: LandingPageProps) {
   </Accordion>
   )
   const otherChips = (
-    <Box display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
-      <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
-        {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
-      </Box>
-      <Box display={"flex"} alignItems={"top"} sx={{position: "relative"}}>
-        {!tagsExpanded && <ExpandMoreIcon onClick={() => setTagsExpanded(true)}/>}
-        { tagsExpanded && <ExpandLessIcon onClick={() => setTagsExpanded(false)}/>}
+    <Box ref={mainContainerRef} width={"100%"} justifyContent={"center"} display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
+      <Box ref={tagContainerRef} display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
+        <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
+          {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+        </Box>
+        <Box display={"flex"} alignItems={"top"} sx={{position: "relative"}}>
+          {!tagsExpanded && isOverflown && <ExpandMoreIcon onClick={() => setTagsExpanded(true)}/>}
+          { tagsExpanded && <ExpandLessIcon onClick={() => setTagsExpanded(false)}/>}
+        </Box>
       </Box>
     </Box>
-  )
+    )
   const boxChip = (
     <Box ref={scrollWrapperRef} className={styles.chip_container}
             sx={{
