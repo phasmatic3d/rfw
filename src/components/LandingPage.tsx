@@ -10,6 +10,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import HelpIcon from '@mui/icons-material/Help';
 import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image'
@@ -109,11 +110,14 @@ export default function LandingPage({models}: LandingPageProps) {
   </Accordion>
   )
   const otherChips = (
-    <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
-      <Box display={"flex"} alignItems={"center"} sx={{position: "relative"}}>
-        <ExpandMoreIcon onClick={() => setTagsExpanded(!tagsExpanded)} style={{/*position: "absolute", right: 0*/}} />
+    <Box display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
+      <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
+        {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
       </Box>
-      {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
+      <Box display={"flex"} alignItems={"top"} sx={{position: "relative"}}>
+        {!tagsExpanded && <ExpandMoreIcon onClick={() => setTagsExpanded(true)}/>}
+        { tagsExpanded && <ExpandLessIcon onClick={() => setTagsExpanded(false)}/>}
+      </Box>
     </Box>
   )
   const boxChip = (
@@ -213,7 +217,8 @@ export default function LandingPage({models}: LandingPageProps) {
         <Grid container style={{padding: 0, margin: 0}} spacing={1} sx={{ justifyContent: "center"}}>
         {/*Object.entries(models).filter((e,i) => searchValue.length <= i).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
         {/*Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
-        {result2.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={e.item.images[0].image} tags={e.item.tags}/>})}
+        {/*result2.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={e.item.images[0].image} tags={e.item.tags}/>})*/}
+        {result2.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={e.item.images[0].thumbnail} tags={e.item.tags}/>})}
         </Grid>                        
     </>
   );
