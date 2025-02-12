@@ -19,7 +19,16 @@ export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps
   const theme = useTheme();
 
   return (
-      <Box width={{xs: '100%', sm: '400px' }} sx={{margin: '30px 5px'}}>
+      <Box width={{xs: '100%', sm: '400px' }} 
+        sx={{
+          margin: '25px 5px',
+          padding: '10px',
+          "&:hover": {
+            backgroundColor: "gray",
+            boxShadow: 3,
+            borderRadius: "16px"
+          },
+        }}>
         <Grid container justifyContent="center">
           <Link width={{xs: '100%', sm: '400px' }} height={"250px"} href={`model/${name}`}>
             <Image
