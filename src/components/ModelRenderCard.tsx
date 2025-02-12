@@ -27,7 +27,16 @@ export default function ModelRenderCard({name, thumbnail, marked, onSelection}: 
   }
 
   return (
-      <Box width={'100%'} maxWidth={{xs: '100%', sm: '400px' }} sx={{width: "100%", margin: '5px'}}>
+      <Box onClick={() => markCard(!marked)} width={'100%'} maxWidth={{xs: '100%', sm: '400px' }} 
+            sx={{
+                width: "100%",
+                 margin: '5px',
+                 "&:hover": {
+                    backgroundColor: "gray",
+                    boxShadow: 3,
+                    borderRadius: "16px"
+                },
+            }}>
           <Box position="relative">
             <Box width={"100%"} style={{width: "100%"}}>
                 <Image
