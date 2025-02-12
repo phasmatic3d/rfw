@@ -11,10 +11,10 @@ const ImageComparison = ({imgSrc1, imgSrc2}: Props) => {
     
     return (
       <Box display='flex'
-        flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
         width="100%"
+        sx={{flexDirection: {xs: "column", sm: "row"}}}
       >
       <Box flex="1" position="relative" height="100%" p={1}>
         <img
