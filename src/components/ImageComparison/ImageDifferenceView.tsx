@@ -92,14 +92,40 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
           tempCtx.drawImage(img2, 0, 0, width, height);
           const img2Data = tempCtx.getImageData(0, 0, width, height);
   
-          const factor = 10;
+          const factor = 10/255;
+
+          const fromRedToGreen = ( interpolant: number ) =>
+          {
+            return interpolant < 0.5? [1.0, 2.0 * interpolant, 0.0] : [2.0 - 2.0 * interpolant, 1.0, 0.0 ];
+          }
+
+          const fromGreenToBlue = ( interpolant: number ) =>
+          {
+            return interpolant < 0.5? [0.0, 1.0, 2.0 * interpolant] : [0.0, 2.0 - 2.0 * interpolant, 1.0 ]
+          }
+          const mix = (a: number[], b: number[], value:number) => [a[0] * (1-value) + value * b[0], a[1] * (1-value) + value * b[1], a[2] * (1-value) + value * b[2] ]
+          const clamp = (x: number, minV: number, maxV: number) => Math.max(minV, Math.min(x, maxV));
+          const smoothstep = (edge0:number, edge1:number, x:number) => {const t = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0); return t * t * (3.0 - 2.0 * t); }
 
           // Compute the difference
           const diffData = context.createImageData(width, height);
           for (let i = 0; i < img1Data.data.length; i += 4) {
-            diffData.data[i] = Math.min(255, Math.abs(img1Data.data[i] - img2Data.data[i]) * factor); // Red
-            diffData.data[i + 1] = Math.min(255, Math.abs(img1Data.data[i + 1] - img2Data.data[i + 1]) * factor); // Green
-            diffData.data[i + 2] = Math.min(255, Math.abs(img1Data.data[i + 2] - img2Data.data[i + 2]) * factor); // Blue
+
+            // diff
+            const diff = [
+              Math.abs(img1Data.data[i] - img2Data.data[i]) * factor, // Red
+              Math.abs(img1Data.data[i + 1] - img2Data.data[i + 1]) * factor, // Green
+              Math.abs(img1Data.data[i + 2] - img2Data.data[i + 2]) * factor // Blue
+            ];
+
+            const value = Math.sqrt(diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]);
+
+            const heatmap = ( value < 0.5 )? fromGreenToBlue( 1.0 - 2.0 * value ) : fromRedToGreen( 2.0 - 2.0 * value );
+            //const heatmap = ( value < 0.5 )? mix([0,0,1], [0,1,0], 2.0 * value) : mix([0,1,0], [1,0,0], 2.0 * value-1.0);
+
+            diffData.data[i] = Math.min(255, 255 * heatmap[0]); // Red
+            diffData.data[i + 1] = Math.min(255, 255 * heatmap[1]); // Green
+            diffData.data[i + 2] = Math.min(255, 255 * heatmap[2]); // Blue
             diffData.data[i + 3] = 255; // Alpha
           }
           context.putImageData(diffData, 0, 0);
