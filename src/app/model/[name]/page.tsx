@@ -57,7 +57,7 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
 
-  const model = (models as Record<string, {images: RenderView[]}>)[name];
+  const model = (models as Record<string, {label: string, images: RenderView[]}>)[name];
   const render_views = model.images;
   
   /*const render_views = name === "DragonAttenuation"? [
@@ -80,5 +80,5 @@ export default async function Page({params}: { params: Promise<{ name: string, d
     {name: "Blender Cycles", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`}
   ];*/
 
-  return <ModelPage name={name} description={"Description"} renderViews={render_views}/>
+  return <ModelPage name={name} label={model.label} description={"Description"} renderViews={render_views}/>
 }
