@@ -20,6 +20,7 @@ export type RenderView = {
 
 type ModelPageProps = {
   name: string,
+  label: string,
   description: string,
   renderViews: RenderView[]
 }
