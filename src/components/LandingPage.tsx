@@ -140,7 +140,7 @@ export default function LandingPage({models}: LandingPageProps) {
         </Box>
         <Box display={"flex"} alignItems={"top"} sx={{position: "relative"}}>
           {!tagsExpanded && isOverflown && <ExpandMoreIcon onClick={() => setTagsExpanded(true)}/>}
-          { tagsExpanded && <ExpandLessIcon onClick={() => setTagsExpanded(false)}/>}
+          { tagsExpanded && isOverflown && <ExpandLessIcon onClick={() => setTagsExpanded(false)}/>}
         </Box>
       </Box>
     </Box>
