@@ -92,7 +92,7 @@ export default function ImageDifferenceView({imgSrc1, imgSrc2}: ImageComparisonS
           tempCtx.drawImage(img2, 0, 0, width, height);
           const img2Data = tempCtx.getImageData(0, 0, width, height);
   
-          const factor = 10/255;
+          const factor = 2/255;
 
           const fromRedToGreen = ( interpolant: number ) =>
           {
