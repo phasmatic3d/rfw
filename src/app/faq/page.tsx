@@ -1,3 +1,12 @@
+import fs from 'fs';
+import Showdown from "showdown";
+
 export default function About() {
-    return <div>FAQ Page TBD</div>
+    const string = fs.readFileSync("./src/data/FAQ.md", 'utf8')
+
+    const converter = new Showdown.Converter({ tables: true });
+    const text      = string;
+    const html      = converter.makeHtml(text);
+    
+    return <div style={{margin: "auto", maxWidth: "1900px"}} dangerouslySetInnerHTML={{ __html: html }} />
 }
