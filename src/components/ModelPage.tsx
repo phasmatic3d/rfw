@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Typography, Button, Box, Grid2 as Grid, IconButton } from "@mui/material";
+import { Typography, Button, Box, Grid2 as Grid, IconButton, Snackbar } from "@mui/material";
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ModelRenderCard from "@/components/ModelRenderCard"
@@ -33,6 +33,7 @@ export default function ModelPage({name, renderViews}: ModelPageProps) {
   const [engineA, setEngineA] = React.useState(""); 
   const [engineB, setEngineB] = React.useState(""); 
   const [nextEngine, setNextEngine] = React.useState(0); 
+  const [shareSnackbarOpen, setShareSnackbarOpen] = React.useState(false);
   
   // Step 2: Toggle function
   const toggleDiv = () => {
@@ -60,12 +61,36 @@ export default function ModelPage({name, renderViews}: ModelPageProps) {
   };
 
   const count = Number(engineA === "") + Number(engineB === "");
+
+  const onShare = () => {
+    const shareURL = `https://phasmatic3d.github.io/rfw/model/${name}`;
+    if (navigator.share) {
+      navigator.share({
+        title: `Khronos Render Fidelity`,
+        url: shareURL
+      }).then(() => {
+        console.log('Thanks for sharing!');
+      })
+      .catch(console.error);
+    } else {
+      // fallback
+      navigator.clipboard.writeText(shareURL);
+      setShareSnackbarOpen(true);
+    }
+  }
   
   const description = <Box>
     <Box display='flex' justifyContent='space-between'>
       <Typography variant='h6'>Description</Typography>
       <Box>
-        <IconButton><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <IconButton onClick={onShare}><ShareIcon sx={{color: 'grey.100'}}/></IconButton>
+        <Snackbar
+          open={shareSnackbarOpen}
+          onClose={() => {setShareSnackbarOpen(false)}}
+          message="Model Copied"
+          key={"Share"}
+          autoHideDuration={1200}
+        />
         <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
       </Box>
     </Box>
