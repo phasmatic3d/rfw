@@ -45,7 +45,7 @@ export default function Header() {
 
             <Box flex={1} display='flex' justifyContent='flex-start'>
                 <img
-                    width={"250px"} 
+                    style={{width: "100%", maxWidth: "250px"}}
                     src={imageSrc}
                     loading="lazy"
                     alt={"The Khronos Group: Connecting Software to Silicon"}  

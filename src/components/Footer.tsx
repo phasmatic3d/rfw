@@ -26,7 +26,7 @@ export default function Footer() {
         <Box display='flex' flexDirection='column' style={{width: "100%", /*maxWidth: "1900px",*/ margin: 'auto', background:bgColor}}>
           <Box flex={1} width={"100%"} sx={{maxWidth: "1900px", margin: "auto"}} display='flex' justifyContent='flex-start'>
             <img
-              width={"250px"} 
+              style={{width: "100%", maxWidth: "250px"}}
               src={imageSrc}
               loading="lazy"
               alt={"The Khronos Group: Connecting Software to Silicon"}  
