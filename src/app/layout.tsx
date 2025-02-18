@@ -42,9 +42,9 @@ export default function RootLayout({
     <html lang="en" prefix="og: https://ogp.me/ns#" suppressHydrationWarning>
       <body className={`${poppins.variable} ${chivo.variable}`}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
+          <ThemeProvider theme={theme} defaultMode="system">
             <InitColorSchemeScript attribute="class" />
+            <CssBaseline />            
             <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: "100vh"}}>
               <Header />
               <Container sx={{flexGrow: 1, overflow: "auto", flex: 1 }} maxWidth={false}>

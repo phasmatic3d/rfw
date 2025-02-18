@@ -11,13 +11,12 @@ export default function LightDarkButton({}) {
 
     const { mode, setMode } = useColorScheme();
 
-    React.useEffect(() => {
-        const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        setMode(systemPreference);
-    }, [])
 
     if(!mode) { return null; }    
-    
+
+    if(mode === 'system')
+        setMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
     return (
         <IconButton
             size="large"
