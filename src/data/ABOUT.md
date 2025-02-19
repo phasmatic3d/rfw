@@ -26,7 +26,7 @@ The Render Fidelity web site provides users a means to compare the rendering of 
 | Engine | Rendering Type |  Platform|
 |----------|----------|----------|
 | [three.js](https://phasmatic3d.github.io/rfw/engine/three.js) (represented by <model-viewer\>)   | Real-Time | Web |
-| [filament.js](/engine/filament.js) | Real-Time | Web, Android |
+| [filament.js](engine/filament.js) | Real-Time | Web, Android |
 | babylon.js | Real-Time | Web |
 | gltf-sample-viewer | Real-Time | Web |
 | three-gpu-pathtracer | Path Tracing | Web |
