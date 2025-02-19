@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Image from 'next/image'
-//import Link from 'next/link';
+import NextLink from 'next/link';
 import Link from '@mui/material/Link';
 import { Box, Chip, Typography, Grid2 as Grid } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
@@ -30,7 +30,7 @@ export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps
           },
         }}>
         <Grid container justifyContent="center">
-          <Link width={{xs: '100%', sm: '400px' }} height={"250px"} href={`${basePath}/model/${name}`}>
+          <Link component={NextLink} width={{xs: '100%', sm: '400px' }} height={"250px"} href={`/model/${name}`}>
             <Image
               width={512}
               height={512}
