@@ -114,6 +114,17 @@ export default function LandingPage({models}: LandingPageProps) {
       return [...prevItems]
     })
   }
+  const handleChipReplace = (tag:string) => {
+    setSelectedTags(prevItems => {
+      prevItems.forEach(e => {e.selected = false;})
+      const item = prevItems.find(e => e.name == tag);
+      if(item)
+      {
+        item.selected = true;
+      }
+      return [...prevItems]
+    })
+  }
 
   const accordionChips = (
     <Accordion>
@@ -243,7 +254,7 @@ export default function LandingPage({models}: LandingPageProps) {
         {/*Object.values(models).map((e,i) => { return <ModelCard key={e.name} name={e.name}/>})*/}
         {/*result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={e.item.images[0].image} tags={e.item.tags}/>})*/}
         {/*result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={e.item.images[0].thumbnail} tags={e.item.tags}/>})*/}
-        {result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={(e.item.images.find((m) => m.name === "gltf-sample-viewer") || e.item.images[0]).thumbnail} tags={e.item.tags}/>})}
+        {result.map((e,i) => { return <ModelCard key={e.item.name} name={e.item.name} title={e.item.label} thumbnail={(e.item.images.find((m) => m.name === "gltf-sample-viewer") || e.item.images[0]).thumbnail} tags={e.item.tags} selectTagCallback={(t)=>{handleChipReplace(t)}}/>})}
         </Grid>     
     </>
   );
