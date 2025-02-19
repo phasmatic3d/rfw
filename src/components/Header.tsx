@@ -16,7 +16,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LightDarkButton from './LightDarkButton'
 import { basePath } from '@/lib/paths';
-import { useTheme, styled } from "@mui/material/styles";
+import { useTheme, styled, useColorScheme  } from "@mui/material/styles";
 
 const MyToolbar = styled(Toolbar)(({ theme }) => [
     {
@@ -42,13 +42,13 @@ const MyButton = styled(Button)<ButtonProps> (({ theme }) => [
 export default function Header() {  
     const theme = useTheme();
 
+    const { mode } = useColorScheme();
+
     const imageSrc =
     theme.palette.mode === "light" 
     ? `${basePath}/logos/khronos/Khronos(r) Family_June18/Khronos Tagline/Khronos Tagline for web/RGB/Khronos_Tagline_RGB_June18.svg`
     : `${basePath}/logos/khronos/Khronos(r) Family_June18/Khronos Tagline/Khronos Tagline for web/white/Khronos_Tagline_White_June18.svg`;
 
-    const bgColor = theme.palette.mode === "light" ? `#fff` : `#333333`;
-    const fontColor = theme.palette.mode === "light" ? '#182136' : `#fff`;
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -62,16 +62,16 @@ export default function Header() {
     
     return (
       <AppBar position="static">
-        <Toolbar style={{paddingLeft: 2, paddingRight: 2, width: "100%", margin:"auto", display:'flex', justifyContent: 'space-between', flexWrap: 'wrap', backgroundColor: `${bgColor}`}}>
+        <MyToolbar sx={{paddingLeft: 2, paddingRight: 2, width: "100%", margin:"auto", display:'flex', justifyContent: 'space-between', flexWrap: 'wrap'}}>
             <Box display='flex' style={{width: "100%", maxWidth: "1900px", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap'}}>
 
             <Box flex={1} display='flex' justifyContent='flex-start'>
-                <img
+                {mode && <img
                     style={{width: "100%", maxWidth: "250px"}}
                     src={imageSrc}
                     loading="lazy"
                     alt={"The Khronos Group: Connecting Software to Silicon"}  
-                />
+                />}
             </Box>
             <Box flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-end' margin={"auto"}>
                 <LightDarkButton />
@@ -159,7 +159,7 @@ export default function Header() {
                 </IconButton>                
             </Box>
             */}
-        </Toolbar>
+        </MyToolbar>
         <Box display='flex' pl={2} pr={2} style={{width: "100%", margin: "auto", justifyContent: 'space-between', flexWrap: 'wrap', background:"#333333"}}>
             <Box display='flex' flexDirection='row' alignItems='center' justifyContent={"space-between"} sx={{width: "100%", /*maxWidth: "1900px",*/ margin: "auto"}}>
                 <Box flex={1}>
