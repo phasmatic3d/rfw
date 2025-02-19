@@ -46,7 +46,7 @@ export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps
         <Box display="flex" flexDirection="column" p={1} >
           <Typography fontSize={18} fontWeight={'bold'} sx={{overflowWrap: "anywhere"}}>{title}</Typography>
           <Box sx={{mt:1}}>
-            {tags.map(t=> <Chip size="small" key={t} label={t} color="primary" sx={{m:0.5}} />)}
+            {tags.map(t=> <Chip size="small" key={t} label={t} color="success" sx={{m:0.5}} />)}
           </Box>
         </Box>          
       </Box>
