@@ -99,7 +99,7 @@ export default function LandingPage({models}: LandingPageProps) {
         item.selected = false;
       }
       console.log([...prevItems])
-      return [...prevItems]
+      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
   const handleChipSelection = (tag: {name: string, selected: boolean}) => {
@@ -111,7 +111,7 @@ export default function LandingPage({models}: LandingPageProps) {
         item.selected = true;
       }
       console.log([...prevItems])
-      return [...prevItems]
+      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
   const handleChipReplace = (tag:string) => {
@@ -121,8 +121,9 @@ export default function LandingPage({models}: LandingPageProps) {
       if(item)
       {
         item.selected = true;
+        window.scrollTo({top: 0, behavior: 'smooth'});
       }
-      return [...prevItems]
+      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
 
@@ -146,7 +147,7 @@ export default function LandingPage({models}: LandingPageProps) {
   const otherChips = (
     <Box ref={mainContainerRef} width={"100%"} justifyContent={"center"} display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
       <Box ref={tagContainerRef} display={"flex"} flexWrap={"nowrap"} flexDirection={"row"}>
-        <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row-reverse"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-end"} style={{overflow: "hidden" }}>
+        <Box display={"flex"} flexWrap={"wrap"} flexDirection={"row"} height={tagsExpanded ? "100%" : 37} justifyContent={"flex-start"} style={{overflow: "hidden" }}>
           {selectedTags.map((t,i) => {return (<Chip key={t.name} sx={{margin: "5px 5px", fontWeight: 'bold'}} label={t.name} color={t.selected? "success" : "default"} clickable onClick={() => handleChipSelection(t)} onDelete={t.selected? () => handleChipDelete(t) : undefined}/>)})}
         </Box>
         <Box display={"flex"} alignItems={"top"} sx={{position: "relative"}}>
