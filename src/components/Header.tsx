@@ -9,13 +9,35 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {ButtonProps} from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LightDarkButton from './LightDarkButton'
 import { basePath } from '@/lib/paths';
-import { useTheme } from "@mui/material/styles";
+import { useTheme, styled } from "@mui/material/styles";
+
+const MyToolbar = styled(Toolbar)(({ theme }) => [
+    {
+        color: '#182136',
+        backgroundColor: '#fff',
+    },
+    theme.applyStyles('dark', {
+        color: `#fff`,
+        backgroundColor: `#333333`,
+    }),
+  ]);
+
+const MyButton = styled(Button)<ButtonProps> (({ theme }) => [
+    {
+        color: '#182136',
+        textTransform:'capitalize'
+    },
+    theme.applyStyles('dark', {
+        color: `#fff`,
+    }),
+  ]);
 
 export default function Header() {  
     const theme = useTheme();
@@ -53,10 +75,10 @@ export default function Header() {
             </Box>
             <Box flex={1} display={{ xs: 'none', sm: 'flex' }}  justifyContent='flex-end' margin={"auto"}>
                 <LightDarkButton />
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="/">Home</Button>
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="/about">About</Button>
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="/faq">FAQ</Button>
-                <Button variant="text" sx={{color: fontColor, textTransform:'capitalize'}} component={Link} href="/contribute">Contribute</Button>
+                <MyButton variant="text" component={Link} href="/">Home</MyButton>
+                <MyButton variant="text" component={Link} href="/about">About</MyButton>
+                <MyButton variant="text" component={Link} href="/faq">FAQ</MyButton>
+                <MyButton variant="text" component={Link} href="/contribute">Contribute</MyButton>
             </Box>
             <Box flex={1} display={{ xs: 'flex', sm: 'none' }} justifyContent='flex-end'>
                 <LightDarkButton />
