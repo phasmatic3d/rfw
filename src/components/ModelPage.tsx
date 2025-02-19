@@ -22,10 +22,11 @@ type ModelPageProps = {
   name: string,
   label: string,
   description: string,
-  renderViews: RenderView[]
+  renderViews: RenderView[],
+  downloadUrl?: string
 }
 
-export default function ModelPage({name, label, renderViews}: ModelPageProps) {  
+export default function ModelPage({name, label, renderViews, downloadUrl, description}: ModelPageProps) {  
   // Step 1: Set up state
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -79,7 +80,7 @@ export default function ModelPage({name, label, renderViews}: ModelPageProps) {
     }
   }
   
-  const description = <Box>
+  const descriptionComponent = <Box>
     <Box display='flex' justifyContent='space-between'>
       <Typography variant='h6'>Description</Typography>
       <Box>
@@ -91,10 +92,10 @@ export default function ModelPage({name, label, renderViews}: ModelPageProps) {
           key={"Share"}
           autoHideDuration={1200}
         />
-        <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
+        {downloadUrl && <IconButton component="a" href={downloadUrl} download><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>}
       </Box>
     </Box>
-    <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
+    <Typography>{description}</Typography>
   </Box>;
 
   return (
@@ -118,8 +119,8 @@ export default function ModelPage({name, label, renderViews}: ModelPageProps) {
               </Box>
             </Box>
           </Box>
-          {(!isXs) && description}
-          {(isXs && isVisible) && description}
+          {(!isXs) && descriptionComponent}
+          {(isXs && isVisible) && descriptionComponent}
         </Box>
         <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={0}>
           {renderViews.map((e,i) => { return <ModelRenderCard key={e.name} thumbnail={e.thumbnail} name={e.name} marked={(engineA === e.name || engineB === e.name)} onSelection={toggleSelection}/>})}

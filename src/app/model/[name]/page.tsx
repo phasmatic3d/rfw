@@ -12,31 +12,33 @@ export async function generateStaticParams() {
     }))
 }
 
-/*export const metadata: Metadata = {
-  title: 'My Page Title',
-}*/
+type ModelData = {
+  label: string
+  description: string
+  downloadModel?: string
+  images: RenderView[]
+}
 
 type Props = {
-  params: Promise<{ name: string, description: string }>
+  params: Promise<{ name: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
 
 export async function generateMetadata( { params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   // read route params
-  const {name, description} = await params;
- 
-  // fetch data
-  //const product = await fetch(`https://.../${id}`).then((res) => res.json())
+  const {name} = await params;
+
+  const model = (models as Record<string, ModelData>)[name];
  
   // optionally access and extend (rather than replace) parent metadata
   //const previousImages = (await parent).openGraph?.images || []
   const previousImages: string[] = [];
  
   return {
-    title: name,
+    title: model.label,
     openGraph: {
-      images: ['/some-specific-page-image.jpg', ...previousImages],
+      images: [model.images[0].thumbnail, ...previousImages],
     },
     robots: {
       index: false,
@@ -55,30 +57,10 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 }
 
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
-  const { name, description } = await params;
+  const { name } = await params;
 
-  const model = (models as Record<string, {label: string, images: RenderView[]}>)[name];
+  const model = (models as Record<string, ModelData>)[name];
   const render_views = model.images;
-  
-  /*const render_views = name === "DragonAttenuation"? [
-    {name: "three.js", thumbnail: `/images/dragon/model-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "filament.js", thumbnail: `/images/dragon/filament-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "babylon.js", thumbnail: `/images/dragon/babylon-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "gltf-sample-viewer", thumbnail: `/images/dragon/gltf-sample-viewer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "three-gpu-pathtracer", thumbnail: `/images/dragon/three-gpu-pathtracer-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "Dassault STELLAR", thumbnail: `/images/dragon/stellar-golden.png`, image: `/images/dragon/model-viewer-golden.png`},
-    {name: "Blender Cycles", thumbnail: `/images/dragon/blender-cycles-golden.png`, image: `/images/dragon/model-viewer-golden.png`}
-  ]:
-  [
-    {name: "three.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "filament.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "babylon.js", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "gltf-sample-viewer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "three-gpu-pathtracer", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "Dassault STELLAR", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "Chaos Group V-Ray", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`},
-    {name: "Blender Cycles", thumbnail: `/images/other/babylon-golden.png`, image: `/images/other/babylon-golden.png`}
-  ];*/
 
-  return <ModelPage name={name} label={model.label} description={"Description"} renderViews={render_views}/>
+  return <ModelPage name={name} label={model.label} description={model.description} renderViews={render_views} downloadUrl={model.downloadModel}/>
 }
