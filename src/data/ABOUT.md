@@ -9,7 +9,7 @@
     border: 1px solid #ddd; /* Optional: Adds a border */
   }
   a {
-    color: blue;
+    font-weight: bold;
   }
 </style>
 
@@ -33,8 +33,8 @@ The Render Fidelity web site provides users a means to compare the rendering of 
 | [babylon.js](https://phasmatic3d.github.io/rfw/engine/babylon.js) | Real-Time | Web |
 | [gltf-sample-viewer](https://phasmatic3d.github.io/rfw/engine/gltf-sample-viewer) | Real-Time | Web |
 | [three-gpu-pathtracer](https://phasmatic3d.github.io/rfw/engine/three-gpu-pathtracer) | Path Tracing | Web |
-| [Dassault STELLAR](https://phasmatic3d.github.io/rfw/engine/three.js) | Real-Time | Windows, Linux |
-| [Chaos Group V-Ray](https://phasmatic3d.github.io/rfw/engine/three.js) (via vray_gltf) | Path Tracing | Linux, Windows, MacOS |
+| [Dassault STELLAR](https://phasmatic3d.github.io/rfw/engine/DassaultSTELLAR) | Real-Time | Windows, Linux |
+| [Chaos Group V-Ray](https://phasmatic3d.github.io/rfw/engine/ChaosGroupV-Ray) (via vray_gltf) | Path Tracing | Linux, Windows, MacOS |
 
 <br>
 
