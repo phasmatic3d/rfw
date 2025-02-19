@@ -40,7 +40,10 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
  
   return {
     title: model.label,
+    description: model.description,
     openGraph: {
+      title: model.label,
+      description: model.description,
       images: [model.images[0].thumbnail, ...previousImages],
     },
     robots: {
