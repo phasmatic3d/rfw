@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata  } from 'next'
 import EnginePage from "@/components/EnginePage";
 import engines from "@/data/engines.json"
 import models from "@/data/model-index.Phasmatic.json"
+import type { RenderView } from '@/components/ModelPage';
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
@@ -60,9 +61,14 @@ export default async function Page({params}: { params: Promise<{ name: string, d
   const engine = (engines as Record<string, {label: string, description: string, name: string}>)[name];
   const engine_models = (models as Record<string, {name: string, label: string, images: RenderView[]}>);
 
-  const render_views = Object.values(engine_models).filter((value) => {
+  const engine_views = Object.values(engine_models).filter((value) => {
     return value.images.some(image => image.name === engine.name);
-  }); 
+  }).map((view, index) => ({
+    name: view.name,
+    label: view.label,
+    thumbnail: (view.images.find((m) => m.name === engine.name) || view.images[0]).thumbnail,
+    image: (view.images.find((m) => m.name === engine.name) || view.images[0]).thumbnail,
+  }));
 
-  return <EnginePage name={name} label={engine.label} description={engine.description} renderViews={render_views}/>
+  return <EnginePage name={name} label={engine.label} description={engine.description} engineViews={engine_views}/>
 }
