@@ -4,11 +4,15 @@
     "label": "A Beautiful Game",
     "description": "Chess set using transmission and volume.",
     "tags": [
-      "showcase",
-      "video",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Transmission",
+      "Volume",
+      "Draco",
+      "KTX"
     ],
     "variants": {
+      "glTF-Binary-KTX-ETC1S-Draco": "ABeautifulGame.glb",
       "glTF": "ABeautifulGame.gltf"
     },
     "extensionsUsed": [
@@ -58,8 +62,8 @@
     "label": "Alpha Blend Mode Test",
     "description": "Tests alpha modes and settings.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "AlphaBlendModeTest.gltf",
@@ -110,8 +114,9 @@
     "label": "Animated Cube",
     "description": "Same as 'Cube', but having a linear rotation animation.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "AnimatedCube.gltf"
@@ -159,8 +164,10 @@
     "label": "Animated Morph Cube",
     "description": "Demonstrates a simple cube with two simple morph targets and an animation that transitions between them both.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Morphing",
+      "Meshopt"
     ],
     "variants": {
       "glTF": "AnimatedMorphCube.gltf",
@@ -211,9 +218,9 @@
     "label": "Animated Triangle",
     "description": "This sample is similar to the Triangle, but the node has a rotation property that is modified with a simple animation",
     "tags": [
-      "core",
-      "testing",
-      "written"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "AnimatedTriangle.gltf",
@@ -257,8 +264,14 @@
     "label": "Anisotropy Barn Lamp",
     "description": "Wayfair AnisotropyBarnLamp model using anisotropy, clearcoat, emissive_strength, transmission, volume, and basisu extensions.",
     "tags": [
-      "showcase",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Anisotropy",
+      "Clearcoat",
+      "Emissive",
+      "Transmission",
+      "Volume",
+      "KTX"
     ],
     "variants": {
       "glTF": "AnisotropyBarnLamp.gltf",
@@ -301,8 +314,9 @@
     "label": "Anisotropy Disc Test",
     "description": "This model tests the texturemap for KHR_materials_anisotropy.",
     "tags": [
-      "extension",
-      "testing"
+      "Extension",
+      "Testing",
+      "Anisotropy"
     ],
     "variants": {
       "glTF": "AnisotropyDiscTest.gltf",
@@ -340,8 +354,9 @@
     "label": "Anisotropy Rotation Test",
     "description": "This model tests rotational offsets for KHR_materials_anisotropy.",
     "tags": [
-      "extension",
-      "testing"
+      "Extension",
+      "Testing",
+      "Anisotropy"
     ],
     "variants": {
       "glTF": "AnisotropyRotationTest.gltf",
@@ -384,8 +399,9 @@
     "label": "Anisotropy Strength Test",
     "description": "This model tests the strength parameter for KHR_materials_anisotropy.",
     "tags": [
-      "extension",
-      "testing"
+      "Extension",
+      "Testing",
+      "Anisotropy"
     ],
     "variants": {
       "glTF": "AnisotropyStrengthTest.gltf",
@@ -428,9 +444,8 @@
     "label": "Antique Camera",
     "description": "Static model of old camera on a tripod. [Issues: non-Khronos mark]",
     "tags": [
-      "core",
-      "testing",
-      "issues"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "AntiqueCamera.gltf",
@@ -485,8 +500,10 @@
     "label": "Attenuation Test",
     "description": "Tests the interactions between attenuation, thickness, and scale.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Transmission",
+      "Volume"
     ],
     "variants": {
       "glTF": "AttenuationTest.gltf",
@@ -540,8 +557,9 @@
     "label": "Avocado",
     "description": "A natural object created with Core glTF 2.0",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco",
+      "Meshopt"
     ],
     "variants": {
       "glTF": "Avocado.gltf",
@@ -598,8 +616,8 @@
     "label": "Barramundi Fish",
     "description": "A fish created with Core glTF 2.0",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco"
     ],
     "variants": {
       "glTF": "BarramundiFish.gltf",
@@ -655,8 +673,8 @@
     "label": "Boom Box",
     "description": "A common object with glowing front panel created with Core glTF 2.0.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco"
     ],
     "variants": {
       "glTF": "BoomBox.gltf",
@@ -712,8 +730,8 @@
     "label": "Boom Box with Axes",
     "description": "Shows X, Y, and Z axis default orientations.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "BoomBoxWithAxes.gltf"
@@ -761,8 +779,8 @@
     "label": "Box",
     "description": "One mesh and one material. Start with this.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco"
     ],
     "variants": {
       "glTF": "Box.gltf",
@@ -814,8 +832,9 @@
     "label": "Box Animated",
     "description": "Rotation and Translation Animations. Start with this to test animations.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "BoxAnimated.gltf",
@@ -866,8 +885,8 @@
     "label": "Box with interleaved position and normal attributes",
     "description": "Box example with interleaved position and normal attributes.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "BoxInterleaved.gltf",
@@ -913,9 +932,8 @@
     "label": "Box Textured",
     "description": "Box with a power-of-2 texture. [Issues: non-Khronos mark]",
     "tags": [
-      "core",
-      "issues",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "BoxTextured.gltf",
@@ -966,9 +984,8 @@
     "label": "Box Textured not 2^N",
     "description": "Box with a non-power-of-2 (NPOT) texture. Not all implementations support NPOT textures. [Issues: non-Khronos mark]",
     "tags": [
-      "core",
-      "issues",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "BoxTexturedNonPowerOfTwo.gltf",
@@ -1019,8 +1036,8 @@
     "label": "Box Vertex Colors",
     "description": "A simple unit cube that uses vertex colors, stored in the `COLORS_0` attribute. ",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "BoxVertexColors.gltf",
@@ -1071,8 +1088,9 @@
     "label": "BrainStem",
     "description": "Animations. Skins.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Draco"
     ],
     "variants": {
       "glTF": "BrainStem.gltf",
@@ -1125,9 +1143,9 @@
     "label": "Cesium Man",
     "description": "Textured. Animations. Skins. [Issues: non-Khronos mark]",
     "tags": [
-      "core",
-      "issues",
-      "testing"
+      "Testing",
+      "Animation",
+      "Draco"
     ],
     "variants": {
       "glTF": "CesiumMan.gltf",
@@ -1184,9 +1202,9 @@
     "label": "Cesium Milk Truck",
     "description": "Textured. Multiple nodes/meshes. Animations. [Issues: non-Khronos mark]",
     "tags": [
-      "core",
-      "issues",
-      "testing"
+      "Testing",
+      "Animation",
+      "Draco"
     ],
     "variants": {
       "glTF": "CesiumMilkTruck.gltf",
@@ -1243,8 +1261,10 @@
     "label": "Clear Coat Car Paint",
     "description": "This model is a sphere using the glTF ClearCoat extension overtop a car paint base material. ",
     "tags": [
-      "extension",
-      "testing"
+      "Extension",
+      "Testing",
+      "Texture Transform",
+      "Clearcoat"
     ],
     "variants": {
       "glTF": "ClearCoatCarPaint.gltf",
@@ -1293,8 +1313,9 @@
     "label": "KHR_materials_clearcoat Test",
     "description": "Tests if the KHR_materials_clearcoat extension is supported properly.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Clearcoat"
     ],
     "variants": {
       "glTF": "ClearCoatTest.gltf",
@@ -1352,8 +1373,8 @@
     "label": "Corset",
     "description": " ",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco"
     ],
     "variants": {
       "glTF": "Corset.gltf",
@@ -1409,8 +1430,8 @@
     "label": "Cube",
     "description": "A cube with non-smoothed faces.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "Cube.gltf"
@@ -1463,10 +1484,9 @@
     "label": "Damaged Helmet",
     "description": "Flight helmet with damage",
     "tags": [
-      "core",
-      "showcase",
-      "testing",
-      "video"
+      "Showcase",
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "DamagedHelmet.gltf",
@@ -1522,8 +1542,11 @@
     "label": "Dragon Attenuation",
     "description": "Dragon with background, using material variants, transmission, and volume.",
     "tags": [
-      "showcase",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Transmission",
+      "Volume",
+      "Variants"
     ],
     "variants": {
       "glTF": "DragonAttenuation.gltf",
@@ -1579,8 +1602,9 @@
     "label": "Duck",
     "description": "The COLLADA duck. One texture.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco",
+      "Meshopt"
     ],
     "variants": {
       "glTF": "Duck.gltf",
@@ -1638,8 +1662,9 @@
     "label": "Emissive Strength Test",
     "description": "Tests if the KHR_materials_emissive_strength extension is supported properly.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Emissive"
     ],
     "variants": {
       "glTF": "EmissiveStrengthTest.gltf",
@@ -1697,8 +1722,9 @@
     "label": "Environment Test",
     "description": "A simple scene with metal and dielectric spheres that range between 0 and 1 roughness. Useful for testing environment lighting.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Core"
     ],
     "variants": {
       "glTF": "EnvironmentTest.gltf",
@@ -1747,9 +1773,9 @@
     "label": "Flight Helmet",
     "description": "Displayed flight helmet on a wooden stand.",
     "tags": [
-      "core",
-      "showcase",
-      "testing"
+      "Showcase",
+      "Testing",
+      "Transmission"
     ],
     "variants": {
       "glTF": "FlightHelmet.gltf"
@@ -1805,8 +1831,9 @@
     "label": "Fox",
     "description": "Multiple animations cycles: Survey, Walk, Run.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "Fox.gltf",
@@ -1856,8 +1883,12 @@
     "label": "GlamVelvetSofa",
     "description": "Sofa using material variants, sheen, and specular.",
     "tags": [
-      "video",
-      "extension"
+      "Extension",
+      "Texture Transform",
+      "Sheen",
+      "Specular",
+      "Variants",
+      "Lights"
     ],
     "variants": {
       "glTF": "GlamVelvetSofa.gltf",
@@ -1914,10 +1945,10 @@
     "label": "Glass Hurricane Candle Holder",
     "description": "Glass holder using Materials Tranmission and Materials Volume extensions.",
     "tags": [
-      "video",
-      "written",
-      "showcase",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Transmission",
+      "Volume"
     ],
     "variants": {
       "glTF": "GlassHurricaneCandleHolder.gltf",
@@ -1966,8 +1997,9 @@
     "label": "Glass Vase with Flowers",
     "description": "This model compares transparency methods for representing glass in glTF: alphaMode:'BLEND' (left) versus the extensions KHR_materials_transmission and KHR_materials_volume (right).",
     "tags": [
-      "video",
-      "extension"
+      "Extension",
+      "Transmission",
+      "Volume"
     ],
     "variants": {
       "glTF": "GlassVaseFlowers.gltf",
@@ -2016,8 +2048,9 @@
     "label": "Interpolation Test",
     "description": "A sample with three different animation interpolations",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "InterpolationTest.gltf",
@@ -2067,8 +2100,10 @@
     "label": "Iridescence Dielectric Spheres",
     "description": "Tests KHR_materials_iridescence on a non-metallic material.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "IOR",
+      "Iridescence"
     ],
     "variants": {
       "glTF": "IridescenceDielectricSpheres.gltf"
@@ -2115,8 +2150,12 @@
     "label": "Iridescence Lamp",
     "description": "Wayfair Lamp model using transmission, volume, and KHR_materials_iridescence.",
     "tags": [
-      "showcase",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Transmission",
+      "Volume",
+      "Iridescence",
+      "IOR"
     ],
     "variants": {
       "glTF": "IridescenceLamp.gltf",
@@ -2162,8 +2201,10 @@
     "label": "Iridescence Metallic Spheres",
     "description": "Tests KHR_materials_iridescence on a metallic material.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "IOR",
+      "Iridescence"
     ],
     "variants": {
       "glTF": "IridescenceMetallicSpheres.gltf"
@@ -2210,8 +2251,13 @@
     "label": "Iridescence Suzanne",
     "description": "Further tests KHR_materials_iridescence.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Lights",
+      "IOR",
+      "Transmission",
+      "Volume",
+      "Iridescence"
     ],
     "variants": {
       "glTF": "IridescenceSuzanne.gltf",
@@ -2258,9 +2304,13 @@
     "label": "Iridescent Dish with Olives",
     "description": "Dish using transmission, volume, IOR, and specular. [Issues: non-Khronos mark]",
     "tags": [
-      "showcase",
-      "video",
-      "extension"
+      "Showcase",
+      "Extension",
+      "IOR",
+      "Iridescence",
+      "Transmission",
+      "Volume",
+      "Animation"
     ],
     "variants": {
       "glTF": "IridescentDishWithOlives.gltf",
@@ -2311,8 +2361,9 @@
     "label": "Lantern",
     "description": "Old wooden street light.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Draco",
+      "Meshopt"
     ],
     "variants": {
       "glTF": "Lantern.gltf",
@@ -2369,8 +2420,10 @@
     "label": "Lamp with Punctual Lights",
     "description": "Lamp using punctual lights.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Transmission",
+      "Lights"
     ],
     "variants": {
       "glTF": "LightsPunctualLamp.gltf",
@@ -2429,9 +2482,9 @@
     "label": "Materials Variants Shoe",
     "description": "A model of a shoe that illustrates use of the KHR_materials_variants extension with three materials included in the asset.",
     "tags": [
-      "extension",
-      "showcase",
-      "written"
+      "Extension",
+      "Showcase",
+      "Variants"
     ],
     "variants": {
       "glTF": "MaterialsVariantsShoe.gltf",
@@ -2484,8 +2537,8 @@
     "label": "Metal-Rough Spheres",
     "description": "Tests various metal and roughness values (texture mapped).",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "MetalRoughSpheres.gltf",
@@ -2541,8 +2594,8 @@
     "label": "Metal-Rough Spheres (textureless)",
     "description": "Tests various metal and roughness values (textureless).",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "MetalRoughSpheresNoTextures.gltf",
@@ -2592,8 +2645,10 @@
     "label": "Morph-Primitives Test",
     "description": "Tests a morph target on multiple primitives.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Morphing",
+      "Draco"
     ],
     "variants": {
       "glTF": "MorphPrimitivesTest.gltf",
@@ -2644,8 +2699,10 @@
     "label": "Morph Stress Test",
     "description": "Tests up to 8 morph targets.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Morphing",
+      "Core"
     ],
     "variants": {
       "glTF": "MorphStressTest.gltf",
@@ -2695,8 +2752,11 @@
     "label": "Mosquito In Amber",
     "description": "Mosquito in amber by Sketchfab, using transmission, IOR, and volume.",
     "tags": [
-      "showcase",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Transmission",
+      "IOR",
+      "Volume"
     ],
     "variants": {
       "glTF": "MosquitoInAmber.gltf",
@@ -2751,8 +2811,8 @@
     "label": "MultiUV Test",
     "description": "This model has two uv texture coordinates and tests a second set of texture coordinates.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "MultiUVTest.gltf",
@@ -2798,8 +2858,8 @@
     "label": "Negative Scale Test",
     "description": "This model tests what happens when a glTF node has negative scaling.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "NegativeScaleTest.gltf",
@@ -2844,8 +2904,8 @@
     "label": "Normal-Tangent Mirror Test",
     "description": "Tests an engine's ability to load supplied tangent vectors for a normal map.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "NormalTangentMirrorTest.gltf",
@@ -2890,8 +2950,8 @@
     "label": "Normal-Tangent Test",
     "description": "Tests an engine's ability to automatically generate tangent vectors for a normal map.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "NormalTangentTest.gltf",
@@ -2936,8 +2996,8 @@
     "label": "Orientation Test",
     "description": "Tests node translations and rotations.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "OrientationTest.gltf",
@@ -2988,9 +3048,9 @@
     "label": "Recursive Skeletons",
     "description": "Tests unusual skinning cases with reused meshes and recursive skeletons.",
     "tags": [
-      "core",
-      "testing",
-      "issues"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "RecursiveSkeletons.gltf",
@@ -3040,8 +3100,9 @@
     "label": "Rigged Figure",
     "description": "Animations. Skins.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Draco"
     ],
     "variants": {
       "glTF": "RiggedFigure.gltf",
@@ -3093,8 +3154,9 @@
     "label": "Rigged Simple",
     "description": "Animations. Skins. Start with this to test skinning.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Draco"
     ],
     "variants": {
       "glTF": "RiggedSimple.gltf",
@@ -3146,8 +3208,8 @@
     "label": "SciFi Helmet",
     "description": "Futuristic helmet",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "SciFiHelmet.gltf"
@@ -3200,9 +3262,11 @@
     "label": "SheenChair",
     "description": "Chair using material variants and sheen.",
     "tags": [
-      "showcase",
-      "video",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Texture Transform",
+      "Sheen",
+      "Variants"
     ],
     "variants": {
       "glTF": "SheenChair.gltf",
@@ -3257,9 +3321,10 @@
     "label": "Sheen Cloth",
     "description": "Fabric example using sheen.",
     "tags": [
-      "showcase",
-      "video",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Texture Transform",
+      "Sheen"
     ],
     "variants": {
       "glTF": "SheenCloth.gltf"
@@ -3316,9 +3381,8 @@
     "label": "Simple Meshes",
     "description": "A simple scene with two nodes, both containing the same mesh, namely a mesh with a single mesh.primitive with a single indexed triangle with multiple attributes (positions, normals and texture coordinates), but without a material",
     "tags": [
-      "core",
-      "testing",
-      "written"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "SimpleMeshes.gltf",
@@ -3362,8 +3426,10 @@
     "label": "Simple Morph",
     "description": "A triangle with a morph animation applied",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Animation",
+      "Morphing",
+      "Core"
     ],
     "variants": {
       "glTF": "SimpleMorph.gltf",
@@ -3407,9 +3473,9 @@
     "label": "Simple Skin",
     "description": "A simple example of vertex skinning in glTF",
     "tags": [
-      "core",
-      "testing",
-      "written"
+      "Testing",
+      "Animation",
+      "Core"
     ],
     "variants": {
       "glTF": "SimpleSkin.gltf",
@@ -3453,8 +3519,8 @@
     "label": "Simple Sparse Accessor",
     "description": "A simple mesh that uses sparse accessors",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "SimpleSparseAccessor.gltf",
@@ -3498,8 +3564,9 @@
     "label": "SpecGlossVsMetalRough",
     "description": "Tests if the KHR_materials_pbrSpecularGlossiness extension is supported properly.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "pbrSpecularGlossiness"
     ],
     "variants": {
       "glTF": "SpecGlossVsMetalRough.gltf",
@@ -3547,9 +3614,9 @@
     "label": "Specular Test",
     "description": "Tests if the KHR_materials_specular extension is supported correctly.",
     "tags": [
-      "core",
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Specular"
     ],
     "variants": {
       "glTF": "SpecularTest.gltf",
@@ -3597,7 +3664,7 @@
     "label": "Sponza",
     "description": "Building interior, often used to test lighting.",
     "tags": [
-      "core"
+      "Core"
     ],
     "variants": {
       "glTF": "Sponza.gltf"
@@ -3640,8 +3707,8 @@
     "label": "Suzanne",
     "description": "Blender's test model of the chimpanzee Suzanne.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "Suzanne.gltf"
@@ -3694,8 +3761,8 @@
     "label": "Texture Coordinate Test",
     "description": "Shows how XYZ and UV positions relate to displayed geometry.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "TextureCoordinateTest.gltf",
@@ -3746,8 +3813,8 @@
     "label": "Texture Encoding Test",
     "description": "This asset tests that textures are sampled with correct transfer functions.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "TextureEncodingTest.gltf",
@@ -3797,8 +3864,8 @@
     "label": "Texture Linear Interpolation Test",
     "description": "Tests that linear texture interpolation is performed on linear values, i.e. after sRGB decoding.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "TextureLinearInterpolationTest.gltf",
@@ -3848,8 +3915,8 @@
     "label": "Texture Settings Test",
     "description": "Tests single/double-sided and various texturing modes.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "TextureSettingsTest.gltf",
@@ -3900,8 +3967,11 @@
     "label": "Texture Transform Multi Test",
     "description": "Tests if the KHR_texture_transform extension is supported for several inputs.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Clearcoat",
+      "Unlit",
+      "Texture Transform"
     ],
     "variants": {
       "glTF": "TextureTransformMultiTest.gltf",
@@ -3946,8 +4016,9 @@
     "label": "Texture Transform Test",
     "description": "Tests if the KHR_texture_transform extension is supported for BaseColor.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Texture Transform"
     ],
     "variants": {
       "glTF": "TextureTransformTest.gltf"
@@ -3998,9 +4069,12 @@
     "label": "Toy Car",
     "description": "Toy car example using transmission, clearcoat, and sheen.",
     "tags": [
-      "showcase",
-      "video",
-      "extension"
+      "Showcase",
+      "Extension",
+      "Texture Transform",
+      "Clearcoat",
+      "Transmission",
+      "Sheen"
     ],
     "variants": {
       "glTF": "ToyCar.gltf",
@@ -4061,8 +4135,11 @@
     "label": "Transmission Roughness Test",
     "description": "Tests the interaction between roughness and IOR.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Transmission",
+      "IOR",
+      "Volume"
     ],
     "variants": {
       "glTF": "TransmissionRoughnessTest.gltf",
@@ -4112,8 +4189,10 @@
     "label": "Transmission Test",
     "description": "Tests if the KHR_materials_transmission extension is supported properly.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Transmission",
+      "XMP"
     ],
     "variants": {
       "glTF": "TransmissionTest.gltf",
@@ -4162,9 +4241,8 @@
     "label": "Triangle",
     "description": "A very simple glTF asset: The basic structure is the same as in 'Triangle Without Indices', but here, the mesh primitive describes an indexed geometry.",
     "tags": [
-      "core",
-      "testing",
-      "written"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "Triangle.gltf",
@@ -4208,8 +4286,8 @@
     "label": "Triangle Without Indices",
     "description": "The simplest possible glTF asset: A single scene with a single node and a single mesh with a single mesh.primitive with a single triangle with a single attribute, without indices and without a material",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "TriangleWithoutIndices.gltf",
@@ -4253,7 +4331,7 @@
     "label": "Two Sided Plane",
     "description": "A plane having the two sided material parameter enabled.",
     "tags": [
-      "core"
+      "Core"
     ],
     "variants": {
       "glTF": "TwoSidedPlane.gltf"
@@ -4301,8 +4379,9 @@
     "label": "Unlit Test",
     "description": "Tests if the KHR_materials_unlit extension is supported properly.",
     "tags": [
-      "testing",
-      "extension"
+      "Testing",
+      "Extension",
+      "Unlit"
     ],
     "variants": {
       "glTF": "UnlitTest.gltf",
@@ -4345,8 +4424,8 @@
     "label": "Vertex Color Test",
     "description": "Tests if vertex colors are supported.",
     "tags": [
-      "core",
-      "testing"
+      "Testing",
+      "Core"
     ],
     "variants": {
       "glTF": "VertexColorTest.gltf",
