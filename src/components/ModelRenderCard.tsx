@@ -16,10 +16,7 @@ export type ModelCardProps = {
 }
 
 export default function ModelRenderCard({name, thumbnail, marked, onSelection}: ModelCardProps) {
-    const [selected, setSelected] = React.useState(false);
-
-
-  const theme = useTheme();
+  const [selected, setSelected] = React.useState(false);
 
   const markCard = (clicked: boolean) => {
     onSelection(name);
@@ -32,7 +29,7 @@ export default function ModelRenderCard({name, thumbnail, marked, onSelection}: 
                 width: "100%",
                  margin: '5px',
                  "&:hover": {
-                    backgroundColor: "gray",
+                    backgroundColor: 'grey.700',
                     boxShadow: 3,
                     borderRadius: "16px"
                 },
@@ -67,7 +64,7 @@ export default function ModelRenderCard({name, thumbnail, marked, onSelection}: 
                     position: 'absolute',
                     top: 8,
                     right: 8,
-                    color: marked ? 'primary.main' : 'grey.700',
+                    color: marked ? 'grey.500' : 'grey.400',
                     '& .MuiSvgIcon-root': {
                         fontSize: 24,
                     },

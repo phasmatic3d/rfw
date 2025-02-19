@@ -16,17 +16,13 @@ export type ModelCardProps = {
 }
 
 export default function ModelCard({name, title, thumbnail, tags, selectTagCallback}: ModelCardProps) {
-  
-  const theme = useTheme();
-  console.log('theme.palette', theme.palette);
-
   return (
       <Box width={{xs: '100%', sm: '400px' }} 
         sx={{
           margin: '25px 5px',
           padding: '10px',
           "&:hover": {
-            backgroundColor: theme.palette.grey[700],
+            backgroundColor: 'grey.700',
             boxShadow: 3,
             borderRadius: "16px"
           },
