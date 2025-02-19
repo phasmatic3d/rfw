@@ -187,7 +187,11 @@ export default function LandingPage({models}: LandingPageProps) {
   
   const fuse = new Fuse(Object.values(models), options)
   
-  const result = (searchValue === "") ? Object.values(models).map(e => {return {item: e}}) : fuse.search(searchValue);
+  const tagsArray = selectedTags.filter(e => e.selected == true).map(e => e.name);
+  const result = ((searchValue === "") ? Object.values(models).map(e => {return {item: e}}) : fuse.search(searchValue)).filter((e,i) => {
+    if(tagsArray.length == 0) return true;
+    return tagsArray.every(tag => e.item.tags.includes(tag))
+  });
 
   return (
     <>
