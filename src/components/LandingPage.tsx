@@ -93,37 +93,41 @@ export default function LandingPage({models}: LandingPageProps) {
   const handleChipDelete = (tag: {name: string, selected: boolean}) => {
     console.log("Delete", tag);
     setSelectedTags(prevItems => {
-      const item = prevItems.find(e => e.name == tag.name);
+      const temp = tags.map(t => {return {...t}}); // deep copy
+      prevItems.filter(t => t.selected).forEach(t => {const item = temp.find(e => e.name === t.name); if(item) item.selected = true;})
+
+      const item = temp.find(e => e.name == tag.name);
       if(item)
       {
         item.selected = false;
       }
-      console.log([...prevItems])
-      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
+      return [...temp].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
   const handleChipSelection = (tag: {name: string, selected: boolean}) => {
     console.log("Add", tag);
     setSelectedTags(prevItems => {
-      const item = prevItems.find(e => e.name == tag.name);
+      const temp = tags.map(t => {return {...t}}); // deep copy
+      prevItems.filter(t => t.selected).forEach(t => {const item = temp.find(e => e.name === t.name); if(item) item.selected = true;})
+
+      const item = temp.find(e => e.name == tag.name);
       if(item)
       {
         item.selected = true;
       }
-      console.log([...prevItems])
-      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
+      return [...temp].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
   const handleChipReplace = (tag:string) => {
     setSelectedTags(prevItems => {
-      prevItems.forEach(e => {e.selected = false;})
-      const item = prevItems.find(e => e.name == tag);
+      const temp = tags.map(t => {return {...t}}); // deep copy
+      const item = temp.find(e => e.name == tag);
       if(item)
       {
         item.selected = true;
         window.scrollTo({top: 0, behavior: 'smooth'});
       }
-      return [...prevItems].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
+      return [...temp].sort((a,b) => a.selected && b.selected? 0 : a.selected? -1 : b.selected? 1 : 0);
     })
   }
 
