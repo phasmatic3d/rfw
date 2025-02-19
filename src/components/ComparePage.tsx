@@ -26,11 +26,13 @@ type RenderView = {
 
 type ComparePageProps = {
   name: string,
+  label: string,
   description: string,
-  renderViews: Array<RenderView>
+  renderViews: Array<RenderView>,
+  downloadUrl?: string
 }
 
-export default function ComparePage({name, renderViews}: ComparePageProps) {  
+export default function ComparePage({name, label, renderViews, description, downloadUrl}: ComparePageProps) {  
   
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -103,7 +105,7 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
     }
   }
 
-  const description = <Box>
+  const descriptionComponent = <Box>
     <Box display='flex' justifyContent='space-between'>
       <Typography variant='h6'>Description</Typography>
       <Box>
@@ -115,10 +117,10 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
           key={"Share"}
           autoHideDuration={1200}
         />
-        <IconButton><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>
+        {downloadUrl && <IconButton component="a" href={downloadUrl} download><FileDownloadIcon sx={{color: 'grey.100'}}/></IconButton>}
       </Box>
     </Box>
-    <Typography textAlign='justify'>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
+    <Typography textAlign='justify'>{description}</Typography>
   </Box>;
 
   return (
@@ -126,15 +128,15 @@ export default function ComparePage({name, renderViews}: ComparePageProps) {
       <Grid container direction={{xs:"column-reverse", sm:'row'}} className={styles.main} sx={{flexWrap: "nowrap"}} spacing={2}>
         {!isMagnified && <Grid className={styles.description} height={"70vh"} sx={{overflow: "auto"}}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
-            <Typography variant='h6'>{name}</Typography>
+            <Typography variant='h6'>{label}</Typography>
             <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
               <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
                 {isXs && <InfoIcon />}
               </Box>
             </Box>
           </Box>
-          {(!isXs) && description}
-          {(isXs && isVisible) && description}
+          {(!isXs) && descriptionComponent}
+          {(isXs && isVisible) && descriptionComponent}
         </Grid>}
         {/* Main */}
         <Box ref={zoomOffsetRef} className={styles.tool} width={{xs:'100%', sm: isMagnified? '100%' : '60%'}}>

@@ -32,8 +32,7 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
   const model = (models as Record<string, ModelData>)[name];
  
   // optionally access and extend (rather than replace) parent metadata
-  //const previousImages = (await parent).openGraph?.images || []
-  const previousImages: string[] = [];
+  const previousImages = (await parent).openGraph?.images || []
  
   return {
     title: model.label,

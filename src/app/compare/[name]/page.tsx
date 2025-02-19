@@ -15,32 +15,33 @@ export async function generateStaticParams() {
     }))
 }
 
-export const metadata: Metadata = {
-  title: 'Model Comparison',
-}
-
 type Props = {
   params: Promise<{ name: string}>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
+type ModelData = {
+  label: string
+  description: string
+  downloadModel?: string
+  images: RenderView[]
+}
 
-/*export async function generateMetadata( { params, searchParams }: Props, parent: ResolvingMetadata
+export async function generateMetadata( { params, searchParams }: Props, parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
-  const {name, description} = await params;
+  const {name} = await params;
  
   // fetch data
-  //const product = await fetch(`https://.../${id}`).then((res) => res.json())
+  const model = (models as Record<string, ModelData>)[name];
  
   // optionally access and extend (rather than replace) parent metadata
-  //const previousImages = (await parent).openGraph?.images || []
-  const previousImages: string[] = [];
+  const previousImages = (await parent).openGraph?.images || []
  
   return {
-    title: name,
+    title: model.label,
     openGraph: {
-      images: ['/some-specific-page-image.jpg', ...previousImages],
+      images: [model.images[0].thumbnail, ...previousImages],
     },
     robots: {
       index: false,
@@ -56,14 +57,14 @@ type Props = {
       },
     }
   }
-}*/
+}
 
 export default async function Page({params}: { params: Promise<{ name: string }> }) {
   const { name } = await params;
 
-  const model = (models as Record<string, {images: RenderView[]}>)[name];
+  const model = (models as Record<string, ModelData>)[name];
 
   const render_views = model.images;
   
-  return <ComparePage name={name} description={"Description"} renderViews={render_views}/>
+  return <ComparePage name={name} label={model.label} description={model.description} renderViews={render_views} downloadUrl={model.downloadModel}/>
 }
