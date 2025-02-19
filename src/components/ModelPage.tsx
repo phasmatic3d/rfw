@@ -25,7 +25,7 @@ type ModelPageProps = {
   renderViews: RenderView[]
 }
 
-export default function ModelPage({name, renderViews}: ModelPageProps) {  
+export default function ModelPage({name, label, renderViews}: ModelPageProps) {  
   // Step 1: Set up state
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -111,7 +111,7 @@ export default function ModelPage({name, renderViews}: ModelPageProps) {
       <Grid container direction="row" className={styles.main} pt={1}>
         <Box sx={{overflow: "auto"}} className={styles.description}>
           <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }} pb={1}> 
-            <Typography variant='h6'>{name}</Typography>
+            <Typography variant='h6'>{label}</Typography>
             <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
               <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
                 {isXs && <InfoIcon />}

@@ -1,15 +1,16 @@
 import React from 'react'
 import { Button, Typography, Box, Grid2 as Grid } from "@mui/material";
 import type { Metadata, ResolvingMetadata  } from 'next'
-import EnginePage from "@/components/pages/EnginePage";
+import EnginePage from "@/components/EnginePage";
 import engines from "@/data/engines.json"
+import models from "@/data/model-index.Phasmatic.json"
 
 export const dynamicParams = false; // models that are not included in the list, generate 404
 
 export async function generateStaticParams() {
-    return Object.values(engines).map((model) => ({
-      name: model.name
-    }))
+  return Object.keys(engines).map((engine) => ({
+    name: engine
+  }))
 }
 
 /*export const metadata: Metadata = {
@@ -56,6 +57,12 @@ export async function generateMetadata( { params, searchParams }: Props, parent:
 
 export default async function Page({params}: { params: Promise<{ name: string, description: string }> }) {
   const { name, description } = await params;
+  const engine = (engines as Record<string, {label: string, description: string, name: string}>)[name];
+  const engine_models = (models as Record<string, {name: string, label: string, images: RenderView[]}>);
 
-  return <EnginePage name={name} description={"Description"}/>
+  const render_views = Object.values(engine_models).filter((value) => {
+    return value.images.some(image => image.name === engine.name);
+  }); 
+
+  return <EnginePage name={name} label={engine.label} description={engine.description} renderViews={render_views}/>
 }

@@ -4,11 +4,14 @@ import { Typography, Button, Box, Grid2 as Grid } from "@mui/material";
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ModelRenderCard from "@/components/ModelRenderCard"
-import styles from "./../ModelPage.module.css";
+import styles from "./ModelPage.module.css";
 import CompareIcon from '@mui/icons-material/Compare';
 import Link from 'next/link'
 import InfoIcon from '@mui/icons-material/Info';
-import ModelCard from '../ModelCard';
+import ModelCard from '@/components/ModelCard';
+import RenderView from '@/components/ModelPage';
+import models from "@/data/model-index.Phasmatic.json"
+
 //import README from "@/data/README.md"
 
 const render_views = [
@@ -19,10 +22,12 @@ const render_views = [
 
 type Props = {
   name: string,
-  description: string
+  label: string,
+  description: string,
+  renderViews: RenderView[]
 }
 
-export default function ModelPage({name}: Props) {  
+export default function EnginePage({name, label, description, renderViews}: Props) {  
   // Step 1: Set up state
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -33,17 +38,16 @@ export default function ModelPage({name}: Props) {
     setIsVisible(!isVisible);
   };
 
-  const description = <Box>
-    <Typography variant='h6'>Description</Typography>
-    <Typography>The web component lets you declaratively add a 3D model to a web page, while hosting the model on your own site. The goal of the component is to enable adding 3D models to your website without understanding the underlying technology and platforms. The web component supports responsive design, and use cases like augmented reality on some devices. It includes features for accessibility, rendering quality, and interactivity</Typography>
-  </Box>;
+  console.log("renderViews", renderViews);
+  console.log("renderViews", renderViews[0].images);
+  console.log("renderViews", name);
 
   return (
     <>
-      <Grid container direction="column" className={styles.main}>
+      <Grid container direction="row" className={styles.main} pt={1}>
         <Box sx={{overflow: "auto"}} className={styles.description}>
-          <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }}> 
-            <Typography variant='h6'>{name}</Typography>
+          <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center" }} pb={1}> 
+            <Typography variant='h6'>{label}</Typography>
             <Box onClick={toggleDiv} display={{ xs: 'inline-block', sm: 'none' }}>
               <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
                 {isXs && <InfoIcon />}
@@ -53,8 +57,8 @@ export default function ModelPage({name}: Props) {
           {(!isXs) && description}
           {(isXs && isVisible) && description}
         </Box>
-        <Grid className={styles.selection} sx={{overflow: "auto"}} container spacing={2}>
-          {render_views.map((e,i) => { return <ModelCard key={e.name} thumbnail={e.thumbnail} name={e.name} title={"FIX ME!!"} tags={['a', 'b']}/>})}
+        <Grid className={styles.selection} sx={{overflow: "auto"}} container justifyContent={"center"} spacing={0}>
+          {renderViews.map((e,i) => { return <ModelCard key={e.name} thumbnail={(e.images.find((m) => m.name === label) || e.images[0]).thumbnail} tags={[]} name={e.name} title={e.label}/>})}
         </Grid>
       </Grid>
     </>
