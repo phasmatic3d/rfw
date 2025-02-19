@@ -30,7 +30,7 @@ export default function ModelCard({name, title, thumbnail, tags}: ModelCardProps
           },
         }}>
         <Grid container justifyContent="center">
-          <Link width={{xs: '100%', sm: '400px' }} height={"250px"} href={`model/${name}`}>
+          <Link width={{xs: '100%', sm: '400px' }} height={"250px"} href={`/model/${name}`}>
             <Image
               width={512}
               height={512}
