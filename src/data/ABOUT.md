@@ -8,6 +8,9 @@
     text-align: center; /* Centers text */
     border: 1px solid #ddd; /* Optional: Adds a border */
   }
+  a {
+    color: blue;
+  }
 </style>
 
 # About Page
@@ -26,12 +29,12 @@ The Render Fidelity web site provides users a means to compare the rendering of 
 | Engine | Rendering Type |  Platform|
 |----------|----------|----------|
 | [three.js](https://phasmatic3d.github.io/rfw/engine/three.js) (represented by <model-viewer\>)   | Real-Time | Web |
-| [filament.js](engine/filament.js) | Real-Time | Web, Android |
-| babylon.js | Real-Time | Web |
-| gltf-sample-viewer | Real-Time | Web |
-| three-gpu-pathtracer | Path Tracing | Web |
-| Dassault STELLAR | Real-Time | Windows, Linux |
-| Chaos Group V-Ray (via vray_gltf) | Path Tracing | Linux, Windows, MacOS |
+| [filament.js](https://phasmatic3d.github.io/rfw/engine/filament.js) | Real-Time | Web, Android |
+| [babylon.js](https://phasmatic3d.github.io/rfw/engine/babylon.js) | Real-Time | Web |
+| [gltf-sample-viewer](https://phasmatic3d.github.io/rfw/engine/gltf-sample-viewer) | Real-Time | Web |
+| [three-gpu-pathtracer](https://phasmatic3d.github.io/rfw/engine/three-gpu-pathtracer) | Path Tracing | Web |
+| [Dassault STELLAR](https://phasmatic3d.github.io/rfw/engine/three.js) | Real-Time | Windows, Linux |
+| [Chaos Group V-Ray](https://phasmatic3d.github.io/rfw/engine/three.js) (via vray_gltf) | Path Tracing | Linux, Windows, MacOS |
 
 <br>
 
