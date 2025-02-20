@@ -18,8 +18,8 @@ export type ModelCardProps = {
 export default function ModelCard({name, title, thumbnail, tags, selectTagCallback}: ModelCardProps) {
   return (
       <Box width={{xs: '100%', sm: '400px' }} 
+        margin={{xs: '5px 5px', sm: '10px 5px'}}
         sx={{
-          margin: '25px 5px',
           padding: '10px',
           "&:hover": {
             backgroundColor: 'grey.700',
