@@ -111,7 +111,7 @@ export default function Header() {
                     edge="start"
                     aria-label="menu"
                     onClick={handleBurgerClick}
-                    sx={{ mr: 1 }}
+                    sx={{ mr: 0, pr: 0 }}
                 >
                     <MenuIcon />
                 </IconButton>                
